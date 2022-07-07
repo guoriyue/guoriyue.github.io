@@ -1,0 +1,56 @@
+conv_stem = getattr(model, 'conv_stem')
+bn1 = getattr(model, 'bn1')
+# Stem
+if not fix_stem:
+    stem_size = round_chs_fn(stem_size)
+self.add_module("q_conv_stem", QuantBnConv2d())
+self.q_conv_stem.set_param(conv_stem, bn1)
+self.act1 = model.act1
+self.q_act1 = QuantAct()
+self.weight_expand_ratio = 0.155
+self.split_threshold = 0.0
+self.in_channels_to_split1, self.out_channels_to_split1, conv_weight_torch, bn_weight_torch, bn_bias_torch, bn_running_var_torch, bn_running_mean_torch = init_hawq(
+    conv_stem, bn1, self.weight_expand_ratio, self.split_threshold)
+self.q_conv_stem.set_conv_bn_with_bias(conv_weight_torch, bn_weight_torch, bn_bias_torch, bn_running_var_torch,
+                                       bn_running_mean_torch, bn1.momentum)
+
+# Middle stages (IR/ER/DS Blocks)
+builder = Q_EfficientNetBuilder_HAWQ(
+    model, output_stride=output_stride, pad_type=pad_type, round_chs_fn=round_chs_fn,
+    act_layer=act_layer, norm_layer=norm_layer, se_layer=se_layer, drop_path_rate=drop_path_rate,
+    weight_expand_ratio=self.weight_expand_ratio)
+
+q_blocks_ori = nn.Sequential(*builder(stem_size, block_args))
+self.q_blocks = nn.Sequential()
+stage_idx = 0
+for stage_ori in q_blocks_ori:
+    stage = nn.Sequential()
+    unit_idx = 0
+    for unit_ori in stage_ori:
+        stage.add_module("unit{}".format(unit_idx + 1), unit_ori)
+        unit_idx += 1
+    self.q_blocks.add_module("stage{}".format(stage_idx + 1), stage)
+    stage_idx += 1
+
+self.feature_info = builder.features
+head_chs = builder.in_chs
+
+# Head + Pooling
+self.add_module("q_conv_head", QuantBnConv2d())
+self.q_conv_head.set_param(model.conv_head, model.bn2)
+# self.q_bn2 = norm_layer(self.num_features)
+
+self.in_channels_to_split2, self.out_channels_to_split2, conv_weight_torch, bn_weight_torch, bn_bias_torch, bn_running_var_torch, bn_running_mean_torch = init_hawq(
+    model.conv_head, model.bn2, self.weight_expand_ratio, self.split_threshold)
+self.q_conv_head.set_conv_bn_with_bias(conv_weight_torch, bn_weight_torch, bn_bias_torch, bn_running_var_torch,
+                                       bn_running_mean_torch, model.bn2.momentum)
+
+self.act2 = model.act2
+self.q_act2 = QuantAct()
+self.q_global_pool = model.global_pool
+
+output = getattr(model, 'classifier')
+self.q_classifier = QuantLinear()
+self.q_classifier.set_param(output)
+fc_input_channels_to_split = self.out_channels_to_split2
+self.q_classifier.set_param_split(output, fc_input_channels_to_split)
