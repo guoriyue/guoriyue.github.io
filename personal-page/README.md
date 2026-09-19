@@ -79,3 +79,5 @@ Projects now leads with VRL and 3DGS, followed by compact GPU kernel, inference,
 Browser, shortcut, and Apple touch icons reuse the existing pixel collie head. LangCommand and NyaIcon use matching 200px desktop preview frames and equal-width cards; the section heading reads Open Source.
 
 All four illustrated projects (VRL, 3DGS, LangCommand, NyaIcon) share the same 7:4 media frames and typography. LangCommand and NyaIcon keep their later position but no longer use reduced sizing.
+
+The current palette is solid strawberry red (#b83240), cream (#fff8ed), and neutral dark text, inspired by NyaIcon Strawberry Solid. Full-width alternating section backgrounds, larger left-aligned headings, and contextual header copy separate the sections. Work pairs its category label with NVIDIA and neural reconstruction / simulation; no animated gradient remains.

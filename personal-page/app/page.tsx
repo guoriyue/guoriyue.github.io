@@ -106,7 +106,12 @@ export default function Home() {
         </section>
 
         <section id="work" className="content-section work-section">
-          <Heading title="Work" kind="experience" />
+          <Heading title="Work" kind="experience">
+            <div className="section-context">
+              <strong>NVIDIA</strong>
+              <p>Neural reconstruction &amp; simulation.</p>
+            </div>
+          </Heading>
           <div className="featured-work-list">
             <article className="work-row" id="nurec">
               <figure className="work-preview">
@@ -178,10 +183,13 @@ export default function Home() {
           </div>
         </section>
         <section id="projects" className="content-section projects-section">
-          <Heading title="Projects" kind="projects" />
-          <p className="projects-intro">
-            ML systems, GPU performance, and training infrastructure.
-          </p>
+          <Heading title="Projects" kind="projects">
+            <p className="section-description">
+              ML systems, GPU performance,
+              <br />
+              and training infrastructure.
+            </p>
+          </Heading>
           <div className="project-grid">
             <article className="project-card">
               <figure className="work-preview">
@@ -363,7 +371,13 @@ export default function Home() {
           id="open-source"
           className="content-section open-source-section"
         >
-          <Heading title="Open Source" kind="projects" />
+          <Heading title="Open Source" kind="projects">
+            <p className="section-description">
+              Contributions to GPU compilers
+              <br />
+              and inference runtimes.
+            </p>
+          </Heading>
           <div className="project-list">
             {contributions.map((c) => (
               <article className="small-project" key={c.name}>
@@ -379,7 +393,9 @@ export default function Home() {
           </div>
         </section>
         <section id="research" className="content-section research-section">
-          <Heading title="Publications" kind="research" />
+          <Heading title="Publications" kind="research">
+            <p className="section-description">Papers &amp; preprints.</p>
+          </Heading>
           <div className="project-list">
             {publications.map((p) => (
               <article className="small-project" key={p.title}>
