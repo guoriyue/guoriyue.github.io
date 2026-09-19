@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build",
+    "build": "vinext build && node scripts/prepare-pages.mjs",
     "start": "vite preview",
     "lint": "oxlint",
     "format": "oxfmt"

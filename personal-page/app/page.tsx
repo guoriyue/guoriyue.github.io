@@ -11,7 +11,7 @@ import PageMotion from './page-motion';
 
 const sections = [
   ['about', 'About'],
-  ['work', 'Work'],
+  ['work', 'Projects'],
   ['experience', 'Experience'],
   ['education', 'Education'],
   ['writing', 'Blog'],
@@ -109,7 +109,7 @@ export default function Home() {
           id="work"
           className="content-section work-section projects-section"
         >
-          <Heading title="Selected Work" kind="projects">
+          <Heading title="Selected Projects" kind="projects">
             <p className="section-description">
               ML infrastructure, GPU performance, and visual computing.
             </p>
@@ -443,9 +443,21 @@ export default function Home() {
         </div>
         <section id="writing" className="content-section writing-section">
           <Heading title="Blog" kind="writing" />
-          <p className="blog-note">
-            More notes on research and side projects to come.
-          </p>
+          <article className="blog-entry">
+            <p className="post-label">Example post · ML infrastructure</p>
+            <h3>
+              <a href="/blog/building-vrl/">
+                Building VRL: notes on training infrastructure
+              </a>
+            </h3>
+            <p>
+              A sample post about rollouts, rewards, and the systems around
+              visual-model post-training.
+            </p>
+            <a className="work-link" href="/blog/building-vrl/">
+              Read example →
+            </a>
+          </article>
         </section>
 
         <footer>

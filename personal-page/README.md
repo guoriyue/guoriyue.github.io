@@ -83,3 +83,9 @@ All four illustrated projects (VRL, 3DGS, LangCommand, NyaIcon) share the same 7
 The current palette is solid strawberry red (#b83240), cream (#fff8ed), and neutral dark text, inspired by NyaIcon Strawberry Solid. Full-width alternating section backgrounds, larger left-aligned headings, and contextual header copy separate the sections. Work pairs its category label with NVIDIA and neural reconstruction / simulation; no animated gradient remains.
 
 Work and Projects are now one Selected Work section, ordered VRL, NuRec, 3DGS, Asset Harvester, compact systems projects, then LangCommand and NyaIcon. All featured entries share the same grid styling; NVIDIA involvement remains in entry metadata. Section descriptions sit directly below headings. Bio and NVIDIA experience mention infrastructure and performance.
+
+Current visual direction: retro game save screen using mist blue #DCE5ED and deep indigo #303F68. Navigation spans the viewport with square edges and inverted selected tabs. The main section is Selected Projects. UI surfaces, typography, and borders use the two-color palette; original project media and pixel artwork retain their colors.
+
+The Blog section links to `/blog/building-vrl/`, an explicitly labeled example article. Its source is `app/blog/building-vrl/page.tsx`; replace the sample there for the first real post. The article uses the existing VRL comparison image for its own social metadata.
+
+Static blog export: trailingSlash is disabled during Vinext prerender to avoid nested-route 308 redirects. The build then copies the rendered article to a directory index for its public trailing-slash GitHub Pages URL.
