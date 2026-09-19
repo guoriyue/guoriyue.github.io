@@ -25,3 +25,8 @@ export function advanceCollie(position: Point, target: Point, elapsed: number) {
     facing: dx < 0 ? -1 : 1,
   };
 }
+
+export const COLLIE_IDLE_DELAY = 140;
+export function isCollieRunning(lastPointerTime: number, now: number) {
+  return now - lastPointerTime < COLLIE_IDLE_DELAY;
+}

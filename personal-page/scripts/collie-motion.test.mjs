@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { advanceCollie, clampPoint } from '../app/collie-motion.ts';
+import {
+  advanceCollie,
+  clampPoint,
+  isCollieRunning,
+} from '../app/collie-motion.ts';
 
 test('stays inside viewport including windows smaller than the sprite', () => {
   assert.deepEqual(clampPoint({ x: 999, y: -4 }, 320, 200), { x: 288, y: 0 });
@@ -33,4 +37,12 @@ test('faces movement and limits motion after a stalled frame', () => {
   assert.equal(next.facing, 1);
   assert.ok(next.x - start.x <= 14.401);
   assert.equal(advanceCollie(start, { x: 1000, y: 100 }, -1).x, 100);
+});
+
+test('runs while the mouse moves and sits after a short idle interval', () => {
+  assert.equal(isCollieRunning(1000, 1000), true);
+  assert.equal(isCollieRunning(1000, 1139), true);
+  assert.equal(isCollieRunning(1000, 1140), false);
+  assert.equal(isCollieRunning(1000, 2000), false);
+  assert.equal(isCollieRunning(2000, 2016), true);
 });

@@ -7,13 +7,14 @@ import {
 } from './content';
 import Companion from './companion';
 import Demo from './demo';
+import PageMotion from './page-motion';
 
 const sections = [
   ['about', 'About'],
   ['work', 'Selected Work'],
-  ['writing', 'Blog'],
   ['experience', 'Experience'],
   ['education', 'Education'],
+  ['writing', 'Blog'],
 ];
 const nurecUrl =
   'https://developer.nvidia.com/blog/scale-av-perception-across-vehicle-platforms-with-nvidia-omniverse-nurec/';
@@ -280,13 +281,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-        <section id="writing" className="content-section writing-section">
-          <Heading title="Blog" kind="writing" />
-          <p className="blog-note">
-            More notes on research and side projects to come.
-          </p>
-        </section>
-
         <div className="background-grid">
           <section
             id="experience"
@@ -325,11 +319,19 @@ export default function Home() {
             ))}
           </section>
         </div>
+        <section id="writing" className="content-section writing-section">
+          <Heading title="Blog" kind="writing" />
+          <p className="blog-note">
+            More notes on research and side projects to come.
+          </p>
+        </section>
+
         <footer>
           <span>© {new Date().getFullYear()} Mingfei Guo</span>
           <a href="#about">Back to top ↑</a>
         </footer>
       </main>
+      <PageMotion />
       <Companion />
     </div>
   );

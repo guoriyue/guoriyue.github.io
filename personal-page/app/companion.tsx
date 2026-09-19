@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { advanceCollie, clampPoint, COLLIE_SIZE } from './collie-motion';
+import { advanceCollie, clampPoint, isCollieRunning } from './collie-motion';
 
 export default function Companion() {
   const dog = useRef<HTMLDivElement>(null);
@@ -9,29 +9,38 @@ export default function Companion() {
     if (!element) return;
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let position = { x: 0, y: 0 };
-    let target = { x: 0, y: 0 };
-    let initialized = false;
-    let frame = 0;
-    let previousTime = 0;
+    let position = { x: 0, y: 0 },
+      target = { x: 0, y: 0 };
+    let initialized = false,
+      frame = 0,
+      previousTime = 0,
+      lastPointerTime = -Infinity;
+    let pointer = { x: -1, y: -1 };
     const hide = () => {
       cancelAnimationFrame(frame);
       frame = 0;
       initialized = false;
       element.dataset.visible = 'false';
-      element.dataset.moving = 'false';
+      element.dataset.state = 'sit';
     };
     const tick = (time: number) => {
+      if (!isCollieRunning(lastPointerTime, time)) {
+        element.dataset.state = 'sit';
+        frame = 0;
+        return;
+      }
       const next = advanceCollie(
         position,
         target,
         previousTime ? time - previousTime : 16,
       );
+      if (Math.abs(target.x - position.x) > 1)
+        element.style.setProperty('--facing', String(next.facing));
       position = clampPoint(next, window.innerWidth, window.innerHeight);
       previousTime = time;
       element.style.transform = `translate3d(${Math.round(position.x)}px, ${Math.round(position.y)}px, 0)`;
-      element.dataset.moving = String(next.moving);
-      frame = next.moving ? requestAnimationFrame(tick) : 0;
+      element.dataset.state = 'run';
+      frame = requestAnimationFrame(tick);
     };
     const move = (event: PointerEvent) => {
       if (
@@ -40,6 +49,14 @@ export default function Companion() {
         reducedMotion.matches
       )
         return;
+      if (
+        initialized &&
+        event.clientX === pointer.x &&
+        event.clientY === pointer.y
+      )
+        return;
+      pointer = { x: event.clientX, y: event.clientY };
+      lastPointerTime = performance.now();
       target = clampPoint(
         { x: event.clientX + 18, y: event.clientY + 16 },
         window.innerWidth,
@@ -47,7 +64,7 @@ export default function Companion() {
       );
       if (!initialized) {
         position = clampPoint(
-          { x: target.x - 80, y: target.y + 20 },
+          { x: target.x - 45, y: target.y },
           window.innerWidth,
           window.innerHeight,
         );
@@ -55,6 +72,7 @@ export default function Companion() {
         element.style.transform = `translate3d(${position.x}px, ${position.y}px, 0)`;
       }
       element.dataset.visible = 'true';
+      element.dataset.state = 'run';
       if (!frame) {
         previousTime = 0;
         frame = requestAnimationFrame(tick);
@@ -89,15 +107,10 @@ export default function Companion() {
       ref={dog}
       className="cursor-collie"
       data-visible="false"
+      data-state="sit"
       aria-hidden="true"
     >
-      <img
-        src="/collie-pixel-32.png"
-        alt=""
-        width={COLLIE_SIZE}
-        height={COLLIE_SIZE}
-        draggable="false"
-      />
+      <span className="collie-sprite" />
     </div>
   );
 }

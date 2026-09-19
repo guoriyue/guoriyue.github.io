@@ -47,3 +47,11 @@ Colorful `public/section-art.png` generated with built-in imagegen. Prompt: six-
 Centered sticky navigation, full-width mizuiro biography with circular portrait, centered section headings, and consistent preview-left/text-right Selected Work rows. Mobile stacks each preview above its description. The name has no decorative icon. The simplified cursor sprite is displayed at 32×32 CSS pixels; the source PNG is an enlarged pixel-art asset.
 
 `public/collie-pixel-32.png` was generated with the built-in image tool. Prompt: tiny 32×32 game sprite, border collie head only, frontal, chunky black ears, white blaze and muzzle, dot eyes, tiny nose and pink tongue, five solid colors, transparent background; no realistic fur, gradients, glossy eyes, fine details, body, or accessories.
+
+## Motion and companion
+
+Blog is the final content section, after Experience and Education. `app/page-motion.tsx` adds one-time scroll reveals and a current-section navigation underline. The mizuiro introduction changes its gradient slowly; previews and links have small hover responses. Reduced-motion disables these effects, and content remains visible without JavaScript.
+
+The 32px cursor companion uses `public/collie-actions.png`, a three-cell transparent sprite sheet: extended running stride, tucked running stride, seated. It faces its direction of travel; running switches to sitting 140ms after the last changed pointer position, stops its animation frame loop, and resumes on movement. Touch/reduced-motion users do not receive the cursor animation. Motion checks cover this idle threshold and restart, viewport boundaries, movement convergence, and stalled-frame limits.
+
+Sprite generated with built-in imagegen: same black-and-white border collie in two right-facing running poses and one sitting pose; white blaze, ruff, paws and tail tip, semi-pricked folded ears. Correction prompt requests a coarse 24-pixel-wide chibi game sprite with flat colors and no realistic fur or shading.
