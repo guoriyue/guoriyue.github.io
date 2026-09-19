@@ -1,5 +1,11 @@
 import { ArrowUpRight, Code2, Mail, MapPin } from 'lucide-react';
-import { publications, projects } from './content';
+import {
+    publications,
+    projects,
+    experience,
+    education,
+    contributions,
+} from './content';
 import Companion from './companion';
 
 export default function Home() {
@@ -20,7 +26,7 @@ export default function Home() {
                     </h1>
                 </a>
                 <p className="role">
-                    Research & engineering
+                    Software Engineer
                     <br />
                     <strong>NVIDIA</strong>
                 </p>
@@ -54,8 +60,14 @@ export default function Home() {
                     <a href="#projects">
                         <span>03</span> Projects
                     </a>
+                    <a href="#experience">
+                        <span>04</span> Experience
+                    </a>
+                    <a href="#education">
+                        <span>05</span> Education
+                    </a>
                     <a href="#writing">
-                        <span>04</span> Writing
+                        <span>06</span> Writing
                     </a>
                 </nav>
                 <Companion />
@@ -83,9 +95,11 @@ export default function Home() {
                         My work spans{' '}
                         <strong>3D reconstruction and generation</strong>,
                         efficient machine learning, and GPU programming. I’m at{' '}
-                        <a href="https://www.nvidia.com">NVIDIA</a>, and
-                        previously studied at{' '}
-                        <a href="https://www.stanford.edu">Stanford</a> and{' '}
+                        <a href="https://www.nvidia.com">NVIDIA</a>, building
+                        neural reconstruction and synthetic-data systems for
+                        autonomous driving. I earned my MS at{' '}
+                        <a href="https://www.stanford.edu">Stanford</a> and my
+                        BS at{' '}
                         <a href="https://english.pku.edu.cn">
                             Peking University
                         </a>
@@ -186,6 +200,22 @@ export default function Home() {
                             </a>
                         ))}
                     </div>
+                    <div className="contributions">
+                        <h3>Contributing upstream</h3>
+                        {contributions.map((c) => (
+                            <div className="contribution" key={c.name}>
+                                <a href={c.url}>
+                                    {c.name} <ArrowUpRight size={14} />
+                                </a>
+                                <p>
+                                    {c.description}{' '}
+                                    <a className="text-link" href={c.example}>
+                                        Merged PR ↗
+                                    </a>
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                     <aside
                         className="project-teaser"
                         aria-label="TinyTriton, in development"
@@ -206,6 +236,53 @@ export default function Home() {
                     <p className="project-footnote">
                         Built to understand. Shared for others to explore.
                     </p>
+                </section>
+                <section id="experience">
+                    <div className="section-heading">
+                        <h2>
+                            <span className="section-mark">↗</span> Where I’ve
+                            worked
+                        </h2>
+                        <span className="section-note">EXPERIENCE</span>
+                    </div>
+                    <div className="experience-list">
+                        {experience.map((e) => (
+                            <article
+                                className="experience-entry"
+                                key={e.organization + e.period}
+                            >
+                                <div className="experience-top">
+                                    <h3>{e.organization}</h3>
+                                    <span>{e.period}</span>
+                                </div>
+                                <p className="experience-role">{e.role}</p>
+                                <p>{e.description}</p>
+                            </article>
+                        ))}
+                    </div>
+                </section>
+                <section id="education">
+                    <div className="section-heading">
+                        <h2>
+                            <span className="section-mark">⌁</span> Learning &
+                            teaching
+                        </h2>
+                        <span className="section-note">EDUCATION</span>
+                    </div>
+                    {education.map((e) => (
+                        <article className="education-entry" key={e.school}>
+                            <div className="experience-top">
+                                <h3>{e.school}</h3>
+                                <span>{e.period}</span>
+                            </div>
+                            <p className="degree">{e.degree}</p>
+                            <p className="education-focus">{e.focus}</p>
+                            <p>{e.detail}</p>
+                            <a href={e.url} className="text-link">
+                                {e.linkLabel} ↗
+                            </a>
+                        </article>
+                    ))}
                 </section>
                 <section id="writing">
                     <div className="section-heading">

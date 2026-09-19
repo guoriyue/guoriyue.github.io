@@ -756,3 +756,170 @@ footer a {
     color: #7b8072;
     margin: 0;
 }
+.contributions {
+    margin: 25px 0;
+}
+.contributions > h3 {
+    font:
+        18px Georgia,
+        serif;
+    margin: 0 0 17px;
+    color: #536449;
+}
+.contribution {
+    display: grid;
+    grid-template-columns: 85px 1fr;
+    gap: 12px;
+    margin: 13px 0;
+}
+.contribution > a {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    align-self: start;
+    color: #5a7350;
+}
+.contribution p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: #7b8072;
+    margin: 0;
+}
+.contribution p a {
+    white-space: nowrap;
+    margin-left: 5px;
+}
+.experience-entry {
+    padding: 0 0 23px;
+    margin-bottom: 23px;
+    border-bottom: 1px solid #e6e8dc;
+}
+.experience-entry:last-child {
+    border: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.experience-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 15px;
+}
+.experience-top h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+.experience-top > span {
+    font:
+        9px var(--font-geist-mono),
+        monospace;
+    color: #929a84;
+    white-space: nowrap;
+}
+.experience-entry p,
+.education-entry p {
+    font-size: 12.5px;
+    color: #747d6a;
+    line-height: 1.85;
+    margin: 9px 0 0;
+}
+.experience-entry p.experience-role {
+    font-size: 11px;
+    color: #5b7351;
+    margin: 4px 0 10px;
+}
+.education-entry {
+    margin: 0 0 28px;
+}
+.education-entry p.degree {
+    color: #596c4d;
+    font-size: 12px;
+    margin-top: 4px;
+}
+.education-entry p.education-focus {
+    font-size: 10px;
+    margin-top: 2px;
+    color: #90987e;
+}
+.education-entry .text-link {
+    display: inline-block;
+    margin-top: 9px;
+}
+.paper-year {
+    overflow-wrap: normal;
+}
+.paper-year span {
+    line-height: 1.6;
+}
+.sidebar nav {
+    gap: 1px;
+    padding-top: 16px;
+}
+.sidebar nav a {
+    padding: 2px 0;
+}
+.companion {
+    margin-top: 24px;
+}
+.sidebar-note {
+    font-size: 9px;
+    margin-top: 20px;
+}
+@media (min-width: 641px) and (max-height: 850px) {
+    .sidebar {
+        top: 30px;
+    }
+    .portrait {
+        width: 84px;
+        height: 84px;
+        margin-bottom: 14px;
+    }
+    .role {
+        margin-top: 16px;
+    }
+    .socials {
+        margin: 16px 0 20px;
+    }
+    .companion {
+        margin-top: 16px;
+    }
+    .collie-button {
+        height: 95px !important;
+    }
+    .collie {
+        width: 90px;
+        height: 90px;
+    }
+    .sidebar-note {
+        display: none;
+    }
+}
+@media (max-width: 640px) {
+    .sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 6px;
+        margin-top: 25px;
+    }
+    .experience-top {
+        gap: 8px;
+    }
+    .experience-top h3 {
+        font-size: 14px;
+    }
+    .experience-top > span {
+        font-size: 8px;
+    }
+    .companion {
+        margin-top: 0;
+    }
+    .contribution {
+        grid-template-columns: 70px 1fr;
+    }
+    .education-entry p.degree {
+        font-size: 11.5px;
+    }
+}
