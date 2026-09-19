@@ -304,8 +304,8 @@ figure {
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 58px;
+  grid-template-columns: 1fr;
+  gap: 0;
   padding: 10px 30px;
 }
 .background-grid .content-section {
@@ -446,7 +446,7 @@ footer {
     font-size: 16px;
   }
   .background-grid {
-    gap: 32px;
+    gap: 0;
   }
 
   .background-grid .section-heading h2 {

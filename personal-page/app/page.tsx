@@ -12,9 +12,6 @@ import PageMotion from './page-motion';
 const sections = [
   ['about', 'About'],
   ['work', 'Work'],
-  ['projects', 'Projects'],
-  ['open-source', 'Open Source'],
-  ['research', 'Publications'],
   ['experience', 'Experience'],
   ['education', 'Education'],
   ['writing', 'Blog'],

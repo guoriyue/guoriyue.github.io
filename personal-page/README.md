@@ -63,3 +63,5 @@ Industry Work introduces NVIDIA NuRec with the user's contribution, technical bl
 Navigation uses a compact floating white bar with a pale mizuiro active tab and color-only hover feedback. Underlines and the reading-progress line are removed. The portrait has no hover transform or transition.
 
 Work contains NuRec and the Asset Harvester demo. Asset Harvester also remains in Publications with its full title, author list and paper link. Projects and Open-source Contributions are separate sections.
+
+Navigation exposes About, Work, Experience, Education, and Blog. Work stays active across Work, Projects, Open Source, and Publications; their separate content headings remain. Experience and Education stack in a single column at every screen size.
