@@ -59,3 +59,5 @@ Sprite generated with built-in imagegen: same black-and-white border collie in t
 ## Current sections and size
 
 Industry Work introduces NVIDIA NuRec with the user's contribution, technical blog, and replay. Projects contains NyaIcon, GPU projects, TinyTriton and open-source contributions. Publications contains Asset Harvester and the other papers. Experience, Education and the final Blog follow. The same run/sit sprite is now displayed at 40×40 CSS pixels. Additional motion includes staggered preview/text entrances, section-icon greetings, link movement, and a CSS scroll progress line where supported; reduced-motion disables these additions.
+
+Navigation uses a compact floating white bar with a pale mizuiro active tab and color-only hover feedback. Underlines and the reading-progress line are removed. The portrait has no hover transform or transition.
