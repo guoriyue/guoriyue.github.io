@@ -6,7 +6,7 @@ export default function PageMotion() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const targets = Array.from(
       document.querySelectorAll<HTMLElement>(
-        '.work-row, .small-project, .section-heading, .experience-entry, .education-entry',
+        '.work-row, .project-card, .small-project, .section-heading, .experience-entry, .education-entry',
       ),
     );
     let reveal: IntersectionObserver | undefined;

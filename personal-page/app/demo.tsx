@@ -1,52 +1,43 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 export default function Demo({
   src,
   poster,
   label,
+  width,
+  height,
 }: {
   src: string;
   poster: string;
   label: string;
+  width: number;
+  height: number;
 }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  useEffect(() => {
-    const video = ref.current;
-    if (!video) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !reduced.matches) {
-          void video.play().catch(() => {});
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.25 },
-    );
-    observer.observe(video);
-    const change = () => {
-      if (reduced.matches) video.pause();
-    };
-    reduced.addEventListener('change', change);
-    return () => {
-      observer.disconnect();
-      reduced.removeEventListener('change', change);
-    };
-  }, []);
+  const [paused, setPaused] = useState(false);
   return (
-    <video
-      ref={ref}
-      className="demo"
-      src={src}
-      poster={poster}
-      aria-label={label}
-      muted
-      loop
-      playsInline
-      controls
-      preload="none"
-    />
+    <span className="demo-container">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcSet={poster} />
+        <img
+          className="demo"
+          src={paused ? poster : src}
+          alt={label}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <button
+        type="button"
+        className="demo-toggle"
+        onClick={() => setPaused(!paused)}
+        aria-label={`${paused ? 'Play' : 'Pause'} animation: ${label}`}
+      >
+        {paused ? 'Play' : 'Pause'}
+      </button>
+    </span>
   );
 }

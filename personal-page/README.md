@@ -38,7 +38,7 @@ Puppy asset prompt (built-in imagegen): A single extra-cute border collie puppy 
 - NuRec original animation: https://developer-blogs.nvidia.com/wp-content/uploads/2026/08/figure-2-optimized.gif
 - Gaussian Splatting original animation: https://github.com/guoriyue/3dgs-warp-scratch/blob/main/examples/example_train_lego.gif
 
-Animated GIFs are transcoded to smaller MP4 files without changing the content. Native controls allow pausing; demos start when entering view and do not autoplay with reduced-motion enabled. Still posters load before playback. The NuRec article is linked with all four authors; its September 16 livestream is linked as a replay, not an upcoming event.
+Demos use looping GIF images, loaded lazily as they approach the viewport. A small pause button swaps in a still poster; reduced-motion preferences select the poster through a picture source. The NuRec article is linked with all four authors; its September 16 livestream is linked as a replay, not an upcoming event.
 
 Colorful `public/section-art.png` generated with built-in imagegen. Prompt: six-cell 3x2 sheet of chunky pixel illustrations on pure white: blue/gold telescope, lavender/mint CRT, red toolbox, green/pink/ochre books, cream notebook and orange pencil, yellow sun and blue cloud. No text, glow, or shadows.
 
@@ -65,3 +65,11 @@ Navigation uses a compact floating white bar with a pale mizuiro active tab and 
 Work contains NuRec and the Asset Harvester demo. Asset Harvester also remains in Publications with its full title, author list and paper link. Projects and Open-source Contributions are separate sections.
 
 Navigation exposes About, Work, Experience, Education, and Blog. Work stays active across Work, Projects, Open Source, and Publications; their separate content headings remain. Experience and Education stack in a single column at every screen size.
+
+
+Projects uses two columns above 700px and one on smaller screens. NyaIcon, 3DGS, VRL, and LangCommand have media above their descriptions; the remaining projects use compact two-column entries. VRL shows the first two rows of the original SD3.5 OCR GRPO qualitative figure, with a link to the complete unmodified image. LangCommand uses a GIF of its actual terminal recording. NyaIcon uses the full 36-second theme showcase as an 800px looping GIF. Existing MP4 paths remain available for old links, but no rendered demo uses video playback.
+
+- VRL figure: https://github.com/guoriyue/VRL/blob/main/docs/training_examples/sd3_5_ocr_grpo/qualitative_ocr_comparison.jpg
+- LangCommand recording: https://github.com/guoriyue/LangCommand/blob/main/output.gif
+
+- NyaIcon showcase source: https://nyaicon.com/marketing/videos/nyaicon-dock-showcase-new-look-v3.mp4

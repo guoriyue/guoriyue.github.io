@@ -111,8 +111,10 @@ export default function Home() {
             <article className="work-row" id="nurec">
               <figure className="work-preview">
                 <Demo
-                  src="/research/nurec.mp4"
+                  src="/research/nurec.gif"
                   poster="/research/nurec-poster.jpg"
+                  width={800}
+                  height={450}
                   label="NuRec carline adaptation: the original and shifted camera rigs"
                 />
                 <figcaption>
@@ -148,8 +150,10 @@ export default function Home() {
             <article className="work-row" id="asset-harvester">
               <figure className="work-preview asset-preview">
                 <Demo
-                  src="/research/asset-harvester.mp4"
+                  src="/research/asset-harvester.gif"
                   poster="/research/asset-harvester-poster.jpg"
+                  width={1000}
+                  height={406}
                   label="Asset Harvester: extracting 3D assets from driving logs for simulation"
                 />
                 <figcaption>
@@ -175,21 +179,17 @@ export default function Home() {
         </section>
         <section id="projects" className="content-section projects-section">
           <Heading title="Projects" kind="projects" />
-          <div className="featured-work-list">
-            <article className="work-row" id="nyaicon">
-              <a
-                className="work-preview"
-                href="https://nyaicon.com/"
-                aria-label="Explore NyaIcon"
-              >
-                <img
-                  src="/projects/nyaicon.webp"
-                  alt="NyaIcon showing its Mac icon library and themes"
-                  width="1100"
-                  height="720"
-                  loading="lazy"
+          <div className="project-grid">
+            <article className="project-card" id="nyaicon">
+              <figure className="work-preview">
+                <Demo
+                  src="/projects/nyaicon.gif"
+                  poster="/projects/nyaicon-poster.jpg"
+                  label="NyaIcon switching between colorful Mac Dock icon themes"
+                  width={800}
+                  height={450}
                 />
-              </a>
+              </figure>
               <div className="work-copy">
                 <h3>
                   <a href="https://nyaicon.com/">NyaIcon</a>
@@ -200,20 +200,18 @@ export default function Home() {
                   Pick a theme, import your own images, and restore the
                   originals whenever you like.
                 </p>
-                <p>
-                  Classic Mac pixels, pastel cats, and other little changes that
-                  make a desktop feel like yours.
-                </p>
                 <div className="paper-links">
                   <a href="https://nyaicon.com/">Website ↗</a>
                 </div>
               </div>
             </article>
-            <article className="work-row">
+            <article className="project-card">
               <figure className="work-preview gaussian-preview">
                 <Demo
-                  src="/projects/gaussian-splatting.mp4"
+                  src="/projects/gaussian-splatting.gif"
                   poster="/projects/gaussian-splatting-poster.jpg"
+                  width={640}
+                  height={640}
                   label="3D Gaussian Splatting training on the Lego scene"
                 />
               </figure>
@@ -234,9 +232,72 @@ export default function Home() {
                 </div>
               </div>
             </article>
+            <article className="project-card">
+              <figure className="work-preview">
+                <a
+                  href="/projects/vrl-sd35-text.jpg"
+                  aria-label="View the full SD3.5 text generation comparison"
+                >
+                  <img
+                    className="vrl-comparison"
+                    src="/projects/vrl-sd35-text.jpg"
+                    alt="SD3.5 text generation before and after OCR GRPO, with paired fashion show, map, neon sign, and handwriting examples"
+                    width="1730"
+                    height="2020"
+                    loading="lazy"
+                  />
+                </a>
+                <figcaption>
+                  SD3.5 · Before / after OCR GRPO ·{' '}
+                  <a href="/projects/vrl-sd35-text.jpg">Full comparison ↗</a>
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={projects[1].url}>{projects[1].name}</a>
+                </h3>
+                <p className="work-meta">
+                  Visual generation · Reinforcement learning
+                </p>
+                <p>{projects[1].description}</p>
+                <p>
+                  Shown here: SD3.5 learning to render text with an OCR reward.
+                </p>
+                <div className="paper-links">
+                  <a href={projects[1].url}>Code ↗</a>
+                  <a href="https://github.com/guoriyue/VRL/tree/main/docs/training_examples/sd3_5_ocr_grpo">
+                    Training example ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article className="project-card">
+              <figure className="work-preview">
+                <Demo
+                  src="/projects/langcommand.gif"
+                  poster="/projects/langcommand-poster.jpg"
+                  width={1000}
+                  height={649}
+                  label="LangCommand turning natural language into shell commands in a terminal"
+                />
+                <figcaption>
+                  Natural language → shell commands · Local inference
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={projects[2].url}>{projects[2].name}</a>
+                </h3>
+                <p className="work-meta">Local inference · C++ · llama.cpp</p>
+                <p>{projects[2].description}</p>
+                <div className="paper-links">
+                  <a href={projects[2].url}>Code ↗</a>
+                </div>
+              </div>
+            </article>
           </div>
-          <div className="project-list">
-            {projects.slice(1).map((p) => (
+          <div className="project-grid compact-project-grid">
+            {projects.slice(3).map((p) => (
               <article className="small-project" key={p.url}>
                 <h3>
                   <a href={p.url}>{p.name} ↗</a>
