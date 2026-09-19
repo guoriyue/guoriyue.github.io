@@ -40,7 +40,7 @@ jobs:
       - name: Check static export
         run: |
           test -s dist/client/index.html
-          test -s dist/client/collie-sprite.png
+          test -s dist/client/collie-puppy-head.png
           test -s dist/client/section-art.png
           touch dist/client/.nojekyll
       - uses: actions/upload-pages-artifact@v4

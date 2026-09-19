@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { advanceCollie, clampPoint } from './collie-motion';
+import { advanceCollie, clampPoint, COLLIE_SIZE } from './collie-motion';
 
 export default function Companion() {
   const dog = useRef<HTMLDivElement>(null);
@@ -30,7 +30,6 @@ export default function Companion() {
       position = clampPoint(next, window.innerWidth, window.innerHeight);
       previousTime = time;
       element.style.transform = `translate3d(${Math.round(position.x)}px, ${Math.round(position.y)}px, 0)`;
-      element.style.setProperty('--facing', String(next.facing));
       element.dataset.moving = String(next.moving);
       frame = next.moving ? requestAnimationFrame(tick) : 0;
     };
@@ -42,7 +41,7 @@ export default function Companion() {
       )
         return;
       target = clampPoint(
-        { x: event.clientX + 18, y: event.clientY + 16 },
+        { x: event.clientX + 26, y: event.clientY + 24 },
         window.innerWidth,
         window.innerHeight,
       );
@@ -93,10 +92,10 @@ export default function Companion() {
       aria-hidden="true"
     >
       <img
-        src="/collie-sprite.png"
+        src="/collie-puppy-head.png"
         alt=""
-        width="28"
-        height="28"
+        width={COLLIE_SIZE}
+        height={COLLIE_SIZE}
         draggable="false"
       />
     </div>

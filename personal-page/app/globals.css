@@ -504,8 +504,8 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   z-index: 9999;
   pointer-events: none;
   user-select: none;
@@ -517,23 +517,22 @@ footer {
   opacity: 1;
 }
 .cursor-collie img {
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   image-rendering: pixelated;
-  transform: scaleX(var(--facing, 1));
   pointer-events: none;
 }
 .cursor-collie[data-moving='true'] img {
-  animation: collie-run 0.24s steps(2, end) infinite;
+  animation: collie-run 0.48s steps(2, end) infinite;
 }
 @keyframes collie-run {
   0%,
   100% {
-    transform: scaleX(var(--facing, 1)) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: scaleX(var(--facing, 1)) translateY(-2px);
+    transform: translateY(-2px);
   }
 }
 @media (max-width: 760px) {
