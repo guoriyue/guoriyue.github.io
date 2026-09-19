@@ -117,7 +117,7 @@ figure {
   max-width: 1180px;
   margin: 0 auto;
   padding: 42px 30px;
-  scroll-margin-top: 68px;
+  scroll-margin-top: 0;
 }
 .section-heading {
   display: flex;
@@ -169,7 +169,7 @@ figure {
   padding: 0 0 32px;
   margin-bottom: 32px;
   border-bottom: 1px solid var(--border);
-  scroll-margin-top: 90px;
+  scroll-margin-top: 0;
 }
 .work-preview {
   display: block;
