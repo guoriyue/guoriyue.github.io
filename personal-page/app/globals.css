@@ -204,11 +204,10 @@ strong {
   grid-template-columns: 1.45fr 1fr;
   align-items: center;
   gap: 38px;
-  padding: 28px;
-  background: #f0f8fb;
-  border: 1px solid #dcebf1;
-  border-radius: 14px;
-  box-shadow: 0 5px 0 #e4f0f5;
+  padding: 38px 0;
+  margin-bottom: 38px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 .nyaicon-preview {
   display: block;
@@ -411,9 +410,8 @@ strong {
   margin-bottom: 0;
 }
 .nurec-story {
-  padding: 30px;
-  background: #f1f8f5;
-  border-left: 4px solid #b4d6c1;
+  padding: 0;
+  margin-bottom: 44px;
 }
 .nurec-story > p:not(.authors):not(.feature-summary) {
   font-size: 17px;
@@ -669,9 +667,8 @@ footer {
     height: 56px;
   }
   .nyaicon-project {
-    padding: 17px;
+    padding: 28px 0;
     gap: 22px;
-    border-radius: 10px;
   }
   .feature-copy h3 {
     font-size: 28px;
@@ -748,21 +745,20 @@ footer {
     gap: 15px 22px;
   }
   .nurec-story {
-    padding: 20px 17px;
-    border-left-width: 3px;
+    padding: 0;
   }
   .nurec-story > p:not(.authors):not(.feature-summary) {
     font-size: 16px;
   }
   .nurec-story figure {
-    margin-left: -17px;
-    margin-right: -17px;
+    margin-left: 0;
+    margin-right: 0;
   }
   .nurec-story .demo {
     border-radius: 0;
   }
   .nurec-story figcaption {
-    padding: 0 17px;
+    padding: 0;
   }
   .background-grid {
     grid-template-columns: 1fr;
@@ -802,4 +798,28 @@ footer {
   .cursor-collie {
     display: none;
   }
+}
+
+.work-link {
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.small-project .authors {
+  font-size: 12px;
+  margin: 12px 0 7px;
+  color: #71828a;
+}
+.compact-meta {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #71828a;
+  margin-top: 10px;
+}
+.compact-meta a {
+  font-weight: 600;
 }

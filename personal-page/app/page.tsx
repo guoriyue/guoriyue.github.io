@@ -9,8 +9,7 @@ import Companion from './companion';
 import Demo from './demo';
 
 const sections = [
-  ['projects', 'Projects'],
-  ['research', 'Publications'],
+  ['work', 'Selected Work'],
   ['writing', 'Blog'],
   ['experience', 'Experience'],
   ['education', 'Education'],
@@ -108,11 +107,45 @@ export default function Home() {
           />
         </section>
 
-        <section id="projects" className="content-section projects-section">
-          <Heading title="Projects" kind="projects">
-            <a href="https://github.com/guoriyue">All projects ↗</a>
-          </Heading>
-          <article className="nyaicon-project">
+        <section id="work" className="content-section work-section">
+          <Heading title="Selected Work" kind="projects" />
+          <article className="nurec-story">
+            <div className="paper-meta">
+              <span>NVIDIA · Neural reconstruction</span>
+              <time dateTime="2026-08-31">Aug 31, 2026</time>
+            </div>
+            <h3>
+              <a href={nurecUrl}>NVIDIA Omniverse NuRec</a>
+            </h3>
+            <p className="feature-summary">
+              Carline adaptation: new camera viewpoints from recorded drives.
+            </p>
+            <figure>
+              <Demo
+                src="/research/nurec.mp4"
+                poster="/research/nurec-poster.jpg"
+                label="NuRec carline adaptation: the same recorded drive rendered from the original and shifted camera rigs"
+              />
+              <figcaption>
+                The same drive, rendered from the original and shifted camera
+                rigs.
+              </figcaption>
+            </figure>
+            <p>
+              At NVIDIA, I work on neural reconstruction and simulation
+              pipelines. I coauthored this technical walkthrough on adapting AV
+              perception to a different sensor configuration using existing
+              drive data.
+            </p>
+            <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
+            <div className="paper-links">
+              <a href={nurecUrl}>Read the post ↗</a>
+              <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
+                Watch the livestream replay ↗
+              </a>
+            </div>
+          </article>
+          <article id="projects" className="nyaicon-project">
             <a
               className="nyaicon-preview"
               href="https://nyaicon.com/"
@@ -141,6 +174,35 @@ export default function Home() {
               <a className="text-link" href="https://nyaicon.com/">
                 Try NyaIcon ↗
               </a>
+            </div>
+          </article>
+          <article id="research" className="featured-paper">
+            <div className="paper-meta">
+              <span>NVIDIA · Coauthor</span>
+              <time>{featured.year}</time>
+            </div>
+            <h3>
+              <a href={featured.project}>Asset Harvester</a>
+            </h3>
+            <p className="feature-summary">
+              Extracting complete 3D assets from real driving logs for
+              simulation.
+            </p>
+            <figure>
+              <Demo
+                src="/research/asset-harvester.mp4"
+                poster="/research/asset-harvester-poster.jpg"
+                label="Asset Harvester demo: extracting 3D assets from driving logs and using them in simulation"
+              />
+              <figcaption>
+                Asset Harvester demo ·{' '}
+                <a href={featured.project}>Project page ↗</a>
+              </figcaption>
+            </figure>
+            <Authors names={featured.authors} />
+            <div className="paper-links">
+              <a href={featured.url}>Read the paper ↗</a>
+              <a href={featured.project}>More results ↗</a>
             </div>
           </article>
           <article className="graphics-project">
@@ -174,6 +236,9 @@ export default function Home() {
                   <a href={p.url}>{p.name} ↗</a>
                 </h3>
                 <p>{p.description}</p>
+                <a className="work-link" href={p.url}>
+                  Code ↗
+                </a>
               </article>
             ))}
             <article className="small-project tiny-triton">
@@ -186,109 +251,36 @@ export default function Home() {
                 kernels.
               </p>
             </article>
-          </div>
-          <div className="contributions">
-            <h3>Contributions</h3>
             {contributions.map((c) => (
-              <p key={c.name}>
-                <a href={c.example}>{c.name} ↗</a>
-                <span>{c.description}</span>
-              </p>
+              <article className="small-project" key={c.name}>
+                <h3>
+                  <a href={c.url}>{c.name} ↗</a>
+                </h3>
+                <p>{c.description}</p>
+                <a className="work-link" href={c.example}>
+                  Contribution ↗
+                </a>
+              </article>
             ))}
-          </div>
-        </section>
-
-        <section id="research" className="content-section research-section">
-          <Heading title="Publications" kind="research" />
-          <article className="featured-paper">
-            <div className="paper-meta">
-              <span>{featured.venue}</span>
-              <time>{featured.year}</time>
-            </div>
-            <h3>
-              <a href={featured.project}>{featured.title}</a>
-            </h3>
-            <p className="feature-summary">
-              Real driving logs → complete 3D assets → editable simulation
-              scenes.
-            </p>
-            <figure>
-              <Demo
-                src="/research/asset-harvester.mp4"
-                poster="/research/asset-harvester-poster.jpg"
-                label="Asset Harvester demo: extracting 3D assets from driving logs and using them in simulation"
-              />
-              <figcaption>
-                Asset Harvester demo ·{' '}
-                <a href={featured.project}>Project page ↗</a>
-              </figcaption>
-            </figure>
-            <Authors names={featured.authors} />
-            <div className="paper-links">
-              <a href={featured.url}>Read the paper ↗</a>
-              <a href={featured.project}>More results ↗</a>
-            </div>
-          </article>
-          <div className="paper-list">
             {publications.slice(1).map((p) => (
-              <article className="paper" key={p.title}>
-                <div className="paper-meta">
-                  <time>{p.year}</time>
-                  <span>{p.venue}</span>
-                </div>
-                <div>
-                  <h3>
-                    <a href={p.url}>{p.title} ↗</a>
-                  </h3>
-                  <Authors names={p.authors} />
-                  <p className="paper-description">{p.description}</p>
+              <article className="small-project" key={p.title}>
+                <h3>
+                  <a href={p.url}>{p.title} ↗</a>
+                </h3>
+                <p>{p.description}</p>
+                <Authors names={p.authors} />
+                <div className="compact-meta">
+                  <span>
+                    {p.venue} · {p.year}
+                  </span>
+                  <a href={p.url}>Paper ↗</a>
                 </div>
               </article>
             ))}
           </div>
         </section>
-
         <section id="writing" className="content-section writing-section">
-          <Heading title="Blog & talks" kind="writing" />
-          <article className="nurec-story">
-            <div className="paper-meta">
-              <span>NVIDIA Technical Blog</span>
-              <time dateTime="2026-08-31">Aug 31, 2026</time>
-            </div>
-            <h3>
-              <a href={nurecUrl}>
-                Scale AV Perception Across Vehicle Platforms with NVIDIA
-                Omniverse NuRec
-              </a>
-            </h3>
-            <p className="feature-summary">
-              A new sensor setup doesn’t have to mean starting your dataset
-              over.
-            </p>
-            <figure>
-              <Demo
-                src="/research/nurec.mp4"
-                poster="/research/nurec-poster.jpg"
-                label="NuRec carline adaptation: the same recorded drive rendered from the original and shifted camera rigs"
-              />
-              <figcaption>
-                The same drive, rendered from the original and shifted camera
-                rigs.
-              </figcaption>
-            </figure>
-            <p>
-              Moving cameras changes what a vehicle can see. In this post, we
-              show how to reconstruct recorded drives and render new camera
-              viewpoints for a different sensor configuration.
-            </p>
-            <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
-            <div className="paper-links">
-              <a href={nurecUrl}>Read the post ↗</a>
-              <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
-                Watch the livestream replay ↗
-              </a>
-            </div>
-          </article>
+          <Heading title="Blog" kind="writing" />
           <p className="blog-note">
             More notes on research and side projects to come.
           </p>

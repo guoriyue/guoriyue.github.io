@@ -25,7 +25,7 @@ The root Astro template is retained as legacy source and is not deployed by this
 
 ## Visual design
 
-Mizuiro accents, Arial/Helvetica typography, colorful pixel illustrations, and varied feature sizes. Projects precede publications; NyaIcon, Asset Harvester, and NuRec have large visual previews. The 56px border collie puppy head follows mouse movement, stops at rest, and is disabled for touch pointers and reduced-motion preferences. Run its motion checks with `node --experimental-strip-types --test scripts/collie-motion.test.mjs`.
+Mizuiro accents, Arial/Helvetica typography, colorful pixel illustrations, and varied feature sizes. A single Selected Work section mixes NVIDIA contributions, apps, open-source work, and papers. NuRec leads; NyaIcon and Asset Harvester retain large previews. Older papers and small tools use compact entries, with format indicated only by links and metadata. The 56px border collie puppy head follows mouse movement, stops at rest, and is disabled for touch pointers and reduced-motion preferences. Run its motion checks with `node --experimental-strip-types --test scripts/collie-motion.test.mjs`.
 
 Generated artwork: `collie-puppy-head.png` (front-facing black-and-white pixel border collie puppy head, generated with the built-in image tool); `section-art.png` (six blue-and-white pixel illustrations: telescope, computer, toolbox, books, notebook, weather); `og.png` (blue-and-white card with the exact name and NVIDIA role). Research thumbnails are figures from the linked papers: arXiv 2604.18468, 2308.10905, 2205.02162, and 2103.05944.
 
