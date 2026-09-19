@@ -1,3 +1,11 @@
+# Mingfei Guo — personal website
+
+The current website lives in [`personal-page/`](personal-page/) and is deployed to https://guoriyue.github.io/ by GitHub Actions. See [development and content instructions](personal-page/README.md).
+
+The files below describe the previous Astro template, retained as legacy source.
+
+---
+
 <div align="center">
   <img alt="Astro Cactus logo" src="https://github.com/chrismwilliams/astro-theme-cactus/assets/12715988/85aa0d3c-ef6a-44e2-954d-ef035b4f4315" width="70" />
 </div>

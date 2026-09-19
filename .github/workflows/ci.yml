@@ -1,54 +1,62 @@
-name: ci
+name: Deploy personal page
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'personal-page/**'
+      - '.github/workflows/ci.yml'
   pull_request:
     branches: [main]
+    paths:
+      - 'personal-page/**'
+      - '.github/workflows/ci.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  lint:
-    name: Check for build and type issues
+  build:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: personal-page
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-
-      - name: install node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
-
-      - name: install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: personal-page/package-lock.json
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - name: Check static export
         run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
+          test -s dist/client/index.html
+          test -s dist/client/border-collie.png
+          touch dist/client/.nojekyll
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          path: personal-page/dist/client
 
-      - name: Install dependencies
-        run: pnpm install
-
-        # use astro check for issues
-      - name: Run check
-        run: pnpm astro check
-
-        # ensure build works
-      - name: Run build
-        run: pnpm build
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/deploy-pages@v4
+        id: deployment
