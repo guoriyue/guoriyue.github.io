@@ -41,7 +41,7 @@ export default function Companion() {
       )
         return;
       target = clampPoint(
-        { x: event.clientX + 26, y: event.clientY + 24 },
+        { x: event.clientX + 18, y: event.clientY + 16 },
         window.innerWidth,
         window.innerHeight,
       );
@@ -92,7 +92,7 @@ export default function Companion() {
       aria-hidden="true"
     >
       <img
-        src="/collie-puppy-head.png"
+        src="/collie-pixel-32.png"
         alt=""
         width={COLLIE_SIZE}
         height={COLLIE_SIZE}

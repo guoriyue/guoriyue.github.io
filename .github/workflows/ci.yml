@@ -40,7 +40,7 @@ jobs:
       - name: Check static export
         run: |
           test -s dist/client/index.html
-          test -s dist/client/collie-puppy-head.png
+          test -s dist/client/collie-pixel-32.png
           test -s dist/client/section-art.png
           test -s dist/client/research/asset-harvester.mp4
           test -s dist/client/research/nurec.mp4

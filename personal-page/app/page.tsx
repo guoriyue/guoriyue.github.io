@@ -9,6 +9,7 @@ import Companion from './companion';
 import Demo from './demo';
 
 const sections = [
+  ['about', 'About'],
   ['work', 'Selected Work'],
   ['writing', 'Blog'],
   ['experience', 'Experience'],
@@ -59,9 +60,6 @@ export default function Home() {
         Skip to content
       </a>
       <nav className="navigation" aria-label="On this page">
-        <a className="home-link" href="#about">
-          MG<span>.</span>
-        </a>
         <div>
           {sections.map(([id, title]) => (
             <a key={id} href={`#${id}`}>
@@ -75,7 +73,6 @@ export default function Home() {
           <div className="about-copy">
             <div className="name-row">
               <h1>Mingfei Guo</h1>
-              <Art kind="about" />
             </div>
             <p className="position">
               Software Engineer at <a href="https://www.nvidia.com/">NVIDIA</a>{' '}
@@ -109,126 +106,130 @@ export default function Home() {
 
         <section id="work" className="content-section work-section">
           <Heading title="Selected Work" kind="projects" />
-          <article className="nurec-story">
-            <div className="paper-meta">
-              <span>NVIDIA · Neural reconstruction</span>
-              <time dateTime="2026-08-31">Aug 31, 2026</time>
-            </div>
-            <h3>
-              <a href={nurecUrl}>NVIDIA Omniverse NuRec</a>
-            </h3>
-            <p className="feature-summary">
-              Carline adaptation: new camera viewpoints from recorded drives.
-            </p>
-            <figure>
-              <Demo
-                src="/research/nurec.mp4"
-                poster="/research/nurec-poster.jpg"
-                label="NuRec carline adaptation: the same recorded drive rendered from the original and shifted camera rigs"
-              />
-              <figcaption>
-                The same drive, rendered from the original and shifted camera
-                rigs.
-              </figcaption>
-            </figure>
-            <p>
-              At NVIDIA, I work on neural reconstruction and simulation
-              pipelines. I coauthored this technical walkthrough on adapting AV
-              perception to a different sensor configuration using existing
-              drive data.
-            </p>
-            <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
-            <div className="paper-links">
-              <a href={nurecUrl}>Read the post ↗</a>
-              <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
-                Watch the livestream replay ↗
+          <div className="featured-work-list">
+            <article className="work-row" id="nurec">
+              <figure className="work-preview">
+                <Demo
+                  src="/research/nurec.mp4"
+                  poster="/research/nurec-poster.jpg"
+                  label="NuRec carline adaptation: the original and shifted camera rigs"
+                />
+                <figcaption>
+                  The same recorded drive, from two camera rigs.
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={nurecUrl}>NVIDIA Omniverse NuRec</a>
+                </h3>
+                <p className="work-meta">
+                  NVIDIA · Neural reconstruction · 2026
+                </p>
+                <p>
+                  Generate new camera viewpoints from recorded drives to adapt
+                  AV perception across sensor configurations and vehicle
+                  platforms.
+                </p>
+                <p>
+                  I work on neural reconstruction and simulation pipelines at
+                  NVIDIA, and coauthored this technical walkthrough on carline
+                  adaptation.
+                </p>
+                <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
+                <div className="paper-links">
+                  <a href={nurecUrl}>Technical blog ↗</a>
+                  <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
+                    Livestream replay ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article className="work-row" id="projects">
+              <a
+                className="work-preview"
+                href="https://nyaicon.com/"
+                aria-label="Explore NyaIcon"
+              >
+                <img
+                  src="/projects/nyaicon.webp"
+                  alt="NyaIcon showing its Mac icon library and themes"
+                  width="1100"
+                  height="720"
+                  loading="lazy"
+                />
               </a>
-            </div>
-          </article>
-          <article id="projects" className="nyaicon-project">
-            <a
-              className="nyaicon-preview"
-              href="https://nyaicon.com/"
-              aria-label="Explore NyaIcon"
-            >
-              <img
-                src="/projects/nyaicon.webp"
-                alt="NyaIcon app showing a library of custom Mac icons and themes"
-                width="1100"
-                height="720"
-              />
-            </a>
-            <div className="feature-copy">
-              <p className="eyebrow">A small app for your Mac</p>
-              <h3>
-                <a href="https://nyaicon.com/">NyaIcon ↗</a>
-              </h3>
-              <p>
-                Give your Mac a different look. Change app and folder icons,
-                pick a whole theme, or bring your own images.
-              </p>
-              <p className="secondary-copy">
-                From classic Mac pixels to pastel cats. You can restore the
-                original icons anytime.
-              </p>
-              <a className="text-link" href="https://nyaicon.com/">
-                Try NyaIcon ↗
-              </a>
-            </div>
-          </article>
-          <article id="research" className="featured-paper">
-            <div className="paper-meta">
-              <span>NVIDIA · Coauthor</span>
-              <time>{featured.year}</time>
-            </div>
-            <h3>
-              <a href={featured.project}>Asset Harvester</a>
-            </h3>
-            <p className="feature-summary">
-              Extracting complete 3D assets from real driving logs for
-              simulation.
-            </p>
-            <figure>
-              <Demo
-                src="/research/asset-harvester.mp4"
-                poster="/research/asset-harvester-poster.jpg"
-                label="Asset Harvester demo: extracting 3D assets from driving logs and using them in simulation"
-              />
-              <figcaption>
-                Asset Harvester demo ·{' '}
-                <a href={featured.project}>Project page ↗</a>
-              </figcaption>
-            </figure>
-            <Authors names={featured.authors} />
-            <div className="paper-links">
-              <a href={featured.url}>Read the paper ↗</a>
-              <a href={featured.project}>More results ↗</a>
-            </div>
-          </article>
-          <article className="graphics-project">
-            <div className="graphics-demo">
-              <Demo
-                src="/projects/gaussian-splatting.mp4"
-                poster="/projects/gaussian-splatting-poster.jpg"
-                label="Training a 3D Gaussian Splatting model on the Lego scene"
-              />
-            </div>
-            <div className="feature-copy">
-              <p className="eyebrow">Python · NVIDIA Warp</p>
-              <h3>
-                <a href={projects[0].url}>
-                  3D Gaussian Splatting, from scratch ↗
-                </a>
-              </h3>
-              <p>
-                A small implementation of the training and rendering pipeline in
-                Python and NVIDIA Warp. The same kernels run on CPU and GPU.
-              </p>
-              <a className="text-link" href={projects[0].url}>
-                Read the code ↗
-              </a>
-            </div>
-          </article>
+              <div className="work-copy">
+                <h3>
+                  <a href="https://nyaicon.com/">NyaIcon</a>
+                </h3>
+                <p className="work-meta">macOS app</p>
+                <p>
+                  An app I’m building to customize Mac app and folder icons.
+                  Pick a theme, import your own images, and restore the
+                  originals whenever you like.
+                </p>
+                <p>
+                  Classic Mac pixels, pastel cats, and other little changes that
+                  make a desktop feel like yours.
+                </p>
+                <div className="paper-links">
+                  <a href="https://nyaicon.com/">Website ↗</a>
+                </div>
+              </div>
+            </article>
+            <article className="work-row" id="research">
+              <figure className="work-preview asset-preview">
+                <Demo
+                  src="/research/asset-harvester.mp4"
+                  poster="/research/asset-harvester-poster.jpg"
+                  label="Asset Harvester: extracting 3D assets from driving logs for simulation"
+                />
+                <figcaption>
+                  Driving observations → 3D assets → simulation.
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={featured.project}>Asset Harvester</a>
+                </h3>
+                <p className="work-meta">NVIDIA · Coauthor · 2026</p>
+                <p>
+                  Extracting complete 3D assets from sparse observations in
+                  autonomous driving logs, ready to use in simulation.
+                </p>
+                <Authors names={featured.authors} />
+                <div className="paper-links">
+                  <a href={featured.project}>Project & results ↗</a>
+                  <a href={featured.url}>Paper ↗</a>
+                </div>
+              </div>
+            </article>
+            <article className="work-row">
+              <figure className="work-preview gaussian-preview">
+                <Demo
+                  src="/projects/gaussian-splatting.mp4"
+                  poster="/projects/gaussian-splatting-poster.jpg"
+                  label="3D Gaussian Splatting training on the Lego scene"
+                />
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={projects[0].url}>
+                    3D Gaussian Splatting, from scratch
+                  </a>
+                </h3>
+                <p className="work-meta">Python · NVIDIA Warp</p>
+                <p>
+                  A small implementation of the training and rendering pipeline
+                  in Python and NVIDIA Warp. The same kernels run on CPU and
+                  GPU.
+                </p>
+                <div className="paper-links">
+                  <a href={projects[0].url}>Code ↗</a>
+                </div>
+              </div>
+            </article>
+          </div>
           <div className="project-list">
             {projects.slice(1).map((p) => (
               <article className="small-project" key={p.url}>

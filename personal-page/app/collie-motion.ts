@@ -1,5 +1,5 @@
 export type Point = { x: number; y: number };
-export const COLLIE_SIZE = 56;
+export const COLLIE_SIZE = 32;
 export function clampPoint(point: Point, width: number, height: number): Point {
   return {
     x: Math.max(0, Math.min(Math.max(0, width - COLLIE_SIZE), point.x)),

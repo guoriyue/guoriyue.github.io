@@ -25,7 +25,7 @@ The root Astro template is retained as legacy source and is not deployed by this
 
 ## Visual design
 
-Mizuiro accents, Arial/Helvetica typography, colorful pixel illustrations, and varied feature sizes. A single Selected Work section mixes NVIDIA contributions, apps, open-source work, and papers. NuRec leads; NyaIcon and Asset Harvester retain large previews. Older papers and small tools use compact entries, with format indicated only by links and metadata. The 56px border collie puppy head follows mouse movement, stops at rest, and is disabled for touch pointers and reduced-motion preferences. Run its motion checks with `node --experimental-strip-types --test scripts/collie-motion.test.mjs`.
+Mizuiro accents, Arial/Helvetica typography, colorful pixel illustrations, and varied feature sizes. A single Selected Work section mixes NVIDIA contributions, apps, open-source work, and papers. NuRec leads; NyaIcon and Asset Harvester retain large previews. Older papers and small tools use compact entries, with format indicated only by links and metadata. The 32px simplified pixel border collie head follows mouse movement, stops at rest, and is disabled for touch pointers and reduced-motion preferences. Run its motion checks with `node --experimental-strip-types --test scripts/collie-motion.test.mjs`.
 
 Generated artwork: `collie-puppy-head.png` (front-facing black-and-white pixel border collie puppy head, generated with the built-in image tool); `section-art.png` (six blue-and-white pixel illustrations: telescope, computer, toolbox, books, notebook, weather); `og.png` (blue-and-white card with the exact name and NVIDIA role). Research thumbnails are figures from the linked papers: arXiv 2604.18468, 2308.10905, 2205.02162, and 2103.05944.
 
@@ -41,3 +41,9 @@ Puppy asset prompt (built-in imagegen): A single extra-cute border collie puppy 
 Animated GIFs are transcoded to smaller MP4 files without changing the content. Native controls allow pausing; demos start when entering view and do not autoplay with reduced-motion enabled. Still posters load before playback. The NuRec article is linked with all four authors; its September 16 livestream is linked as a replay, not an upcoming event.
 
 Colorful `public/section-art.png` generated with built-in imagegen. Prompt: six-cell 3x2 sheet of chunky pixel illustrations on pure white: blue/gold telescope, lavender/mint CRT, red toolbox, green/pink/ochre books, cream notebook and orange pencil, yellow sun and blue cloud. No text, glow, or shadows.
+
+## Current layout
+
+Centered sticky navigation, full-width mizuiro biography with circular portrait, centered section headings, and consistent preview-left/text-right Selected Work rows. Mobile stacks each preview above its description. The name has no decorative icon. The simplified cursor sprite is displayed at 32×32 CSS pixels; the source PNG is an enlarged pixel-art asset.
+
+`public/collie-pixel-32.png` was generated with the built-in image tool. Prompt: tiny 32×32 game sprite, border collie head only, frontal, chunky black ears, white blaze and muzzle, dot eyes, tiny nose and pink tongue, five solid colors, transparent background; no realistic fur, gradients, glossy eyes, fine details, body, or accessories.
