@@ -94,16 +94,16 @@ export const projects = [
   },
   {
     name: 'Flash Attention in Slang',
-    tag: 'GPU KERNELS · VULKAN',
+    tag: 'TENSOR CORES · VULKAN · SLANG',
     description:
-      'An experimental forward and backward attention implementation using tensor cores through Vulkan.',
+      'Forward and backward Flash Attention using cooperative-matrix tensor core GEMMs and Split-K parallelism. Includes correctness checks and latency comparisons against PyTorch SDPA and flash_attn.',
     url: 'https://github.com/guoriyue/flash-attention-slang',
   },
   {
     name: 'Llama 3, in Warp',
-    tag: 'FROM SCRATCH · INFERENCE',
+    tag: 'LLM INFERENCE · NVIDIA WARP · PROFILING',
     description:
-      'Rebuilding Llama 3 inference with NVIDIA Warp, with a PyTorch implementation for comparison.',
+      'Llama 3 inference rebuilt with NVIDIA Warp kernels, including tiled variants, FP32 equivalence checks, and profiling against a PyTorch implementation.',
     url: 'https://github.com/guoriyue/warp-llama3-scratch',
   },
 ];

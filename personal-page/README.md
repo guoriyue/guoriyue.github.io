@@ -73,3 +73,5 @@ Projects uses two columns above 700px and one on smaller screens. NyaIcon, 3DGS,
 - LangCommand recording: https://github.com/guoriyue/LangCommand/blob/main/output.gif
 
 - NyaIcon showcase source: https://nyaicon.com/marketing/videos/nyaicon-dock-showcase-new-look-v3.mp4
+
+Projects now leads with VRL and 3DGS, followed by compact GPU kernel, inference, compiler, and automation entries. LangCommand and NyaIcon retain looping GIFs as smaller entries at the end. Technical descriptions emphasize verified implementation details rather than benchmark claims.

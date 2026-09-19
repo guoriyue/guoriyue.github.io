@@ -179,59 +179,10 @@ export default function Home() {
         </section>
         <section id="projects" className="content-section projects-section">
           <Heading title="Projects" kind="projects" />
+          <p className="projects-intro">
+            ML systems, GPU performance, and training infrastructure.
+          </p>
           <div className="project-grid">
-            <article className="project-card" id="nyaicon">
-              <figure className="work-preview">
-                <Demo
-                  src="/projects/nyaicon.gif"
-                  poster="/projects/nyaicon-poster.jpg"
-                  label="NyaIcon switching between colorful Mac Dock icon themes"
-                  width={800}
-                  height={450}
-                />
-              </figure>
-              <div className="work-copy">
-                <h3>
-                  <a href="https://nyaicon.com/">NyaIcon</a>
-                </h3>
-                <p className="work-meta">macOS app</p>
-                <p>
-                  An app I’m building to customize Mac app and folder icons.
-                  Pick a theme, import your own images, and restore the
-                  originals whenever you like.
-                </p>
-                <div className="paper-links">
-                  <a href="https://nyaicon.com/">Website ↗</a>
-                </div>
-              </div>
-            </article>
-            <article className="project-card">
-              <figure className="work-preview gaussian-preview">
-                <Demo
-                  src="/projects/gaussian-splatting.gif"
-                  poster="/projects/gaussian-splatting-poster.jpg"
-                  width={640}
-                  height={640}
-                  label="3D Gaussian Splatting training on the Lego scene"
-                />
-              </figure>
-              <div className="work-copy">
-                <h3>
-                  <a href={projects[0].url}>
-                    3D Gaussian Splatting, from scratch
-                  </a>
-                </h3>
-                <p className="work-meta">Python · NVIDIA Warp</p>
-                <p>
-                  A small implementation of the training and rendering pipeline
-                  in Python and NVIDIA Warp. The same kernels run on CPU and
-                  GPU.
-                </p>
-                <div className="paper-links">
-                  <a href={projects[0].url}>Code ↗</a>
-                </div>
-              </div>
-            </article>
             <article className="project-card">
               <figure className="work-preview">
                 <a
@@ -257,11 +208,21 @@ export default function Home() {
                   <a href={projects[1].url}>{projects[1].name}</a>
                 </h3>
                 <p className="work-meta">
-                  Visual generation · Reinforcement learning
+                  Training infrastructure · RL post-training
                 </p>
-                <p>{projects[1].description}</p>
                 <p>
-                  Shown here: SD3.5 learning to render text with an OCR reward.
+                  <strong>RL post-training infrastructure</strong> for visual
+                  generative models. A shared{' '}
+                  <strong>rollout → reward → optimization</strong> loop, with
+                  composable model, algorithm, and execution configs.
+                </p>
+                <p>
+                  <strong>
+                    Ray rollouts, DDP / FSDP training, weight synchronization,
+                  </strong>{' '}
+                  and checkpointing. The SD3.5 example uses{' '}
+                  <strong>GRPO with an OCR reward</strong>
+                  to improve text rendering.
                 </p>
                 <div className="paper-links">
                   <a href={projects[1].url}>Code ↗</a>
@@ -271,6 +232,81 @@ export default function Home() {
                 </div>
               </div>
             </article>
+            <article className="project-card">
+              <figure className="work-preview gaussian-preview">
+                <Demo
+                  src="/projects/gaussian-splatting.gif"
+                  poster="/projects/gaussian-splatting-poster.jpg"
+                  width={640}
+                  height={640}
+                  label="3D Gaussian Splatting training on the Lego scene"
+                />
+                <figcaption>
+                  Training and rendering · Shared CPU / GPU kernels
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={projects[0].url}>
+                    3D Gaussian Splatting, from scratch
+                  </a>
+                </h3>
+                <p className="work-meta">
+                  GPU programming · Differentiable rendering
+                </p>
+                <p>
+                  A from-scratch{' '}
+                  <strong>training and rendering pipeline</strong> for 3D
+                  Gaussian Splatting, written in Python and{' '}
+                  <strong>NVIDIA Warp</strong>. The same kernels run on CPU and
+                  GPU.
+                </p>
+                <div className="paper-links">
+                  <a href={projects[0].url}>Code ↗</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div className="project-grid compact-project-grid">
+            {[projects[4], projects[5]].map((p) => (
+              <article className="small-project" key={p.url}>
+                <h3>
+                  <a href={p.url}>{p.name} ↗</a>
+                </h3>
+                <p className="project-keywords">{p.tag}</p>
+                <p>{p.description}</p>
+                <a className="work-link" href={p.url}>
+                  Code ↗
+                </a>
+              </article>
+            ))}
+            <article className="small-project tiny-triton">
+              <h3>
+                TinyTriton <span>In development</span>
+              </h3>
+              <p className="project-keywords">
+                GPU COMPILERS · CUDA · LLVM / PTX
+              </p>
+              <p>
+                A GPU compiler course in six milestones: interpreter, CUDA
+                execution, LLVM / PTX lowering, reductions, and attention
+                kernels.
+              </p>
+            </article>
+            <article className="small-project">
+              <h3>
+                <a href={projects[3].url}>{projects[3].name} ↗</a>
+              </h3>
+              <p className="project-keywords">
+                BROWSER AUTOMATION · WORKFLOW RECORDING
+              </p>
+              <p>{projects[3].description}</p>
+              <a className="work-link" href={projects[3].url}>
+                Code ↗
+              </a>
+            </article>
+          </div>
+          <div className="project-grid secondary-projects">
             <article className="project-card">
               <figure className="work-preview">
                 <Demo
@@ -295,28 +331,30 @@ export default function Home() {
                 </div>
               </div>
             </article>
-          </div>
-          <div className="project-grid compact-project-grid">
-            {projects.slice(3).map((p) => (
-              <article className="small-project" key={p.url}>
+            <article className="project-card" id="nyaicon">
+              <figure className="work-preview">
+                <Demo
+                  src="/projects/nyaicon.gif"
+                  poster="/projects/nyaicon-poster.jpg"
+                  label="NyaIcon switching between colorful Mac Dock icon themes"
+                  width={800}
+                  height={450}
+                />
+              </figure>
+              <div className="work-copy">
                 <h3>
-                  <a href={p.url}>{p.name} ↗</a>
+                  <a href="https://nyaicon.com/">NyaIcon</a>
                 </h3>
-                <p>{p.description}</p>
-                <a className="work-link" href={p.url}>
-                  Code ↗
-                </a>
-              </article>
-            ))}
-            <article className="small-project tiny-triton">
-              <h3>
-                TinyTriton <span>In development</span>
-              </h3>
-              <p>
-                A GPU compiler course in six milestones, from a small
-                interpreter to CUDA, LLVM/PTX, reductions, and attention
-                kernels.
-              </p>
+                <p className="work-meta">macOS app</p>
+                <p>
+                  An app I’m building to customize Mac app and folder icons.
+                  Pick a theme, import your own images, and restore the
+                  originals whenever you like.
+                </p>
+                <div className="paper-links">
+                  <a href="https://nyaicon.com/">Website ↗</a>
+                </div>
+              </div>
             </article>
           </div>
         </section>
