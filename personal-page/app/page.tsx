@@ -11,8 +11,9 @@ import PageMotion from './page-motion';
 
 const sections = [
   ['about', 'About'],
-  ['work', 'Industry Work'],
+  ['work', 'Work'],
   ['projects', 'Projects'],
+  ['open-source', 'Open Source'],
   ['research', 'Publications'],
   ['experience', 'Experience'],
   ['education', 'Education'],
@@ -108,7 +109,7 @@ export default function Home() {
         </section>
 
         <section id="work" className="content-section work-section">
-          <Heading title="Industry Work" kind="experience" />
+          <Heading title="Work" kind="experience" />
           <div className="featured-work-list">
             <article className="work-row" id="nurec">
               <figure className="work-preview">
@@ -144,6 +145,32 @@ export default function Home() {
                   <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
                     Livestream replay ↗
                   </a>
+                </div>
+              </div>
+            </article>
+            <article className="work-row" id="asset-harvester">
+              <figure className="work-preview asset-preview">
+                <Demo
+                  src="/research/asset-harvester.mp4"
+                  poster="/research/asset-harvester-poster.jpg"
+                  label="Asset Harvester: extracting 3D assets from driving logs for simulation"
+                />
+                <figcaption>
+                  Driving observations → 3D assets → simulation.
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={featured.project}>Asset Harvester</a>
+                </h3>
+                <p className="work-meta">NVIDIA · Coauthor · 2026</p>
+                <p>
+                  Extracting complete 3D assets from sparse observations in
+                  autonomous driving logs, ready to use in simulation.
+                </p>
+                <div className="paper-links">
+                  <a href={featured.project}>Project & results ↗</a>
+                  <a href={featured.url}>Paper ↗</a>
                 </div>
               </div>
             </article>
@@ -233,6 +260,14 @@ export default function Home() {
                 kernels.
               </p>
             </article>
+          </div>
+        </section>
+        <section
+          id="open-source"
+          className="content-section open-source-section"
+        >
+          <Heading title="Open-source Contributions" kind="projects" />
+          <div className="project-list">
             {contributions.map((c) => (
               <article className="small-project" key={c.name}>
                 <h3>
@@ -248,37 +283,8 @@ export default function Home() {
         </section>
         <section id="research" className="content-section research-section">
           <Heading title="Publications" kind="research" />
-          <div className="featured-work-list">
-            <article className="work-row" id="asset-harvester">
-              <figure className="work-preview asset-preview">
-                <Demo
-                  src="/research/asset-harvester.mp4"
-                  poster="/research/asset-harvester-poster.jpg"
-                  label="Asset Harvester: extracting 3D assets from driving logs for simulation"
-                />
-                <figcaption>
-                  Driving observations → 3D assets → simulation.
-                </figcaption>
-              </figure>
-              <div className="work-copy">
-                <h3>
-                  <a href={featured.project}>Asset Harvester</a>
-                </h3>
-                <p className="work-meta">Preprint · Coauthor · 2026</p>
-                <p>
-                  Extracting complete 3D assets from sparse observations in
-                  autonomous driving logs, ready to use in simulation.
-                </p>
-                <Authors names={featured.authors} />
-                <div className="paper-links">
-                  <a href={featured.project}>Project & results ↗</a>
-                  <a href={featured.url}>Paper ↗</a>
-                </div>
-              </div>
-            </article>
-          </div>
           <div className="project-list">
-            {publications.slice(1).map((p) => (
+            {publications.map((p) => (
               <article className="small-project" key={p.title}>
                 <h3>
                   <a href={p.url}>{p.title} ↗</a>
