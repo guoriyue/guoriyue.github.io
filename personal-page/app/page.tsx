@@ -111,6 +111,73 @@ export default function Home() {
             </p>
           </Heading>
           <div id="projects" className="project-grid">
+            <article className="project-card" id="nurec">
+              <figure className="work-preview">
+                <Demo
+                  src="/research/nurec.gif"
+                  poster="/research/nurec-poster.jpg"
+                  width={800}
+                  height={450}
+                  label="NuRec carline adaptation: the original and shifted camera rigs"
+                />
+                <figcaption>
+                  The same recorded drive, from two camera rigs.
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={nurecUrl}>NVIDIA Omniverse NuRec</a>
+                </h3>
+                <p className="work-meta">
+                  NVIDIA · Neural reconstruction · 2026
+                </p>
+                <p>
+                  Generate new camera viewpoints from recorded drives to adapt
+                  AV perception across sensor configurations and vehicle
+                  platforms.
+                </p>
+                <p>
+                  At NVIDIA, I work on infrastructure and performance for neural
+                  reconstruction and simulation pipelines. I coauthored this
+                  technical walkthrough on carline adaptation.
+                </p>
+                <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
+                <div className="paper-links">
+                  <a href={nurecUrl}>Technical blog ↗</a>
+                  <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
+                    Livestream replay ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article className="project-card" id="asset-harvester">
+              <figure className="work-preview asset-preview">
+                <Demo
+                  src="/research/asset-harvester.gif"
+                  poster="/research/asset-harvester-poster.jpg"
+                  width={1000}
+                  height={406}
+                  label="Asset Harvester: extracting 3D assets from driving logs for simulation"
+                />
+                <figcaption>
+                  Driving observations → 3D assets → simulation.
+                </figcaption>
+              </figure>
+              <div className="work-copy">
+                <h3>
+                  <a href={featured.project}>Asset Harvester</a>
+                </h3>
+                <p className="work-meta">NVIDIA · Coauthor · 2026</p>
+                <p>
+                  Extracting complete 3D assets from sparse observations in
+                  autonomous driving logs, ready to use in simulation.
+                </p>
+                <div className="paper-links">
+                  <a href={featured.project}>Project & results ↗</a>
+                  <a href={featured.url}>Paper ↗</a>
+                </div>
+              </div>
+            </article>
             <article className="project-card">
               <figure className="work-preview">
                 <a
@@ -160,45 +227,6 @@ export default function Home() {
                 </div>
               </div>
             </article>
-            <article className="project-card" id="nurec">
-              <figure className="work-preview">
-                <Demo
-                  src="/research/nurec.gif"
-                  poster="/research/nurec-poster.jpg"
-                  width={800}
-                  height={450}
-                  label="NuRec carline adaptation: the original and shifted camera rigs"
-                />
-                <figcaption>
-                  The same recorded drive, from two camera rigs.
-                </figcaption>
-              </figure>
-              <div className="work-copy">
-                <h3>
-                  <a href={nurecUrl}>NVIDIA Omniverse NuRec</a>
-                </h3>
-                <p className="work-meta">
-                  NVIDIA · Neural reconstruction · 2026
-                </p>
-                <p>
-                  Generate new camera viewpoints from recorded drives to adapt
-                  AV perception across sensor configurations and vehicle
-                  platforms.
-                </p>
-                <p>
-                  At NVIDIA, I work on infrastructure and performance for neural
-                  reconstruction and simulation pipelines. I coauthored this
-                  technical walkthrough on carline adaptation.
-                </p>
-                <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
-                <div className="paper-links">
-                  <a href={nurecUrl}>Technical blog ↗</a>
-                  <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
-                    Livestream replay ↗
-                  </a>
-                </div>
-              </div>
-            </article>
             <article className="project-card">
               <figure className="work-preview gaussian-preview">
                 <Demo
@@ -230,34 +258,6 @@ export default function Home() {
                 </p>
                 <div className="paper-links">
                   <a href={projects[0].url}>Code ↗</a>
-                </div>
-              </div>
-            </article>
-            <article className="project-card" id="asset-harvester">
-              <figure className="work-preview asset-preview">
-                <Demo
-                  src="/research/asset-harvester.gif"
-                  poster="/research/asset-harvester-poster.jpg"
-                  width={1000}
-                  height={406}
-                  label="Asset Harvester: extracting 3D assets from driving logs for simulation"
-                />
-                <figcaption>
-                  Driving observations → 3D assets → simulation.
-                </figcaption>
-              </figure>
-              <div className="work-copy">
-                <h3>
-                  <a href={featured.project}>Asset Harvester</a>
-                </h3>
-                <p className="work-meta">NVIDIA · Coauthor · 2026</p>
-                <p>
-                  Extracting complete 3D assets from sparse observations in
-                  autonomous driving logs, ready to use in simulation.
-                </p>
-                <div className="paper-links">
-                  <a href={featured.project}>Project & results ↗</a>
-                  <a href={featured.url}>Paper ↗</a>
                 </div>
               </div>
             </article>
