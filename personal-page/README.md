@@ -81,3 +81,5 @@ Browser, shortcut, and Apple touch icons reuse the existing pixel collie head. L
 All four illustrated projects (VRL, 3DGS, LangCommand, NyaIcon) share the same 7:4 media frames and typography. LangCommand and NyaIcon keep their later position but no longer use reduced sizing.
 
 The current palette is solid strawberry red (#b83240), cream (#fff8ed), and neutral dark text, inspired by NyaIcon Strawberry Solid. Full-width alternating section backgrounds, larger left-aligned headings, and contextual header copy separate the sections. Work pairs its category label with NVIDIA and neural reconstruction / simulation; no animated gradient remains.
+
+Work and Projects are now one Selected Work section, ordered VRL, NuRec, 3DGS, Asset Harvester, compact systems projects, then LangCommand and NyaIcon. All featured entries share the same grid styling; NVIDIA involvement remains in entry metadata. Section descriptions sit directly below headings. Bio and NVIDIA experience mention infrastructure and performance.

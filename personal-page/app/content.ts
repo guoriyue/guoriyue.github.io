@@ -111,10 +111,10 @@ export const projects = [
 export const experience = [
   {
     organization: 'NVIDIA',
-    role: 'Software Engineer · Synthetic Data & Autonomous Driving',
+    role: 'Software Engineer · Infrastructure, Performance & Simulation',
     period: 'Apr 2024 — Present',
     description:
-      'Building neural reconstruction and synthetic-data pipelines with NuRec and DRIVE Sim. My work includes dynamic Gaussian pedestrian animation and faster visual-data preprocessing with GPU codecs and TensorRT.',
+      'Building and optimizing infrastructure for neural reconstruction and synthetic-data pipelines with NuRec and DRIVE Sim. My work includes dynamic Gaussian pedestrian animation and faster visual-data preprocessing with GPU codecs and TensorRT.',
   },
   {
     organization: 'NVIDIA',

@@ -1100,3 +1100,22 @@ footer {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Keep section context beside its heading in the reading order. */
+.section-heading {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.section-description {
+  max-width: 720px;
+}
+.work-section {
+  background: var(--paper);
+}
+#projects {
+  scroll-margin-top: 0;
+}
+.work-section > .project-grid:first-of-type {
+  row-gap: 44px;
+}
