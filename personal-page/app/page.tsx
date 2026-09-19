@@ -444,18 +444,16 @@ export default function Home() {
         <section id="writing" className="content-section writing-section">
           <Heading title="Blog" kind="writing" />
           <article className="blog-entry">
-            <p className="post-label">Example post · ML infrastructure</p>
+            <p className="post-label">Just testing</p>
             <h3>
-              <a href="/blog/building-vrl/">
-                Building VRL: notes on training infrastructure
-              </a>
+              <a href="/blog/first-post/">Test post</a>
             </h3>
             <p>
-              A sample post about rollouts, rewards, and the systems around
-              visual-model post-training.
+              My first article is still in the works. I’ll share it here when
+              it’s ready.
             </p>
-            <a className="work-link" href="/blog/building-vrl/">
-              Read example →
+            <a className="work-link" href="/blog/first-post/">
+              Read →
             </a>
           </article>
         </section>

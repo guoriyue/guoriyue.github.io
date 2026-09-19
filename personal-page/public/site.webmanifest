@@ -3,8 +3,8 @@
   "short_name": "Mingfei",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#DCE5ED",
-  "theme_color": "#303F68",
+  "background_color": "#ffffff",
+  "theme_color": "#e4f3f8",
   "icons": [
     {
       "src": "/collie-icon-192.png",

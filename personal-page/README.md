@@ -89,3 +89,5 @@ Current visual direction: retro game save screen using mist blue #DCE5ED and dee
 The Blog section links to `/blog/building-vrl/`, an explicitly labeled example article. Its source is `app/blog/building-vrl/page.tsx`; replace the sample there for the first real post. The article uses the existing VRL comparison image for its own social metadata.
 
 Static blog export: trailingSlash is disabled during Vinext prerender to avoid nested-route 308 redirects. The build then copies the rendered article to a directory index for its public trailing-slash GitHub Pages URL.
+
+Current update: palette returns to mizuiro, light gray, and white while keeping the full-width square navigation and Selected Projects. The VRL sample article has been removed. `/blog/first-post/` is a short Test post placeholder, with no paper, figures, or inherited social image.

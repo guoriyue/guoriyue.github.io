@@ -1333,3 +1333,107 @@ body,
 .writing-section .section-art {
   mix-blend-mode: multiply;
 }
+
+/* Mizuiro, light gray, and white. */
+:root {
+  --background: #ffffff;
+  --foreground: #354954;
+  --primary: #277a9a;
+  --border: #dce5e9;
+  --cream: #f3f6f7;
+  --paper: #ffffff;
+}
+body,
+.site-shell {
+  background: #ffffff;
+}
+.about-section {
+  background: #e4f3f8;
+  border-bottom: 1px solid var(--border);
+}
+.navigation {
+  background: #e4f3f8;
+  border-bottom: 1px solid #c8e1eb;
+}
+.navigation a {
+  color: #365f73;
+}
+.navigation a:hover,
+.navigation a[aria-current='location'] {
+  color: #254f64;
+  background: #c3e5f1;
+}
+.navigation a:focus-visible {
+  outline-color: var(--primary);
+}
+.about-section .portrait {
+  border-color: #ffffff;
+  box-shadow: none;
+}
+.work-section,
+.projects-section,
+.research-section,
+.education-section {
+  background: #ffffff;
+}
+.open-source-section,
+.experience-section,
+.writing-section {
+  background: #f3f6f7;
+}
+.work-copy h3,
+.small-project h3,
+.projects-section .work-copy strong,
+.section-context strong,
+.about-section .name-row h1 {
+  color: var(--foreground);
+}
+.work-meta,
+.authors,
+.work-preview figcaption,
+.small-project p,
+.section-description,
+.section-context,
+.position,
+.blog-note,
+.experience-entry p,
+.education-entry p,
+footer {
+  color: #637580;
+}
+.heading-title {
+  border-bottom: 1px solid #d3e3ea;
+}
+.section-heading h2,
+.writing-section .section-heading h2 {
+  color: #365f73;
+}
+.work-preview img,
+.demo {
+  border-color: #dce5e9;
+  background: #f3f6f7;
+}
+.demo-toggle {
+  color: #365f73;
+  border-color: #c8dce5;
+  box-shadow: none;
+  background: #ffffff;
+}
+.project-card,
+.small-project,
+.experience-entry,
+.education-entry,
+.secondary-projects {
+  border-color: var(--border);
+}
+.small-project .project-keywords,
+.authors strong {
+  color: #547487;
+}
+a:hover {
+  color: #245c76;
+}
+::selection {
+  background: #c3e5f1;
+  color: #254f64;
+}
