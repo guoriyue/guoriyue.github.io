@@ -91,3 +91,6 @@ The Blog section links to `/blog/building-vrl/`, an explicitly labeled example a
 Static blog export: trailingSlash is disabled during Vinext prerender to avoid nested-route 308 redirects. The build then copies the rendered article to a directory index for its public trailing-slash GitHub Pages URL.
 
 Current update: palette returns to mizuiro, light gray, and white while keeping the full-width square navigation and Selected Projects. The VRL sample article has been removed. `/blog/first-post/` is a short Test post placeholder, with no paper, figures, or inherited social image.
+
+The refreshable portrait uses the existing portrait and Mingfei's public photo from
+https://x.com/MingfeiGuo/status/2073991697978266100 (stored locally in `public/portraits/`).

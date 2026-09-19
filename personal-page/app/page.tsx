@@ -8,12 +8,14 @@ import {
 import Companion from './companion';
 import Demo from './demo';
 import PageMotion from './page-motion';
+import Portrait from './portrait';
 
 const sections = [
   ['about', 'About'],
   ['work', 'Projects'],
   ['experience', 'Experience'],
   ['education', 'Education'],
+  ['personal', 'Personal'],
   ['writing', 'Blog'],
 ];
 const nurecUrl =
@@ -80,14 +82,14 @@ export default function Home() {
               · Bay Area
             </p>
             <p>
-              I work on ML infrastructure, GPU performance, and 3D
-              reconstruction. At NVIDIA, I build and optimize infrastructure for
-              neural reconstruction and simulation in autonomous driving.
+              I work on ML infrastructure, GPU performance, generative video
+              models, and 3D reconstruction. At NVIDIA, I build and optimize
+              infrastructure for video generation, neural reconstruction, and
+              simulation in autonomous driving.
             </p>
             <p>
               I received my MS from Stanford and my BS from Peking University.
-              Outside work, I write GPU kernels, make small apps, and really
-              like border collies.
+              Outside work, I write GPU kernels and make small apps.
             </p>
             <div className="social-links">
               <a href="mailto:mingfeiguoo@gmail.com">Email</a>
@@ -96,13 +98,7 @@ export default function Home() {
               <a href="https://www.linkedin.com/in/mingfeiguo">LinkedIn</a>
             </div>
           </div>
-          <img
-            className="portrait"
-            src="/portrait.jpg"
-            alt="Mingfei Guo"
-            width="208"
-            height="208"
-          />
+          <Portrait />
         </section>
 
         <section
@@ -441,6 +437,21 @@ export default function Home() {
             ))}
           </section>
         </div>
+        <section id="personal" className="content-section personal-section">
+          <Heading title="Personal" kind="personal" />
+          <div className="personal-copy">
+            <p>
+              Away from code, I like riichi mahjong, Metroidvanias like the
+              <strong> Hollow Knight</strong> series, and{' '}
+              <strong>Rain World</strong>. I also enjoy the{' '}
+              <strong>Nikki</strong> dress-up games.
+            </p>
+            <p>
+              I love border collies — the little pixel dog following your cursor
+              is here for a reason.
+            </p>
+          </div>
+        </section>
         <section id="writing" className="content-section writing-section">
           <Heading title="Blog" kind="writing" />
           <article className="blog-entry">

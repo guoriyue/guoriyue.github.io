@@ -1348,7 +1348,7 @@ body,
   background: #ffffff;
 }
 .about-section {
-  background: #e4f3f8;
+  background: #ffffff;
   border-bottom: 1px solid var(--border);
 }
 .navigation {
@@ -1436,4 +1436,40 @@ a:hover {
 ::selection {
   background: #c3e5f1;
   color: #254f64;
+}
+
+/* A full-width blue navigation bar with softer edges. */
+.navigation {
+  border-radius: 0 0 12px 12px;
+}
+.navigation a {
+  border-radius: 8px;
+}
+.about-section .portrait {
+  border-radius: 16px;
+}
+.personal-section {
+  background: #ffffff;
+}
+.art-personal {
+  background-position: 100% 100%;
+}
+.personal-copy {
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+.personal-copy p + p {
+  margin-top: 16px;
+}
+@media (max-width: 480px) {
+  .navigation > div {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    padding: 7px 0;
+  }
+  .navigation a {
+    padding: 7px 9px;
+  }
 }

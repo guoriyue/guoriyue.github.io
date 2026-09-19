@@ -26,6 +26,7 @@ export default function BlogPost() {
           <a href="/#work">Projects</a>
           <a href="/#experience">Experience</a>
           <a href="/#education">Education</a>
+          <a href="/#personal">Personal</a>
           <a href="/#writing" aria-current="location">
             Blog
           </a>
