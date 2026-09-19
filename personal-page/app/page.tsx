@@ -362,7 +362,7 @@ export default function Home() {
           id="open-source"
           className="content-section open-source-section"
         >
-          <Heading title="Open-source Contributions" kind="projects" />
+          <Heading title="Open Source" kind="projects" />
           <div className="project-list">
             {contributions.map((c) => (
               <article className="small-project" key={c.name}>

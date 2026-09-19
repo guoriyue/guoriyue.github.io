@@ -3,7 +3,15 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://guoriyue.github.io'),
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/collie-icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/collie-icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     title: 'Mingfei Guo',

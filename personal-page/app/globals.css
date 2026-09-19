@@ -943,18 +943,28 @@ footer {
   border-top: 1px solid #e5ecef;
 }
 .secondary-projects .project-card {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   border-bottom: 0;
   padding-bottom: 12px;
 }
 .secondary-projects .work-preview {
   margin: 0;
+  width: 100%;
+}
+.secondary-projects .work-preview .demo {
+  height: 200px;
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 .secondary-projects .work-preview figcaption {
   display: none;
+}
+.secondary-projects .work-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .secondary-projects .work-copy h3 {
   font-size: 21px;
@@ -966,20 +976,16 @@ footer {
   font-size: 12px;
   margin-bottom: 10px;
 }
-@media (min-width: 701px) and (max-width: 1000px) {
-  .secondary-projects .project-card {
-    grid-template-columns: 1fr;
-  }
-  .secondary-projects .work-preview {
-    max-width: 200px;
-  }
+.secondary-projects .paper-links {
+  margin-top: auto;
+  padding-top: 12px;
 }
 @media (max-width: 700px) {
   .projects-intro {
     font-size: 16px;
   }
-  .secondary-projects .project-card {
-    grid-template-columns: 110px minmax(0, 1fr);
-    gap: 16px;
+  .secondary-projects .work-preview .demo {
+    height: auto;
+    aspect-ratio: 7 / 4;
   }
 }
