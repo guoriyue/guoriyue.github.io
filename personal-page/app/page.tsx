@@ -221,8 +221,8 @@ export default function Home() {
                     Ray rollouts, DDP / FSDP training, weight synchronization,
                   </strong>{' '}
                   and checkpointing. The SD3.5 example uses{' '}
-                  <strong>GRPO with an OCR reward</strong>
-                  to improve text rendering.
+                  <strong>GRPO with an OCR reward</strong> to improve text
+                  rendering.
                 </p>
                 <div className="paper-links">
                   <a href={projects[1].url}>Code ↗</a>
@@ -340,6 +340,7 @@ export default function Home() {
                   width={800}
                   height={450}
                 />
+                <figcaption>Mac app and folder icon themes</figcaption>
               </figure>
               <div className="work-copy">
                 <h3>

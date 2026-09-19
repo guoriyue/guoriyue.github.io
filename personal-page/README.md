@@ -77,3 +77,5 @@ Projects uses two columns above 700px and one on smaller screens. NyaIcon, 3DGS,
 Projects now leads with VRL and 3DGS, followed by compact GPU kernel, inference, compiler, and automation entries. LangCommand and NyaIcon retain looping GIFs as smaller entries at the end. Technical descriptions emphasize verified implementation details rather than benchmark claims.
 
 Browser, shortcut, and Apple touch icons reuse the existing pixel collie head. LangCommand and NyaIcon use matching 200px desktop preview frames and equal-width cards; the section heading reads Open Source.
+
+All four illustrated projects (VRL, 3DGS, LangCommand, NyaIcon) share the same 7:4 media frames and typography. LangCommand and NyaIcon keep their later position but no longer use reduced sizing.
