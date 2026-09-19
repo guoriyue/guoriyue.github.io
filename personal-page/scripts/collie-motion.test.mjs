@@ -7,7 +7,7 @@ import {
 } from '../app/collie-motion.ts';
 
 test('stays inside viewport including windows smaller than the sprite', () => {
-  assert.deepEqual(clampPoint({ x: 999, y: -4 }, 320, 200), { x: 288, y: 0 });
+  assert.deepEqual(clampPoint({ x: 999, y: -4 }, 320, 200), { x: 280, y: 0 });
   assert.deepEqual(clampPoint({ x: 10, y: 10 }, 20, 20), { x: 0, y: 0 });
 });
 test('reaches the cursor offset and stops without overshooting in either direction', () => {

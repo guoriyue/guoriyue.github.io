@@ -405,8 +405,8 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   z-index: 9999;
   pointer-events: none;
   user-select: none;
@@ -419,8 +419,8 @@ footer {
 }
 .collie-sprite {
   display: block;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   background-image: url('/collie-actions.png');
   background-size: 300% 100%;
   background-repeat: no-repeat;
@@ -716,5 +716,124 @@ footer {
   .portrait:hover,
   .social-links a:hover {
     transform: none;
+  }
+}
+
+.art-research {
+  background-position: 0 0;
+}
+.content-section:not(.writing-section) {
+  padding-top: 38px;
+  padding-bottom: 26px;
+}
+#work .work-row:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+#projects,
+#research {
+  border-top: 1px solid #e5eef2;
+}
+.navigation > div {
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.work-row.revealed .work-preview {
+  animation: preview-arrive 0.65s cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
+}
+.work-row.revealed .work-copy {
+  animation: copy-arrive 0.65s 0.09s ease both;
+}
+@keyframes preview-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes copy-arrive {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.section-heading.revealed .section-art {
+  animation: heading-greet 0.65s ease both;
+}
+@keyframes heading-greet {
+  0% {
+    transform: translateY(5px) rotate(-8deg);
+  }
+  45% {
+    transform: translateY(-4px) rotate(5deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+.paper-links a,
+.work-link {
+  display: inline-block;
+  transition:
+    translate 0.2s ease,
+    color 0.2s ease;
+}
+.paper-links a:hover,
+.work-link:hover {
+  translate: 2px -1px;
+}
+@supports (animation-timeline: scroll()) {
+  .navigation::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #77c9e5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    transform-origin: left;
+    animation: reading-progress linear;
+    animation-timeline: scroll(root);
+  }
+  @keyframes reading-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+@media (max-width: 620px) {
+  .navigation > div {
+    gap: 7px 17px;
+  }
+  .navigation a {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-row.revealed .work-preview,
+  .work-row.revealed .work-copy,
+  .section-heading.revealed .section-art,
+  .navigation::after {
+    animation: none !important;
+  }
+  .paper-links a,
+  .work-link {
+    transition: none;
+  }
+  .paper-links a:hover,
+  .work-link:hover {
+    translate: none;
   }
 }

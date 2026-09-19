@@ -55,3 +55,7 @@ Blog is the final content section, after Experience and Education. `app/page-mot
 The 32px cursor companion uses `public/collie-actions.png`, a three-cell transparent sprite sheet: extended running stride, tucked running stride, seated. It faces its direction of travel; running switches to sitting 140ms after the last changed pointer position, stops its animation frame loop, and resumes on movement. Touch/reduced-motion users do not receive the cursor animation. Motion checks cover this idle threshold and restart, viewport boundaries, movement convergence, and stalled-frame limits.
 
 Sprite generated with built-in imagegen: same black-and-white border collie in two right-facing running poses and one sitting pose; white blaze, ruff, paws and tail tip, semi-pricked folded ears. Correction prompt requests a coarse 24-pixel-wide chibi game sprite with flat colors and no realistic fur or shading.
+
+## Current sections and size
+
+Industry Work introduces NVIDIA NuRec with the user's contribution, technical blog, and replay. Projects contains NyaIcon, GPU projects, TinyTriton and open-source contributions. Publications contains Asset Harvester and the other papers. Experience, Education and the final Blog follow. The same run/sit sprite is now displayed at 40×40 CSS pixels. Additional motion includes staggered preview/text entrances, section-icon greetings, link movement, and a CSS scroll progress line where supported; reduced-motion disables these additions.
