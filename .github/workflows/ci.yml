@@ -35,11 +35,13 @@ jobs:
           cache-dependency-path: personal-page/package-lock.json
       - run: npm ci
       - run: npx tsc --noEmit
+      - run: node --experimental-strip-types --test scripts/collie-motion.test.mjs
       - run: npm run build
       - name: Check static export
         run: |
           test -s dist/client/index.html
-          test -s dist/client/border-collie.png
+          test -s dist/client/collie-sprite.png
+          test -s dist/client/section-art.png
           touch dist/client/.nojekyll
       - uses: actions/upload-pages-artifact@v4
         if: github.event_name != 'pull_request'

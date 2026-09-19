@@ -1,319 +1,279 @@
-import { ArrowUpRight, Code2, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import {
-    publications,
-    projects,
-    experience,
-    education,
-    contributions,
+  publications,
+  projects,
+  experience,
+  education,
+  contributions,
 } from './content';
 import Companion from './companion';
 
+const sections = [
+  ['about', 'About'],
+  ['research', 'Publications'],
+  ['projects', 'Projects'],
+  ['experience', 'Experience'],
+  ['education', 'Education'],
+  ['writing', 'Blog'],
+];
+const figures: Record<string, { src: string; alt: string }> = {
+  '2026': {
+    src: '/research/asset-harvester.jpg',
+    alt: 'Asset Harvester: reconstruction of 3D assets from driving observations',
+  },
+  'Analyzing Quantization in TVM': {
+    src: '/research/tvm.png',
+    alt: 'Tensor memory layout diagram from Analyzing Quantization in TVM',
+  },
+  '2022': {
+    src: '/research/unrealnas.png',
+    alt: 'UnrealNAS architecture search pipeline',
+  },
+  '2021': {
+    src: '/research/fake-news.png',
+    alt: 'Diagram from the Fake News Evolution study',
+  },
+};
+function Art({ kind, className = '' }: { kind: string; className?: string }) {
+  return (
+    <span
+      className={`section-art art-${kind} ${className}`}
+      aria-hidden="true"
+    />
+  );
+}
+function Heading({
+  title,
+  kind,
+  children,
+}: {
+  title: string;
+  kind: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <header className="section-heading">
+      <div>
+        <h2>{title}</h2>
+        {children}
+      </div>
+      <Art kind={kind} />
+    </header>
+  );
+}
+
 export default function Home() {
-    return (
-        <div className="site-shell">
-            <a className="skip-link" href="#main">
-                Skip to content
+  return (
+    <div className="site-shell">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <nav className="navigation" aria-label="On this page">
+        <a className="home-link" href="#about">
+          MG<span>.</span>
+        </a>
+        <div>
+          {sections.map(([id, title]) => (
+            <a key={id} href={`#${id}`}>
+              {title}
             </a>
-            <aside className="sidebar">
-                <a href="#about" className="identity">
-                    <img
-                        className="portrait"
-                        src="/portrait.jpg"
-                        alt="Mingfei Guo"
-                    />
-                    <h1>
-                        Mingfei Guo<span>@guoriyue</span>
-                    </h1>
-                </a>
-                <p className="role">
-                    Software Engineer
-                    <br />
-                    <strong>NVIDIA</strong>
-                </p>
-                <p className="location">
-                    <MapPin size={13} /> San Francisco Bay Area
-                </p>
-                <div className="socials">
-                    <a href="https://github.com/guoriyue" aria-label="GitHub">
-                        <Code2 size={18} />
-                    </a>
-                    <a href="https://x.com/MingfeiGuo" aria-label="X / Twitter">
-                        𝕏
-                    </a>
-                    <a href="mailto:mingfeiguoo@gmail.com" aria-label="Email">
-                        <Mail size={18} />
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/mingfeiguo"
-                        aria-label="LinkedIn"
-                    >
-                        in
-                    </a>
-                </div>
-                <nav aria-label="On this page">
-                    <a href="#about">
-                        <span>01</span> About
-                    </a>
-                    <a href="#research">
-                        <span>02</span> Research
-                    </a>
-                    <a href="#projects">
-                        <span>03</span> Projects
-                    </a>
-                    <a href="#experience">
-                        <span>04</span> Experience
-                    </a>
-                    <a href="#education">
-                        <span>05</span> Education
-                    </a>
-                    <a href="#writing">
-                        <span>06</span> Writing
-                    </a>
-                </nav>
-                <Companion />
-                <p className="sidebar-note">
-                    A little corner of the internet.
-                    <br />
-                    Always a work in progress.
-                </p>
-            </aside>
-            <main id="main">
-                <section id="about" className="intro">
-                    <p className="eyebrow">
-                        <span className="status-dot" /> RESEARCHER, ENGINEER &
-                        CURIOUS BUILDER
-                    </p>
-                    <h2>
-                        From pixels to possibilities
-                        <span className="accent">.</span>
-                    </h2>
-                    <p className="lead">
-                        Hi, I’m Mingfei. I work on visual computing and build
-                        tools that make complex ideas a little more tangible.
-                    </p>
-                    <p>
-                        My work spans{' '}
-                        <strong>3D reconstruction and generation</strong>,
-                        efficient machine learning, and GPU programming. I’m at{' '}
-                        <a href="https://www.nvidia.com">NVIDIA</a>, building
-                        neural reconstruction and synthetic-data systems for
-                        autonomous driving. I earned my MS at{' '}
-                        <a href="https://www.stanford.edu">Stanford</a> and my
-                        BS at{' '}
-                        <a href="https://english.pku.edu.cn">
-                            Peking University
-                        </a>
-                        .
-                    </p>
-                    <p>
-                        I like understanding things by building them from
-                        scratch—and sharing what I learn along the way. I also
-                        have a soft spot for border collies.
-                    </p>
-                    <div className="interests">
-                        <span>Visual computing</span>
-                        <span>ML systems</span>
-                        <span>Useful little tools</span>
-                    </div>
-                </section>
-                <section id="research">
-                    <div className="section-heading">
-                        <h2>
-                            <span className="section-mark">✳</span> Selected
-                            research
-                        </h2>
-                        <span className="section-note">
-                            PAPERS & EXPLORATIONS
-                        </span>
-                    </div>
-                    {publications.map((p) => (
-                        <article className="paper" key={p.title}>
-                            <div className="paper-year">
-                                {p.year}
-                                <span>{p.venue}</span>
-                            </div>
-                            <div>
-                                <h3>
-                                    <a href={p.url}>
-                                        {p.title} <ArrowUpRight size={16} />
-                                    </a>
-                                </h3>
-                                <p className="authors">
-                                    {p.authors
-                                        .split('Mingfei Guo')
-                                        .map((part, i) => (
-                                            <span key={i}>
-                                                {i > 0 && (
-                                                    <strong>Mingfei Guo</strong>
-                                                )}
-                                                {part}
-                                            </span>
-                                        ))}
-                                </p>
-                                <p>{p.description}</p>
-                                <div className="paper-links">
-                                    <a className="text-link" href={p.url}>
-                                        Paper ↗
-                                    </a>
-                                    {p.project && (
-                                        <a
-                                            className="text-link"
-                                            href={p.project}
-                                        >
-                                            Project page ↗
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
-                        </article>
-                    ))}
-                </section>
-                <section id="projects">
-                    <div className="section-heading">
-                        <h2>
-                            <span className="section-mark">⌘</span> Things I’ve
-                            built
-                        </h2>
-                        <a
-                            className="text-link"
-                            href="https://github.com/guoriyue"
-                        >
-                            All projects ↗
-                        </a>
-                    </div>
-                    <div className="project-grid">
-                        {projects.map((p) => (
-                            <a
-                                className="project-card"
-                                key={p.url}
-                                href={p.url}
-                            >
-                                <span className="project-tag">{p.tag}</span>
-                                <h3>
-                                    {p.name}
-                                    <ArrowUpRight size={18} />
-                                </h3>
-                                <p>{p.description}</p>
-                                <span className="project-link">
-                                    Explore project ↗
-                                </span>
-                            </a>
-                        ))}
-                    </div>
-                    <div className="contributions">
-                        <h3>Contributing upstream</h3>
-                        {contributions.map((c) => (
-                            <div className="contribution" key={c.name}>
-                                <a href={c.url}>
-                                    {c.name} <ArrowUpRight size={14} />
-                                </a>
-                                <p>
-                                    {c.description}{' '}
-                                    <a className="text-link" href={c.example}>
-                                        Merged PR ↗
-                                    </a>
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                    <aside
-                        className="project-teaser"
-                        aria-label="TinyTriton, in development"
-                    >
-                        <div>
-                            <span className="tiny-label">ON THE WORKBENCH</span>
-                            <h3>
-                                TinyTriton <span>In development</span>
-                            </h3>
-                            <p>
-                                A hands-on GPU compiler course in six
-                                milestones. Build from a small interpreter
-                                toward CUDA, LLVM/PTX, reductions, and attention
-                                kernels.
-                            </p>
-                        </div>
-                    </aside>
-                    <p className="project-footnote">
-                        Built to understand. Shared for others to explore.
-                    </p>
-                </section>
-                <section id="experience">
-                    <div className="section-heading">
-                        <h2>
-                            <span className="section-mark">↗</span> Where I’ve
-                            worked
-                        </h2>
-                        <span className="section-note">EXPERIENCE</span>
-                    </div>
-                    <div className="experience-list">
-                        {experience.map((e) => (
-                            <article
-                                className="experience-entry"
-                                key={e.organization + e.period}
-                            >
-                                <div className="experience-top">
-                                    <h3>{e.organization}</h3>
-                                    <span>{e.period}</span>
-                                </div>
-                                <p className="experience-role">{e.role}</p>
-                                <p>{e.description}</p>
-                            </article>
-                        ))}
-                    </div>
-                </section>
-                <section id="education">
-                    <div className="section-heading">
-                        <h2>
-                            <span className="section-mark">⌁</span> Learning &
-                            teaching
-                        </h2>
-                        <span className="section-note">EDUCATION</span>
-                    </div>
-                    {education.map((e) => (
-                        <article className="education-entry" key={e.school}>
-                            <div className="experience-top">
-                                <h3>{e.school}</h3>
-                                <span>{e.period}</span>
-                            </div>
-                            <p className="degree">{e.degree}</p>
-                            <p className="education-focus">{e.focus}</p>
-                            <p>{e.detail}</p>
-                            <a href={e.url} className="text-link">
-                                {e.linkLabel} ↗
-                            </a>
-                        </article>
-                    ))}
-                </section>
-                <section id="writing">
-                    <div className="section-heading">
-                        <h2>
-                            <span className="section-mark">↳</span> Notes from
-                            the workbench
-                        </h2>
-                        <span className="section-note">BLOG</span>
-                    </div>
-                    <div className="writing-empty">
-                        <span className="tiny-label">A SPACE FOR THOUGHTS</span>
-                        <h3>Something is taking shape.</h3>
-                        <p>
-                            Notes on research, things I’m building, and the
-                            occasional rabbit hole.
-                            <br />
-                            The first post is still brewing. Come back soon.
-                        </p>
-                        <span className="coming-soon">
-                            <span className="status-dot" /> COMING SOON
-                        </span>
-                    </div>
-                </section>
-                <footer>
-                    <span>© {new Date().getFullYear()} Mingfei Guo</span>
-                    <a href="mailto:mingfeiguoo@gmail.com">
-                        Say hello <ArrowUpRight size={14} />
-                    </a>
-                    <a href="#about">Back to top ↑</a>
-                </footer>
-            </main>
+          ))}
         </div>
-    );
+      </nav>
+      <main id="main">
+        <section id="about" className="about-section">
+          <div className="about-copy">
+            <div className="name-row">
+              <h1>Mingfei Guo</h1>
+              <Art kind="about" />
+            </div>
+            <p className="position">
+              Software Engineer at <a href="https://www.nvidia.com/">NVIDIA</a>{' '}
+              · Bay Area
+            </p>
+            <p>
+              I work on 3D reconstruction, synthetic data, and ML systems. At
+              NVIDIA, I build neural reconstruction and simulation pipelines for
+              autonomous driving.
+            </p>
+            <p>
+              I received my MS in Electrical Engineering from Stanford and my BS
+              from Peking University. Outside work, I write GPU kernels, build
+              small tools, and really like border collies.
+            </p>
+            <div className="social-links">
+              <a href="mailto:mingfeiguoo@gmail.com">Email</a>
+              <a href="https://github.com/guoriyue">GitHub</a>
+              <a href="https://x.com/MingfeiGuo">Twitter / X</a>
+              <a href="https://www.linkedin.com/in/mingfeiguo">LinkedIn</a>
+            </div>
+          </div>
+          <img
+            className="portrait"
+            src="/portrait.jpg"
+            alt="Mingfei Guo"
+            width="168"
+            height="168"
+          />
+        </section>
+        <section id="research" className="content-section research-section">
+          <Heading title="Publications" kind="research">
+            <p>3D vision, efficient ML, and earlier work in NLP.</p>
+          </Heading>
+          <div className="section-body paper-list">
+            {publications.map((p) => {
+              const figure = figures[p.title] || figures[p.year];
+              return (
+                <article className="paper" key={p.title}>
+                  <a
+                    className={`paper-preview ${figure ? 'has-figure' : ''}`}
+                    href={p.url}
+                    aria-label={`Read ${p.title}`}
+                  >
+                    {figure ? (
+                      <img src={figure.src} alt={figure.alt} loading="lazy" />
+                    ) : (
+                      <div className="paper-type">
+                        <span>
+                          {p.title.startsWith('SANA') ? 'SANA' : 'PromptCoT'}
+                        </span>
+                        <small>
+                          {p.title.startsWith('SANA')
+                            ? 'Uniform quantization'
+                            : 'Text → Image'}
+                        </small>
+                      </div>
+                    )}
+                  </a>
+                  <div className="paper-copy">
+                    <div className="paper-meta">
+                      <span>{p.venue}</span>
+                      <time>{p.year}</time>
+                    </div>
+                    <h3>
+                      <a href={p.url}>{p.title}</a>
+                    </h3>
+                    <p className="authors">
+                      {p.authors.split('Mingfei Guo').map((part, i) => (
+                        <span key={i}>
+                          {i > 0 && <strong>Mingfei Guo</strong>}
+                          {part}
+                        </span>
+                      ))}
+                    </p>
+                    <p className="paper-description">{p.description}</p>
+                    <div className="paper-links">
+                      <a href={p.url}>
+                        Paper <ArrowUpRight size={13} />
+                      </a>
+                      {p.project && (
+                        <a href={p.project}>
+                          Project <ArrowUpRight size={13} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+        <section id="projects" className="content-section projects-section">
+          <Heading title="Projects" kind="projects">
+            <a href="https://github.com/guoriyue">More on GitHub ↗</a>
+          </Heading>
+          <div className="section-body">
+            <div className="project-grid">
+              {projects.map((p, i) => (
+                <article className="project-card" key={p.url}>
+                  <div className="project-top">
+                    <span className="project-number">0{i + 1}</span>
+                    <span className="project-tag">{p.tag.toLowerCase()}</span>
+                  </div>
+                  <h3>
+                    <a href={p.url}>
+                      {p.name} <ArrowUpRight size={15} />
+                    </a>
+                  </h3>
+                  <p>{p.description}</p>
+                  <a className="project-code" href={p.url}>
+                    Code ↗
+                  </a>
+                </article>
+              ))}
+            </div>
+            <div className="contributions">
+              <h3>Open-source contributions</h3>
+              {contributions.map((c) => (
+                <div className="contribution" key={c.name}>
+                  <a href={c.url}>{c.name}</a>
+                  <p>
+                    {c.description} <a href={c.example}>Merged PR ↗</a>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="project-teaser">
+              <h3>
+                TinyTriton <span>In development</span>
+              </h3>
+              <p>
+                A GPU compiler course in six milestones, from a small
+                interpreter to CUDA, LLVM/PTX, reductions, and attention
+                kernels.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="experience" className="content-section experience-section">
+          <Heading title="Experience" kind="experience" />
+          <div className="section-body">
+            {experience.map((e) => (
+              <article
+                className="experience-entry"
+                key={e.organization + e.period}
+              >
+                <div className="experience-top">
+                  <h3>{e.organization}</h3>
+                  <span>{e.period}</span>
+                </div>
+                <p className="experience-role">{e.role}</p>
+                <p>{e.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section id="education" className="content-section education-section">
+          <Heading title="Education & teaching" kind="education" />
+          <div className="section-body">
+            {education.map((e) => (
+              <article className="education-entry" key={e.school}>
+                <div className="experience-top">
+                  <h3>{e.school}</h3>
+                  <span>{e.period}</span>
+                </div>
+                <p className="degree">{e.degree}</p>
+                <p className="education-focus">{e.focus}</p>
+                <p>{e.detail}</p>
+                <a className="text-link" href={e.url}>
+                  {e.linkLabel} ↗
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section id="writing" className="content-section writing-section">
+          <Heading title="Blog" kind="writing" />
+          <div className="section-body blog-empty">
+            <p>No posts yet. I’ll share notes on research and projects here.</p>
+          </div>
+        </section>
+        <footer>
+          <span>© {new Date().getFullYear()} Mingfei Guo</span>
+          <a href="#about">Back to top ↑</a>
+        </footer>
+      </main>
+      <Companion />
+    </div>
+  );
 }
