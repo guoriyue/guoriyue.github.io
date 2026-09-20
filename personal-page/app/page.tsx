@@ -79,15 +79,12 @@ export default async function Home() {
             <div className="name-row">
               <h1>Mingfei Guo</h1>
             </div>
-            <p className="position">
-              Software Engineer at <a href="https://www.nvidia.com/">NVIDIA</a>{' '}
-              · Bay Area
-            </p>
             <p>
-              I work on ML infrastructure, GPU performance, generative video
-              models, and 3D reconstruction. At NVIDIA, I build and optimize
-              infrastructure for video generation, neural reconstruction, and
-              simulation in autonomous driving.
+              I work on generative video models and 3D reconstruction, with a
+              focus on ML infrastructure and GPU performance. At{' '}
+              <a href="https://www.nvidia.com/">NVIDIA</a>, I build the
+              infrastructure behind neural reconstruction and simulation for
+              autonomous driving.
             </p>
             <p>
               I received my MS from Stanford and my BS from Peking University.
@@ -109,7 +106,7 @@ export default async function Home() {
         >
           <Heading title="Selected Projects" kind="projects">
             <p className="section-description">
-              ML infrastructure, GPU performance, and visual computing.
+              Research, systems work, and side projects.
             </p>
           </Heading>
           <div id="projects" className="project-grid">
@@ -139,9 +136,7 @@ export default async function Home() {
                   platforms.
                 </p>
                 <p>
-                  At NVIDIA, I work on infrastructure and performance for neural
-                  reconstruction and simulation pipelines. I coauthored this
-                  technical walkthrough on carline adaptation.
+                  I coauthored this technical walkthrough on carline adaptation.
                 </p>
                 <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
                 <div className="paper-links">

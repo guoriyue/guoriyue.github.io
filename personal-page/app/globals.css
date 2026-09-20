@@ -85,12 +85,7 @@ figure {
   color: #303f68;
   letter-spacing: 0;
 }
-.position {
-  font-size: 21px;
-  color: #303f68;
-  margin: 0 0 22px;
-}
-.about-copy > p:not(.position) {
+.about-copy > p {
   font-size: 18px;
   line-height: 1.8;
   max-width: 790px;
@@ -426,9 +421,6 @@ footer {
   .name-row h1 {
     font-size: 39px;
   }
-  .position {
-    font-size: 18px;
-  }
   .work-row {
     gap: 24px;
     grid-template-columns: 1fr 1.1fr;
@@ -473,12 +465,7 @@ footer {
     text-align: center;
     font-size: 36px;
   }
-  .position {
-    text-align: center;
-    font-size: 17px;
-    margin-bottom: 23px;
-  }
-  .about-copy > p:not(.position) {
+  .about-copy > p {
     font-size: 17px;
   }
   .social-links {
@@ -939,7 +926,6 @@ footer {
   color: var(--cream);
   font-size: 52px;
 }
-.about-section .position,
 .about-section a {
   color: var(--cream);
 }
@@ -1125,7 +1111,6 @@ body,
   color: var(--foreground);
 }
 .about-section .name-row h1,
-.about-section .position,
 .about-section a,
 .about-section a:hover,
 .writing-section .section-heading h2 {
@@ -1500,7 +1485,6 @@ body,
 .small-project p,
 .section-description,
 .section-context,
-.position,
 .experience-entry p,
 .education-entry p,
 footer {
