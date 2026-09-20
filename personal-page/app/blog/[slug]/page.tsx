@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: `${title} · Mingfei Guo`,
     description,
+    alternates: { canonical: `/blog/${slug}/` },
     openGraph: {
       type: 'article',
       title,

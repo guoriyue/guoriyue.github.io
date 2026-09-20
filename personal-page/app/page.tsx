@@ -81,7 +81,7 @@ export default async function Home() {
             </div>
             <p>
               I work on generative video models and 3D reconstruction, with a
-              focus on ML infrastructure and GPU performance. At{' '}
+              focus on systems ML and GPU performance. At{' '}
               <a href="https://www.nvidia.com/">NVIDIA</a>, I build the
               infrastructure behind neural reconstruction and simulation for
               autonomous driving.
