@@ -9,6 +9,7 @@ import Companion from './companion';
 import Demo from './demo';
 import PageMotion from './page-motion';
 import Portrait from './portrait';
+import { formatDate, getPosts } from './posts';
 
 const sections = [
   ['about', 'About'],
@@ -55,7 +56,8 @@ function Authors({ names }: { names: string }) {
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getPosts();
   const featured = publications[0];
   return (
     <div className="site-shell">
@@ -444,27 +446,19 @@ export default function Home() {
               <strong> Rain World</strong>, and the <strong>Nikki</strong>{' '}
               dress-up games.
             </p>
-            <p>
-              I love border collies — the little pixel dog following your cursor
-              is here for a reason.
-            </p>
           </div>
         </section>
         <section id="writing" className="content-section writing-section">
           <Heading title="Blog" kind="writing" />
-          <article className="blog-entry">
-            <p className="post-label">Just testing</p>
-            <h3>
-              <a href="/blog/first-post/">Test post</a>
-            </h3>
-            <p>
-              My first article is still in the works. I’ll share it here when
-              it’s ready.
-            </p>
-            <a className="work-link" href="/blog/first-post/">
-              Read →
-            </a>
-          </article>
+          <ul className="post-list">
+            {posts.map((post) => (
+              <li key={post.slug} className="post-list-item">
+                <a href={`/blog/${post.slug}/`}>{post.title}</a>
+                <time dateTime={post.date}>{formatDate(post.date)}</time>
+                {post.description ? <p>{post.description}</p> : null}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <footer>

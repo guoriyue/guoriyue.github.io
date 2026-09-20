@@ -12,11 +12,27 @@ Use Node.js 22.13 or newer:
 Checks: `npm run lint`, `npm run typecheck`, and `npm test` (run `npm run build`
 first; the portrait test reads the exported HTML).
 
+## Writing a post
+
+Add a Markdown file to `content/posts/` with a small front matter block:
+
+    ---
+    title: Post title
+    date: 2026-09-19
+    description: One line shown in the blog list.
+    ---
+
+    Body in GitHub-flavored Markdown.
+
+The file name becomes the URL (`content/posts/my-post.md` → `/blog/my-post/`).
+The home page lists posts newest first.
+
 ## Layout
 
-- `app/page.tsx`: biography, Selected Projects, Experience, Education, and Blog
+- `app/page.tsx`: biography, Selected Projects, Experience, Education, Personal, and Blog
 - `app/content.ts`: publication and project records
-- `app/blog/first-post/page.tsx`: placeholder blog post
+- `app/posts.ts`: reads and renders `content/posts/*.md`
+- `app/blog/[slug]/page.tsx`: post page
 - `app/portrait.tsx`, `app/portrait-rotation.ts`: rotating portrait
 - `app/companion.tsx`, `app/collie-motion.ts`: pixel border collie cursor companion
 - `app/page-motion.tsx`: scroll reveals and active navigation tab
