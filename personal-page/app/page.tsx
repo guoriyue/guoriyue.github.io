@@ -441,10 +441,10 @@ export default function Home() {
           <Heading title="Personal" kind="personal" />
           <div className="personal-copy">
             <p>
-              Away from code, I like riichi mahjong, Metroidvanias like the
-              <strong> Hollow Knight</strong> series, and{' '}
-              <strong>Rain World</strong>. I also enjoy the{' '}
-              <strong>Nikki</strong> dress-up games.
+              Away from code, I enjoy playing piano and riichi mahjong. My
+              favorite games include the <strong>Hollow Knight</strong> series,
+              <strong> Rain World</strong>, and the <strong>Nikki</strong>{' '}
+              dress-up games.
             </p>
             <p>
               I love border collies — the little pixel dog following your cursor
