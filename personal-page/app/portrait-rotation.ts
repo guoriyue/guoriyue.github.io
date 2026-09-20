@@ -19,13 +19,18 @@ export function rotatePortrait(photos: PortraitPhoto[]) {
   try {
     historyLast = history.state?.__portraitLast ?? null;
   } catch {}
+  const identity = (src: string | null) => src?.split('?')[0];
   const previous = historyLast || tabLast || localLast;
   // Exclude this tab's last photo and the most recent one in another tab.
   let candidates = photos.filter(
-    (photo) => photo.src !== previous && photo.src !== localLast,
+    (photo) =>
+      identity(photo.src) !== identity(previous) &&
+      identity(photo.src) !== identity(localLast),
   );
   if (!candidates.length)
-    candidates = photos.filter((photo) => photo.src !== previous);
+    candidates = photos.filter(
+      (photo) => identity(photo.src) !== identity(previous),
+    );
   if (!candidates.length) candidates = [...photos];
   for (let i = candidates.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -39,7 +44,8 @@ export function rotatePortrait(photos: PortraitPhoto[]) {
       image!.onerror = null;
       image!.onload = null;
       const fallback =
-        photos.find((item) => item.src === previous) || photos[0];
+        photos.find((item) => identity(item.src) === identity(previous)) ||
+        photos[0];
       image!.style.objectPosition = fallback.position;
       image!.src = fallback.src;
       return;

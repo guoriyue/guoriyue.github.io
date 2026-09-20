@@ -1473,3 +1473,9 @@ a:hover {
     padding: 7px 9px;
   }
 }
+
+.art-contributions {
+  background-image: url('/open-source-heart-branches.png');
+  background-size: 100% 100%;
+  background-position: center;
+}

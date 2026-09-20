@@ -358,10 +358,8 @@ export default function Home() {
           id="open-source"
           className="content-section open-source-section"
         >
-          <Heading title="Open Source" kind="projects">
-            <p className="section-description">
-              Contributions to GPU compilers and inference runtimes.
-            </p>
+          <Heading title="Open Source Contributions" kind="contributions">
+            <p className="section-description">Patches to Triton and vLLM.</p>
           </Heading>
           <div className="project-list">
             {contributions.map((c) => (

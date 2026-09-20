@@ -121,3 +121,16 @@ test('exported inline script works without React or client bundles', () => {
   assert.ok(image.src.startsWith('/portraits/'));
   assert.ok(!html.includes('Next photo'));
 });
+
+test('a cache-busted image URL is still treated as the same photo', () => {
+  const env = environment({ previous: photos[0].src });
+  const versionedPhotos = photos.map((photo, index) =>
+    index === 0 ? { ...photo, src: `${photo.src}?v=hd` } : photo,
+  );
+  for (let i = 0; i < 30; i++) {
+    const image = env.run(
+      `(${rotatePortrait.toString()})(${JSON.stringify(versionedPhotos)})`,
+    );
+    assert.notEqual(image.src.split('?')[0], photos[0].src);
+  }
+});
