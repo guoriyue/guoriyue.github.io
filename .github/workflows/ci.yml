@@ -34,10 +34,10 @@ jobs:
           cache: npm
           cache-dependency-path: personal-page/package-lock.json
       - run: npm ci
-      - run: npx tsc --noEmit
-      - run: node --experimental-strip-types --test scripts/collie-motion.test.mjs
+      - run: npm run lint
+      - run: npm run typecheck
       - run: npm run build
-      - run: node --experimental-strip-types --test scripts/portrait-rotation.test.mjs
+      - run: npm test
       - name: Check static export
         run: |
           test -s dist/client/index.html
