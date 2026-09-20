@@ -104,11 +104,7 @@ export default async function Home() {
           id="work"
           className="content-section work-section projects-section"
         >
-          <Heading title="Selected Projects" kind="projects">
-            <p className="section-description">
-              Research, systems work, and side projects.
-            </p>
-          </Heading>
+          <Heading title="Selected Projects" kind="projects" />
           <div id="projects" className="project-grid">
             <article className="project-card" id="nurec">
               <figure className="work-preview">
@@ -355,9 +351,7 @@ export default async function Home() {
           id="open-source"
           className="content-section open-source-section"
         >
-          <Heading title="Open Source Contributions" kind="contributions">
-            <p className="section-description">Patches to Triton and vLLM.</p>
-          </Heading>
+          <Heading title="Open Source Contributions" kind="contributions" />
           <div className="project-list">
             {contributions.map((c) => (
               <article className="small-project" key={c.name}>
@@ -373,9 +367,7 @@ export default async function Home() {
           </div>
         </section>
         <section id="research" className="content-section research-section">
-          <Heading title="Publications" kind="research">
-            <p className="section-description">Papers &amp; preprints.</p>
-          </Heading>
+          <Heading title="Publications" kind="research" />
           <div className="project-list">
             {publications.map((p) => (
               <article className="small-project" key={p.title}>

@@ -981,22 +981,6 @@ footer {
   width: 44px;
   height: 44px;
 }
-.section-description,
-.section-context {
-  max-width: 390px;
-  color: #303f68;
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 0;
-}
-.section-context strong {
-  display: block;
-  color: var(--foreground);
-  font-size: 21px;
-}
-.section-context p {
-  margin: 2px 0 0;
-}
 .work-section .work-row {
   background: #dce5ed;
   padding: 28px;
@@ -1052,16 +1036,6 @@ footer {
     width: 36px;
     height: 36px;
   }
-  .section-description,
-  .section-context {
-    font-size: 15px;
-  }
-  .section-description br {
-    display: none;
-  }
-  .section-context strong {
-    font-size: 18px;
-  }
   .work-section .work-row,
   #work .work-row:last-child {
     padding: 18px;
@@ -1079,9 +1053,6 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
-}
-.section-description {
-  max-width: 720px;
 }
 .work-section {
   background: var(--paper);
@@ -1475,7 +1446,6 @@ body,
 .work-copy h3,
 .small-project h3,
 .projects-section .work-copy strong,
-.section-context strong,
 .about-section .name-row h1 {
   color: var(--foreground);
 }
@@ -1483,8 +1453,6 @@ body,
 .authors,
 .work-preview figcaption,
 .small-project p,
-.section-description,
-.section-context,
 .experience-entry p,
 .education-entry p,
 footer {
