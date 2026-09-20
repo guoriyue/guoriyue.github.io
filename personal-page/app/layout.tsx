@@ -5,10 +5,18 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://guoriyue.github.io'),
   icons: {
     icon: [
-      { url: '/collie-icon-32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/collie-icon-192.png', sizes: '192x192', type: 'image/png' },
+      {
+        url: '/favicon-border-collie-32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon-border-collie.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
+      },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/favicon-border-collie.svg',
     apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
   },
   manifest: '/site.webmanifest',

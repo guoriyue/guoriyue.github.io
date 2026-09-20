@@ -37,12 +37,14 @@ jobs:
       - run: npx tsc --noEmit
       - run: node --experimental-strip-types --test scripts/collie-motion.test.mjs
       - run: npm run build
+      - run: node --experimental-strip-types --test scripts/portrait-rotation.test.mjs
       - name: Check static export
         run: |
           test -s dist/client/index.html
           test -s dist/client/blog/first-post/index.html
           test -s dist/client/collie-actions.png
-          test -s dist/client/section-art.png
+          test -s dist/client/section-art-jirai.png
+          test -s dist/client/favicon-border-collie.svg
           test -s dist/client/research/asset-harvester.gif
           test -s dist/client/research/nurec.gif
           test -s dist/client/projects/nyaicon.gif
