@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const photos = [
   { src: '/portrait.jpg', position: '50% 50%' },
   { src: '/portraits/x-2073991697978266100.jpg', position: '82% 45%' },
-  { src: '/portraits/x-profile.jpg', position: '50% 50%' },
+  { src: '/portraits/nvidia-headshot.webp', position: '50% 50%' },
   { src: '/portraits/x-2028395242450501674.jpg', position: '50% 25%' },
 ];
 
