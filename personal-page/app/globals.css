@@ -1473,37 +1473,3 @@ a:hover {
     padding: 7px 9px;
   }
 }
-
-.portrait-gallery {
-  width: fit-content;
-  max-width: 100%;
-}
-.portrait-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 3px 0;
-  color: #637580;
-  font-size: 13px;
-}
-.portrait-controls button {
-  border: 0;
-  border-radius: 6px;
-  padding: 4px 7px;
-  background: #e4f3f8;
-  color: #365f73;
-  font: inherit;
-  cursor: pointer;
-}
-.portrait-controls button:hover {
-  background: #c3e5f1;
-}
-.portrait-controls button:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 3px;
-}
-.portrait-controls button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}

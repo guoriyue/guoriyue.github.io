@@ -12,32 +12,26 @@ const storageKey = 'portrait-last';
 
 export default function Portrait() {
   const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
   const request = useRef(0);
   const photo = photos[index];
 
   const showPhoto = useCallback((nextIndex: number) => {
     const id = ++request.current;
-    setLoading(true);
     const next = photos[nextIndex];
     const image = new Image();
     image.onload = () => {
       if (id !== request.current) return;
       setIndex(nextIndex);
-      setLoading(false);
       try {
         localStorage.setItem(storageKey, next.src);
       } catch {
-        // Keep switching manually if persistent storage is unavailable.
+        // Fall back to session storage when persistent storage is unavailable.
       }
       try {
         sessionStorage.setItem(storageKey, next.src);
       } catch {
         // Browser storage is optional.
       }
-    };
-    image.onerror = () => {
-      if (id === request.current) setLoading(false);
     };
     image.fetchPriority = 'high';
     image.src = next.src;
@@ -65,29 +59,14 @@ export default function Portrait() {
   }, [showPhoto]);
 
   return (
-    <figure className="portrait-gallery">
-      <img
-        className="portrait"
-        src={photo.src}
-        alt="Mingfei Guo"
-        width="240"
-        height="240"
-        fetchPriority="high"
-        style={{ objectPosition: photo.position }}
-      />
-      <figcaption className="portrait-controls">
-        <span aria-live="polite">
-          {index + 1} / {photos.length}
-        </span>
-        <button
-          type="button"
-          disabled={loading}
-          onClick={() => showPhoto((index + 1) % photos.length)}
-          aria-label="Show next portrait"
-        >
-          Next photo <span aria-hidden="true">↻</span>
-        </button>
-      </figcaption>
-    </figure>
+    <img
+      className="portrait"
+      src={photo.src}
+      alt="Mingfei Guo"
+      width="240"
+      height="240"
+      fetchPriority="high"
+      style={{ objectPosition: photo.position }}
+    />
   );
 }
