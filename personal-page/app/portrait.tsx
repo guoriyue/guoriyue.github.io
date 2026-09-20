@@ -7,6 +7,8 @@ const photos = [
   { src: '/portraits/x-2073991697978266100.jpg', position: '82% 45%' },
   { src: '/portraits/nvidia-headshot.webp', position: '50% 50%' },
   { src: '/portraits/x-2028395242450501674.jpg', position: '50% 25%' },
+  { src: '/portraits/x-2074018741755802017.jpg', position: '50% 85%' },
+  { src: '/portraits/x-1978703247226331443.jpg', position: '50% 30%' },
 ];
 const storageKey = 'portrait-last';
 
