@@ -441,8 +441,8 @@ export default function Home() {
           <Heading title="Personal" kind="personal" />
           <div className="personal-copy">
             <p>
-              Away from code, I enjoy playing piano and riichi mahjong. My
-              favorite games include the <strong>Hollow Knight</strong> series,
+              Away from code, I enjoy playing riichi mahjong. My favorite games
+              include the <strong>Hollow Knight</strong> series,
               <strong> Rain World</strong>, and the <strong>Nikki</strong>{' '}
               dress-up games.
             </p>
