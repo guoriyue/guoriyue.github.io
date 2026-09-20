@@ -71,3 +71,13 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/deploy-pages@v4
         id: deployment
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Notify IndexNow
+        working-directory: personal-page
+        run: |
+          mkdir -p dist/client
+          curl -fsSL https://guoriyue.github.io/sitemap.xml -o dist/client/sitemap.xml
+          npm run indexnow

@@ -45,6 +45,12 @@ The home page lists posts newest first.
 adds directory indexes so nested blog routes work on GitHub Pages. The site needs no
 server or secrets at runtime.
 
+`public/robots.txt`, a generated `sitemap.xml`, canonical URLs, and Person JSON-LD
+are emitted for search engines. After each deploy, CI runs `npm run indexnow`,
+which submits every page to IndexNow (Bing, DuckDuckGo, Yandex); the key is the
+`public/<key>.txt` file. Google does not support IndexNow — it needs the site
+registered once in Google Search Console.
+
 This repository has no remote of its own. It is mirrored into the `personal-page/`
 directory of https://github.com/guoriyue/guoriyue.github.io, whose GitHub Actions
 workflow builds that directory and publishes it to GitHub Pages on every push to `main`.
