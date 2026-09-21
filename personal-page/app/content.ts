@@ -9,7 +9,7 @@ export const publications = [
     authors:
       'Tianshi Cao, Jiawei Ren, Yuxuan Zhang, Jaewoo Seo, Jiahui Huang, Shikhar Solanki, Haotian Zhang, Mingfei Guo, Haithem Turki, Muxingzi Li, Yue Zhu, Sipeng Zhang, Zan Gojcic, Sanja Fidler, Kangxue Yin',
     description:
-      'Turning sparse observations from real driving logs into complete, simulation-ready 3D assets.',
+      'An image-to-3D pipeline — SparseViewDiT for sparse-view-conditioned multiview generation, then 3D Gaussian lifting — that turns the few, limited-angle views a driving log has of an object into a complete, simulation-ready asset.',
     url: 'https://arxiv.org/abs/2604.18468',
     project: 'https://research.nvidia.com/labs/sil/projects/asset-harvester/',
   },
@@ -20,7 +20,7 @@ export const publications = [
     authors:
       'Junyi Yao, Yijiang Liu, Zhen Dong, Mingfei Guo, Helan Hu, Kurt Keutzer, Li Du, Daquan Zhou, Shanghang Zhang',
     description:
-      'Refining text prompts to better align with the training distribution of visual generative models.',
+      'Prompts that read like the captions of high-quality training images generate better images. PromptCoT fine-tunes an LLM on such captions and uses chain-of-thought to align each user prompt with its refined version, using per-dataset adapters on one shared LLM instead of a model per dataset.',
     url: 'https://openaccess.thecvf.com/content/CVPR2024/papers/Yao_PromptCoT_Align_Prompt_Distribution_via_Adapted_Chain-of-Thought_CVPR_2024_paper.pdf',
   },
   {
@@ -30,7 +30,7 @@ export const publications = [
       'SANA: Sensitivity-Aware Neural Architecture Adaptation for Uniform Quantization',
     authors: 'Mingfei Guo, Zhen Dong, Kurt Keutzer',
     description:
-      'Adapting network architectures to preserve sensitive components and improve the accuracy of low-bit uniform quantization.',
+      'Mixed-precision quantization protects sensitive layers but runs poorly on GPUs and CPUs. SANA instead adapts the architecture itself from a per-layer sensitivity analysis so uniform low-bit quantization keeps accuracy, with four channel-initialization strategies to shorten fine-tuning. ResNet-50-SANA at W4A8 (24.4 MB) reaches 77.8% ImageNet top-1, above the 77.6% of full-precision ResNet-50 (97.8 MB).',
     url: 'https://doi.org/10.3390/app131810329',
   },
   {
@@ -39,7 +39,7 @@ export const publications = [
     title: 'Analyzing Quantization in TVM',
     authors: 'Mingfei Guo',
     description:
-      'Investigating why low-bit inference can underperform, and finding compiler-level opportunities to make it faster.',
+      '8-bit inference in TVM ran about 2× slower than FP32 instead of faster. I traced it to a graph-construction bug, then optimized the quantized path to finish 164% faster than the TVM baseline on a compute-bound workload and 195% faster on a memory-bound one.',
     url: 'https://arxiv.org/abs/2308.10905',
   },
   {
@@ -49,7 +49,7 @@ export const publications = [
     authors:
       'Zhen Dong, Kaicheng Zhou, Guohao Li, Qiang Zhou, Mingfei Guo, Bernard Ghanem, Kurt Keutzer, Shanghang Zhang',
     description:
-      'Exploring neural architecture search with synthetic images, random labels, and even Gaussian noise.',
+      'Does NAS need real data? Searching on randomly labeled real images, generated images, or even Gaussian noise with random labels yields architectures that match conventional NAS on CIFAR, ImageNet, and CheXpert.',
     url: 'https://arxiv.org/abs/2205.02162',
   },
   {
@@ -59,7 +59,7 @@ export const publications = [
       'How does Truth Evolve into Fake News? An Empirical Study of Fake News Evolution',
     authors: 'Mingfei Guo, Xiuying Chen, Juntao Li, Dongyan Zhao, Rui Yan',
     description:
-      'Introducing the Fake News Evolution dataset to study how truthful reporting changes into misinformation as it spreads.',
+      'The Fake News Evolution dataset: 950 article triples tracing a story from truth to fake news to evolved fake news, with an analysis of how disinformation techniques, keywords, sentiment, and part-of-speech distributions shift at each step.',
     url: 'https://arxiv.org/abs/2103.05944',
   },
 ];
@@ -82,28 +82,28 @@ export const projects = [
     name: 'LangCommand',
     tag: 'LOCAL AI · C++',
     description:
-      'A C++ command-line tool that converts natural language to shell commands using local llama.cpp inference.',
+      'Describe what you want in plain language and get a runnable shell command back, with an optional explanation, entirely on-device via llama.cpp. Single-shot or loop mode; ships with Qwen2.5-Coder-7B, Qwen2.5-7B, Llama-3.2-1B / 3B, and CodeLlama-13B configs, or bring your own model and system prompt.',
     url: 'https://github.com/guoriyue/LangCommand',
   },
   {
     name: 'InverseUI',
     tag: 'AUTOMATION · TOOLS',
     description:
-      'Record browser workflows and turn them into reusable, intent-aware automation scripts.',
+      'Record a browser workflow once in the Chrome extension and get Playwright code back with detected intent, typed parameters, and reusable functions. The CLI runs recordings locally with your own credentials, and an AI fix command retries failing scripts with AI-generated patches.',
     url: 'https://github.com/InverseUI/InverseUI-Recorder',
   },
   {
     name: 'Flash Attention in Slang',
     tag: 'TENSOR CORES · VULKAN · SLANG',
     description:
-      'Forward and backward Flash Attention using cooperative-matrix tensor core GEMMs and Split-K parallelism. Includes correctness checks and latency comparisons against PyTorch SDPA and flash_attn.',
+      'Forward and backward flash attention in Slang on Vulkan. VK_NV_cooperative_matrix2 drives the QKᵀ and PV GEMMs on tensor cores — S and O stay in cooperative-matrix registers across the softmax — and Split-K spreads work across SMs. On an RTX 5090 (head dim 64, fwd+bwd) it is 1.7–2.7× faster than PyTorch SDPA at sequence lengths 128–2048, and ahead of flash_attn up to 512.',
     url: 'https://github.com/guoriyue/flash-attention-slang',
   },
   {
     name: 'Llama 3, in Warp',
     tag: 'LLM INFERENCE · NVIDIA WARP · PROFILING',
     description:
-      'Llama 3 inference rebuilt with NVIDIA Warp kernels, including tiled variants, FP32 equivalence checks, and profiling against a PyTorch implementation.',
+      'Llama 3 inference with everything but tokenization and weight loading written as NVIDIA Warp kernels, plus tiled variants. FP32 outputs match the PyTorch reference; profiling (1.06 s vs 0.31 s per run) showed tiling barely helps because the kernels are already SIMT — a useful negative result.',
     url: 'https://github.com/guoriyue/warp-llama3-scratch',
   },
 ];
@@ -163,13 +163,14 @@ export const contributions = [
   {
     name: 'Triton',
     description:
-      'GPU compiler correctness and performance, plus batched TMA GEMM test coverage on SM120.',
+      'Merged fixes across the compiler: TritonGPU layout selection and loop flattening, frontend condition normalization, JIT cache-key correctness under nonlocal shadowing, and NVIDIA / AMD backend work — hoisting the L2 cache-policy register out of the vectorization loop, unique registers for in-thread layout conversions, and sm120 TMA GEMM test coverage.',
     url: 'https://github.com/triton-lang/triton/pulls?q=is%3Apr+author%3Aguoriyue+is%3Amerged',
     example: 'https://github.com/triton-lang/triton/pull/10839',
   },
   {
     name: 'vLLM',
-    description: 'Cosmos3-Super model registration and registry test coverage.',
+    description:
+      'Turned on the registry-driven initialization, multimodal-processing, and tensor-schema tests for NVIDIA Cosmos3 once its checkpoint went public, and registered Cosmos3-Super after verifying it maps to the same modules (64 layers vs 36).',
     url: 'https://github.com/vllm-project/vllm/pull/48211',
     example: 'https://github.com/vllm-project/vllm/pull/48211',
   },

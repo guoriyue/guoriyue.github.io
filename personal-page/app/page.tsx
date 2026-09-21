@@ -127,12 +127,18 @@ export default async function Home() {
                   NVIDIA · Neural reconstruction · 2026
                 </p>
                 <p>
-                  Generate new camera viewpoints from recorded drives to adapt
-                  AV perception across sensor configurations and vehicle
-                  platforms.
+                  Re-render a recorded drive through a different camera rig —
+                  new mounting positions, intrinsics, and lens models (pinhole,
+                  fisheye, f-theta) — so perception for a new vehicle platform
+                  can be trained before that platform has real data. Scenes are
+                  3D Gaussian splatting reconstructions of six-camera drives;
+                  the public Physical AI NuRec Dataset ships 1,500+ of them.
                 </p>
                 <p>
-                  I coauthored this technical walkthrough on carline adaptation.
+                  Training on the re-rendered data improved detection precision
+                  and recall in every object category over a zero-shot baseline.
+                  I work on NuRec’s reconstruction infrastructure and
+                  performance, and coauthored this walkthrough.
                 </p>
                 <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
                 <div className="paper-links">
@@ -162,8 +168,18 @@ export default async function Home() {
                 </h3>
                 <p className="work-meta">NVIDIA · Coauthor · 2026</p>
                 <p>
-                  Extracting complete 3D assets from sparse observations in
-                  autonomous driving logs, ready to use in simulation.
+                  Neural reconstruction turns a driving log into a scene, but
+                  not into objects you can move or view from a new angle. Asset
+                  Harvester takes the few, limited-angle views a log has of a
+                  vehicle or pedestrian and produces a complete 3D Gaussian
+                  asset: SparseViewDiT generates the missing views, then a
+                  lifting stage fits Gaussians to them.
+                </p>
+                <p>
+                  The system-level work is what makes it hold up on real data —
+                  large-scale curation of object-centric training tuples,
+                  geometry-aware preprocessing across sensors, augmentation,
+                  and self-distillation.
                 </p>
                 <div className="paper-links">
                   <a href={featured.project}>Project & results ↗</a>
@@ -199,18 +215,23 @@ export default async function Home() {
                   Training infrastructure · RL post-training
                 </p>
                 <p>
-                  <strong>RL post-training infrastructure</strong> for visual
-                  generative models. A shared{' '}
-                  <strong>rollout → reward → optimization</strong> loop, with
-                  composable model, algorithm, and execution configs.
+                  RL post-training for diffusion and flow models, built because
+                  LLM-RL frameworks assume a categorical token action. A visual
+                  policy’s step is a denoise transition over latents, its reward
+                  is computed on decoded pixels or video, and its conditioning
+                  is an image or video rather than a text prefix — so VRL keeps
+                  those semantics explicit behind one Collector → Evaluator →
+                  Algorithm loop that covers both full-sequence and
+                  chunk-autoregressive generation.
                 </p>
                 <p>
-                  <strong>
-                    Ray rollouts, DDP / FSDP training, weight synchronization,
-                  </strong>{' '}
-                  and checkpointing. The SD3.5 example uses{' '}
-                  <strong>GRPO with an OCR reward</strong> to improve text
-                  rendering.
+                  Model, reward (OCR, aesthetic, CLIP, PickScore, VideoReward),
+                  algorithm (GRPO, DPO, DiffusionNFT, Flow-DPPO), and
+                  distributed settings compose from YAML layers. 20+ image and
+                  video families are wired in — SD3.5, FLUX, Wan 2.1/2.2,
+                  HunyuanVideo, CogVideoX, Cosmos-Predict2 — and a recipe only
+                  counts as validated once a real run shows rising reward and
+                  changed weights. The SD3.5 OCR-GRPO run above is one.
                 </p>
                 <div className="paper-links">
                   <a href={projects[1].url}>Code ↗</a>
@@ -243,11 +264,18 @@ export default async function Home() {
                   GPU programming · Differentiable rendering
                 </p>
                 <p>
-                  A from-scratch{' '}
-                  <strong>training and rendering pipeline</strong> for 3D
-                  Gaussian Splatting, written in Python and{' '}
-                  <strong>NVIDIA Warp</strong>. The same kernels run on CPU and
-                  GPU.
+                  The whole 3D Gaussian Splatting method — projection,
+                  rasterization, the backward pass, Adam, and densify / prune —
+                  reimplemented in Python with NVIDIA Warp instead of the
+                  reference CUDA. The same kernels run on CPU or GPU with a
+                  one-line config change, so the method fits in a handful of
+                  readable files and trains on a laptop.
+                </p>
+                <p>
+                  Forward and backward follow graphdeco-inria’s reference
+                  implementation; densification follows
+                  gaussian-splatting-lightning, restructured to strip data
+                  preparation down to the minimum.
                 </p>
                 <div className="paper-links">
                   <a href={projects[0].url}>Code ↗</a>
@@ -336,9 +364,12 @@ export default async function Home() {
                 </h3>
                 <p className="work-meta">macOS app</p>
                 <p>
-                  An app I’m building to customize Mac app and folder icons.
-                  Pick a theme, import your own images, and restore the
-                  originals whenever you like.
+                  A macOS Tahoe app I’m building to re-theme app and folder
+                  icons: pick a theme or import your own PNG / ICNS, apply it to
+                  one app or all of them, and restore the originals any time.
+                  Every change goes through the system’s IconServices helper, so
+                  it never disables SIP or modifies sealed system bundles. Free,
+                  no account.
                 </p>
                 <div className="paper-links">
                   <a href="https://nyaicon.com/">Website ↗</a>
