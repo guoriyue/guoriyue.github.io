@@ -31,7 +31,9 @@ after 25 seconds without progress.
 Moving the pointer over the field takes the lead from the collie, and the
 cursor companion hides while you are in there so there is only ever one dog.
 The field carries no caption or controls: it runs itself, scattering a fresh
-flock a moment after the last sheep is penned.
+flock a moment after the last sheep is penned. When the flock is in, the collie
+sits down, the sheep bob, and pixel sparkles and hearts drift up out of the
+paddock.
 
 ## Writing a post
 

@@ -72,6 +72,56 @@ function SheepSprite() {
   );
 }
 
+// A four-point star with tapered arms reads as a sparkle; a plain cross does not.
+const SPARKLE_PIXELS = [
+  '...s...',
+  '...s...',
+  '..sss..',
+  'sssssss',
+  '..sss..',
+  '...s...',
+  '...s...',
+];
+const HEART_PIXELS = [
+  '.hh.hh.',
+  'hhhhhhh',
+  'hhhhhhh',
+  '.hhhhh.',
+  '..hhh..',
+  '...h...',
+  '.......',
+];
+
+function PixelBurst({ rows, className }: { rows: string[]; className: string }) {
+  const size = rows[0].length;
+  return (
+    <svg
+      className={className}
+      viewBox={`0 0 ${size} ${rows.length}`}
+      aria-hidden="true"
+    >
+      {rows.flatMap((row, y) =>
+        [...Array(row.length).keys()]
+          .filter((x) => row[x] !== '.')
+          .map((x) => (
+            <rect key={`${x},${y}`} x={x} y={y} width="1" height="1" />
+          )),
+      )}
+    </svg>
+  );
+}
+
+// Fixed offsets so the burst looks scattered without re-randomising on render.
+// Clustered around where the settled flock sits, rather than the whole paddock.
+const CHEERS = [
+  { left: '16%', bottom: '40%', delay: '0s', heart: false },
+  { left: '62%', bottom: '46%', delay: '0.16s', heart: true },
+  { left: '34%', bottom: '58%', delay: '0.32s', heart: false },
+  { left: '72%', bottom: '34%', delay: '0.46s', heart: false },
+  { left: '46%', bottom: '64%', delay: '0.6s', heart: true },
+  { left: '24%', bottom: '30%', delay: '0.76s', heart: false },
+];
+
 export default function Herding() {
   const fieldRef = useRef<HTMLDivElement>(null);
   const dogRef = useRef<HTMLDivElement>(null);
@@ -111,6 +161,7 @@ export default function Herding() {
     const scatter = () => {
       flock = createFlock(FLOCK_SIZE, bounds, Math.floor(Math.random() * 1000) + 1);
       dog = { x: bounds.x + bounds.width - DOG_SIZE, y: bounds.y + bounds.height - DOG_SIZE };
+      dogElement.dataset.state = 'run';
       wonAt = 0;
       focus = -1;
       progressAt = performance.now();
@@ -161,7 +212,10 @@ export default function Herding() {
       if (total !== reportedPenned) {
         if (total > reportedPenned) progressAt = time;
         reportedPenned = total;
-        field.dataset.complete = String(total === flock.length);
+        const done = total === flock.length;
+        field.dataset.complete = String(done);
+        // Work over: the collie sits down and watches the flock.
+        dogElement.dataset.state = done ? 'sit' : 'run';
       }
       if (total === flock.length) {
         if (!wonAt) wonAt = time;
@@ -231,6 +285,23 @@ export default function Herding() {
     >
       <div className="herding-pen">
         <span>pen</span>
+        <div className="herding-cheer">
+          {CHEERS.map((cheer) => (
+            <span
+              key={cheer.left + cheer.bottom}
+              style={{
+                left: cheer.left,
+                bottom: cheer.bottom,
+                animationDelay: cheer.delay,
+              }}
+            >
+              <PixelBurst
+                rows={cheer.heart ? HEART_PIXELS : SPARKLE_PIXELS}
+                className={cheer.heart ? 'cheer-heart' : 'cheer-sparkle'}
+              />
+            </span>
+          ))}
+        </div>
       </div>
       {Array.from({ length: FLOCK_SIZE }, (_, index) => (
         <div

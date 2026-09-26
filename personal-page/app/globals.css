@@ -1604,6 +1604,94 @@ a:hover {
 .herd-dog[data-state='run'] .collie-sprite {
   animation: collie-run 0.22s steps(1, end) infinite;
 }
+/* Celebration: the collie sits, the flock bobs, sparkles and hearts drift up. */
+.herding-cheer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.herding-cheer span {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  opacity: 0;
+}
+.herding-cheer svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  shape-rendering: crispedges;
+}
+.cheer-sparkle {
+  fill: color-mix(in srgb, var(--primary) 80%, #ffffff);
+}
+.cheer-heart {
+  fill: #f2a2b8;
+}
+.herding-field[data-complete='true'] .herding-cheer span {
+  animation: cheer-rise 1.3s ease-out infinite;
+}
+@keyframes cheer-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.6);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-22px) scale(0.9);
+  }
+}
+.herding-field[data-complete='true'] .herding-sheep[data-penned='true'] .sheep-sprite {
+  animation: sheep-hop 0.6s ease-in-out infinite;
+}
+.herding-sheep:nth-child(3) .sheep-sprite {
+  animation-delay: 0.08s;
+}
+.herding-sheep:nth-child(4) .sheep-sprite {
+  animation-delay: 0.16s;
+}
+.herding-sheep:nth-child(5) .sheep-sprite {
+  animation-delay: 0.24s;
+}
+.herding-sheep:nth-child(6) .sheep-sprite {
+  animation-delay: 0.32s;
+}
+.herding-sheep:nth-child(7) .sheep-sprite {
+  animation-delay: 0.4s;
+}
+@keyframes sheep-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-4px);
+  }
+}
+.herding-field[data-complete='true'] .herd-dog .collie-sprite {
+  animation: dog-cheer 0.62s ease-in-out infinite;
+}
+@keyframes dog-cheer {
+  0%,
+  100% {
+    transform: scaleX(var(--facing, 1)) translateY(0);
+  }
+  35% {
+    transform: scaleX(var(--facing, 1)) translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .herding-field[data-complete='true'] .herding-cheer span,
+  .herding-field[data-complete='true'] .herding-sheep .sheep-sprite,
+  .herding-field[data-complete='true'] .herd-dog .collie-sprite {
+    animation: none;
+  }
+}
+
 /* One dog at a time: the cursor companion hides over the field. */
 body[data-herding='true'] .cursor-collie {
   opacity: 0;
