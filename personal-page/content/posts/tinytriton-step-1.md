@@ -256,11 +256,12 @@ notion of a recorded instruction; neither is a special Python keyword.
 
 ## 7. The exercise interface
 
-Download the [Step 1 source package](https://guoriyue.github.io/downloads/tinytriton-step-1.zip)
-and extract it. Open a terminal inside the extracted `tinytriton-step-1` folder.
-With Python 3.10 or newer, run:
+Clone the [companion repository](https://github.com/guoriyue/tiny-triton), which
+currently contains only Step 1. With Python 3.10 or newer, run:
 
 ```bash
+git clone https://github.com/guoriyue/tiny-triton.git
+cd tiny-triton
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
@@ -271,7 +272,7 @@ On Windows, use `.venv\Scripts\activate` to activate the environment.
 The unfinished starter raises `NotImplementedError`. That means you have reached
 the exercise. No GPU setup is involved.
 
-Open [problems/step01.py](https://github.com/guoriyue/guoriyue.github.io/blob/main/personal-page/public/downloads/tinytriton-step-1/problems/step01.py). You implement three methods:
+Open [problems/step01.py](https://github.com/guoriyue/tiny-triton/blob/main/problems/step01.py). You implement three methods:
 
 | Method | Responsibility |
 |---|---|
@@ -404,7 +405,7 @@ mask, and explain why lowering does not need to know `n` to describe that mask.
 <details>
 <summary>Compare after attempting the exercise</summary>
 
-Read [solutions/step01.py](https://github.com/guoriyue/guoriyue.github.io/blob/main/personal-page/public/downloads/tinytriton-step-1/solutions/step01.py), then run:
+Read [solutions/step01.py](https://github.com/guoriyue/tiny-triton/blob/main/solutions/step01.py), then run:
 
 ```bash
 tinytriton check step01 --solution
