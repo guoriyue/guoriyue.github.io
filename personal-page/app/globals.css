@@ -1723,3 +1723,18 @@ body[data-herding='true'] .cursor-collie {
   background-size: 100% 100%;
   background-position: center;
 }
+
+/* Tutorial self-checks remain readable with keyboard and touch input. */
+.prose details {
+  margin: 24px 0;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.prose summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.prose details[open] summary {
+  margin-bottom: 16px;
+}

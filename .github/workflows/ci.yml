@@ -41,7 +41,8 @@ jobs:
       - name: Check static export
         run: |
           test -s dist/client/index.html
-          test -s dist/client/blog/first-post/index.html
+          test -s dist/client/blog/tinytriton-series/index.html
+          test -s dist/client/blog/tinytriton-step-1/index.html
           test -s dist/client/collie-actions.png
           test -s dist/client/section-art-jirai.png
           test -s dist/client/favicon-border-collie.svg

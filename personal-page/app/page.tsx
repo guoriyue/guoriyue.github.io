@@ -299,16 +299,19 @@ export default async function Home() {
             ))}
             <article className="small-project tiny-triton">
               <h3>
-                TinyTriton <span>In development</span>
+                TinyTriton <span>Step 1 published</span>
               </h3>
               <p className="project-keywords">
                 GPU COMPILERS · CUDA · LLVM / PTX
               </p>
               <p>
-                A GPU compiler course in six milestones: interpreter, CUDA
-                execution, LLVM / PTX lowering, reductions, and attention
-                kernels.
+                Build a GPU compiler in Python, one lesson at a time. Start with
+                source code and instructions; later lessons introduce GPU
+                execution and optimization. No compiler background assumed.
               </p>
+              <a className="project-link" href="/blog/tinytriton-series/">
+                Read the series ↗
+              </a>
             </article>
             <article className="small-project">
               <h3>
