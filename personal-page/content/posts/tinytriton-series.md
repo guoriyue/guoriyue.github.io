@@ -95,7 +95,8 @@ Later GPU lessons will introduce their toolchain requirements separately.
 the way, we will explain syntax trees, instructions, pointers, and why
 `BLOCK: tl.constexpr` is different from an ordinary runtime parameter.
 
-The [companion repository](https://github.com/guoriyue/tiny-triton) currently
-contains the Step 1 tutorial, exercise, reference implementation, and checks.
-Further material will be released alongside each article; the repository will
-grow with the series.
+The [Step 1 source package](/downloads/tinytriton-step-1.zip) contains the tutorial,
+exercise, reference implementation, and checks. It is a standalone snapshot with
+no later lessons or repository history. I will share the refined companion
+repository later; until then, you can use this download to follow the article.
+Further material will be released alongside each lesson.

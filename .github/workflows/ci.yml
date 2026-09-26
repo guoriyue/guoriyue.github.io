@@ -43,6 +43,7 @@ jobs:
           test -s dist/client/index.html
           test -s dist/client/blog/tinytriton-series/index.html
           test -s dist/client/blog/tinytriton-step-1/index.html
+          test -s dist/client/downloads/tinytriton-step-1.zip
           test -s dist/client/collie-actions.png
           test -s dist/client/section-art-jirai.png
           test -s dist/client/favicon-border-collie.svg
