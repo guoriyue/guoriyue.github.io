@@ -12,6 +12,25 @@ Use Node.js 22.13 or newer:
 Checks: `npm run lint`, `npm run typecheck`, and `npm test` (run `npm run build`
 first; the portrait test reads the exported HTML).
 
+## The sheepdog field
+
+`app/herding.ts` is the simulation, kept free of the DOM so it can be tested
+directly. Sheep are boids — separation, cohesion, alignment, plus fleeing the
+dog and keeping off the fences. The collie follows Strömbom's shepherding
+model: gather whichever sheep has left the flock, then push the whole flock
+from directly behind, on the line to the pen. It commits to a stray until that
+sheep is properly back, because re-picking the farthest one every frame makes
+the dog flip between two strays and move neither.
+
+The pen is a full-height paddock along the left fence. A pen that floats off
+the wall leaves corners a sheep can be pushed into but never out of, and the
+run stalls. `scripts/herding.test.mjs` covers those failure modes and herds 36
+full flocks to make sure a round always finishes; the page also reshuffles
+after 25 seconds without progress.
+
+Moving the pointer over the field takes the lead from the collie, and the
+cursor companion hides while you are in there so there is only ever one dog.
+
 ## Writing a post
 
 Add a Markdown file to `content/posts/` with a small front matter block:
@@ -35,6 +54,7 @@ The home page lists posts newest first.
 - `app/blog/[slug]/page.tsx`: post page
 - `app/portrait.tsx`, `app/portrait-rotation.ts`: rotating portrait
 - `app/companion.tsx`, `app/collie-motion.ts`: pixel border collie cursor companion
+- `app/sheepdog.tsx`, `app/herding.ts`: the sheepdog field in the Personal section
 - `app/page-motion.tsx`: scroll reveals and active navigation tab
 - `app/globals.css`: mizuiro theme and reduced-motion behavior
 - `public/`: portraits, project and research media, pixel artwork, icons, and social card

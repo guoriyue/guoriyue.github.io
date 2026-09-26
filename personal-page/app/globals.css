@@ -1519,6 +1519,134 @@ a:hover {
 .personal-copy p + p {
   margin-top: 16px;
 }
+
+/* Sheepdog field: boids flock, a pen, and a collie that works on its own
+   until the pointer takes the lead. */
+.herding {
+  margin-top: 26px;
+  max-width: 720px;
+}
+.herding-field {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background:
+    radial-gradient(
+      circle at 1px 1px,
+      color-mix(in srgb, var(--primary) 16%, transparent) 1px,
+      transparent 0
+    )
+    0 0 / 16px 16px,
+    var(--cream);
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+.herding-pen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--pen-w);
+  border-right: 2px dashed color-mix(in srgb, var(--primary) 55%, transparent);
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+  transition: background 0.3s ease;
+}
+.herding-pen span {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--primary) 70%, transparent);
+}
+.herding-field[data-complete='true'] .herding-pen {
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+}
+.herding-sheep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 15px;
+  will-change: transform;
+}
+.sheep-sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  shape-rendering: crispedges;
+}
+.sheep-wool {
+  fill: #ffffff;
+}
+.sheep-edge {
+  fill: var(--foreground);
+}
+.herding-sheep[data-penned='true'] .sheep-wool {
+  fill: color-mix(in srgb, var(--primary) 22%, #ffffff);
+}
+.herd-dog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  will-change: transform;
+}
+.herd-dog .collie-sprite {
+  width: 34px;
+  height: 34px;
+}
+.herd-dog[data-state='run'] .collie-sprite {
+  animation: collie-run 0.22s steps(1, end) infinite;
+}
+.herding-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin: 12px 0 0;
+  font-size: 15px;
+  color: #637580;
+}
+.herding-status button {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--primary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+.herding-status button:hover {
+  background: var(--cream);
+  border-color: var(--primary);
+}
+/* One dog at a time: the cursor companion hides over the field. */
+body[data-herding='true'] .cursor-collie {
+  opacity: 0;
+}
+@media (max-width: 600px) {
+  .herding-field {
+    height: 240px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .herd-dog[data-state='run'] .collie-sprite {
+    animation: none;
+  }
+}
 @media (max-width: 480px) {
   .navigation > div {
     flex-wrap: wrap;

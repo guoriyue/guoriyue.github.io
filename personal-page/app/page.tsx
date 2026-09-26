@@ -7,6 +7,7 @@ import {
 } from './content';
 import Companion from './companion';
 import Demo from './demo';
+import Sheepdog from './sheepdog';
 import PageMotion from './page-motion';
 import Portrait from './portrait';
 import { formatDate, getPosts } from './posts';
@@ -464,6 +465,12 @@ export default async function Home() {
               <strong> Rain World</strong>, and the <strong>Nikki</strong>{' '}
               dress-up games.
             </p>
+            <p>
+              And border collies. The one below herds a flock of boids into the
+              pen on its own — take the lead by moving your cursor across the
+              field.
+            </p>
+            <Sheepdog />
           </div>
         </section>
         <section id="writing" className="content-section writing-section">
