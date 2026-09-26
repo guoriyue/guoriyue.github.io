@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   advanceDog,
   autoDogTarget,
@@ -76,10 +76,6 @@ export default function Herding() {
   const fieldRef = useRef<HTMLDivElement>(null);
   const dogRef = useRef<HTMLDivElement>(null);
   const sheepRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [penned, setPenned] = useState(0);
-  const [auto, setAuto] = useState(true);
-  const [still, setStill] = useState(false);
-  const resetRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const field = fieldRef.current;
@@ -99,7 +95,6 @@ export default function Herding() {
     let frame = 0;
     let previous = 0;
     let reportedPenned = -1;
-    let reportedAuto: boolean | null = null;
     let facing = -1;
 
     const paint = () => {
@@ -119,14 +114,9 @@ export default function Herding() {
       wonAt = 0;
       focus = -1;
       progressAt = performance.now();
+      reportedPenned = 0;
+      field.dataset.complete = 'false';
       paint();
-      setPenned(0);
-    };
-    resetRef.current = () => {
-      pointer = null;
-      pointerUntil = 0;
-      setAuto(true);
-      scatter();
     };
 
     const measure = () => {
@@ -145,11 +135,6 @@ export default function Herding() {
       previous = time;
 
       const playing = pointer !== null && time < pointerUntil;
-      if (reportedAuto !== !playing) {
-        reportedAuto = !playing;
-        setAuto(!playing);
-      }
-
       const next =
         playing && pointer
           ? advanceDog(dog, pointer, elapsed, 620)
@@ -176,7 +161,7 @@ export default function Herding() {
       if (total !== reportedPenned) {
         if (total > reportedPenned) progressAt = time;
         reportedPenned = total;
-        setPenned(total);
+        field.dataset.complete = String(total === flock.length);
       }
       if (total === flock.length) {
         if (!wonAt) wonAt = time;
@@ -213,7 +198,6 @@ export default function Herding() {
       else start();
     };
 
-    setStill(reducedMotion.matches);
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(field);
@@ -221,7 +205,6 @@ export default function Herding() {
     field.addEventListener('pointerleave', release);
     document.addEventListener('visibilitychange', visibility);
     const motionPreference = () => {
-      setStill(reducedMotion.matches);
       if (reducedMotion.matches) stop();
       else start();
     };
@@ -239,48 +222,31 @@ export default function Herding() {
     };
   }, []);
 
-  const complete = penned === FLOCK_SIZE;
   return (
-    <div className="herding">
-      <div
-        ref={fieldRef}
-        className="herding-field"
-        data-complete={String(complete)}
-        aria-hidden="true"
-      >
-        <div className="herding-pen">
-          <span>pen</span>
-        </div>
-        {Array.from({ length: FLOCK_SIZE }, (_, index) => (
-          <div
-            key={index}
-            className="herding-sheep"
-            data-penned="false"
-            ref={(node) => {
-              sheepRefs.current[index] = node;
-            }}
-          >
-            <SheepSprite />
-          </div>
-        ))}
-        <div ref={dogRef} className="herd-dog" data-state="run">
-          <span className="collie-sprite" />
-        </div>
+    <div
+      ref={fieldRef}
+      className="herding-field"
+      data-complete="false"
+      aria-hidden="true"
+    >
+      <div className="herding-pen">
+        <span>pen</span>
       </div>
-      <p className="herding-status">
-        <span aria-live="polite">
-          {still
-            ? `${FLOCK_SIZE} sheep, one collie, one pen — held still because your system asks for reduced motion.`
-            : complete
-              ? 'All six penned. Good dog.'
-              : `${penned} of ${FLOCK_SIZE} sheep penned — ${auto ? 'the collie is working' : 'you have the lead'}.`}
-        </span>{' '}
-        {still ? null : (
-          <button type="button" onClick={() => resetRef.current()}>
-            Scatter again
-          </button>
-        )}
-      </p>
+      {Array.from({ length: FLOCK_SIZE }, (_, index) => (
+        <div
+          key={index}
+          className="herding-sheep"
+          data-penned="false"
+          ref={(node) => {
+            sheepRefs.current[index] = node;
+          }}
+        >
+          <SheepSprite />
+        </div>
+      ))}
+      <div ref={dogRef} className="herd-dog" data-state="run">
+        <span className="collie-sprite" />
+      </div>
     </div>
   );
 }

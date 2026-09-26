@@ -30,6 +30,8 @@ after 25 seconds without progress.
 
 Moving the pointer over the field takes the lead from the collie, and the
 cursor companion hides while you are in there so there is only ever one dog.
+The field carries no caption or controls: it runs itself, scattering a fresh
+flock a moment after the last sheep is penned.
 
 ## Writing a post
 

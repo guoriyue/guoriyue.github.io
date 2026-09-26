@@ -1522,11 +1522,9 @@ a:hover {
 
 /* Sheepdog field: boids flock, a pen, and a collie that works on its own
    until the pointer takes the lead. */
-.herding {
+.herding-field {
   margin-top: 26px;
   max-width: 720px;
-}
-.herding-field {
   position: relative;
   height: 300px;
   overflow: hidden;
@@ -1605,33 +1603,6 @@ a:hover {
 }
 .herd-dog[data-state='run'] .collie-sprite {
   animation: collie-run 0.22s steps(1, end) infinite;
-}
-.herding-status {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 10px;
-  margin: 12px 0 0;
-  font-size: 15px;
-  color: #637580;
-}
-.herding-status button {
-  padding: 4px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--primary);
-  font: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background 0.18s ease,
-    border-color 0.18s ease;
-}
-.herding-status button:hover {
-  background: var(--cream);
-  border-color: var(--primary);
 }
 /* One dog at a time: the cursor companion hides over the field. */
 body[data-herding='true'] .cursor-collie {

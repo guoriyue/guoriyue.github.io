@@ -465,11 +465,6 @@ export default async function Home() {
               <strong> Rain World</strong>, and the <strong>Nikki</strong>{' '}
               dress-up games.
             </p>
-            <p>
-              And border collies. The one below herds a flock of boids into the
-              pen on its own — take the lead by moving your cursor across the
-              field.
-            </p>
             <Sheepdog />
           </div>
         </section>
