@@ -1,5 +1,5 @@
 ---
-title: TinyTriton, Step 1: From source code to instructions
+title: Step 1: From source code to instructions
 date: 2026-09-26
 description: Build your first compiler representation in Python. Learn syntax trees, instructions, tiles, and compile-time constants before implementing the exercise.
 ---
@@ -147,6 +147,8 @@ to `[0, 1, 2, 3]` reuses it at every position. This is **broadcasting**.
 
 At this stage, we record these operations. Their execution comes in the next lesson.
 
+<a id="compile-time-inputs"></a>
+
 ## 4. Why `BLOCK: tl.constexpr` is different
 
 There are two moments when information can become available:
@@ -254,6 +256,8 @@ You have constructed a program containing one addition. No numbers were added.
 The class name `Instr` and a variable name such as `instr` both refer to this
 notion of a recorded instruction; neither is a special Python keyword.
 
+<a id="exercise-interface"></a>
+
 ## 7. The exercise interface
 
 Clone the [companion repository](https://github.com/guoriyue/TinyTriton), which
@@ -355,6 +359,8 @@ The supported subset is deliberately small: the sample's annotated parameters,
 numeric literals, names, simple assignments, `+`, `*`, a single `<`, and its four
 `tl` operations. It does not compile arbitrary Python or validate every malformed
 program. In particular, loads have explicit `mask` and `other`; stores have `mask`.
+
+<a id="inspect-your-result"></a>
 
 ## 9. Inspect your result
 
