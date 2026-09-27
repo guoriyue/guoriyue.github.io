@@ -18,6 +18,7 @@ async function addDirectoryIndexes(directory) {
     }
   }
 }
+await copyFile(join(OUTPUT, 'blog.html'), join(OUTPUT, 'blog', 'index.html'));
 await addDirectoryIndexes(join(OUTPUT, 'blog'));
 
 // List every directory index as a canonical trailing-slash URL.

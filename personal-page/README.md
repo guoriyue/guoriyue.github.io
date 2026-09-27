@@ -43,12 +43,24 @@ Add a Markdown file to `content/posts/` with a small front matter block:
     title: Post title
     date: 2026-09-19
     description: One line shown in the blog list.
+    label: AI Systems
+    series: TinyTriton
+    part: 1
     ---
 
     Body in GitHub-flavored Markdown.
 
 The file name becomes the URL (`content/posts/my-post.md` → `/blog/my-post/`).
-The home page lists posts newest first.
+The home page previews the latest three articles, excluding series overviews.
+The full archive lives at `/blog/`, with topic filters and articles grouped by
+series. Labels come from the posts themselves; no separate category list is needed.
+Use `part: 0` for a series overview, `part: 1` for its first lesson, and so on.
+Omit `part` for an unnumbered article, and omit `series` for standalone writing.
+Within a series, numbered entries appear in reading order. Topic selections are
+shareable URLs, such as `/blog/#topic-ai-systems` and `/blog/#topic-3d`.
+
+When an article is also published in a project repository, keep its Markdown body
+identical here; only the front matter and the H1 rendered by the blog template differ.
 
 ## Layout
 

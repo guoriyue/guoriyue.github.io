@@ -8,6 +8,9 @@ export type Post = {
   date: string;
   description: string;
   html: string;
+  label: string;
+  series: string;
+  part?: number;
 };
 
 const postsDirectory = join(process.cwd(), 'content', 'posts');
@@ -34,6 +37,9 @@ export async function getPost(slug: string): Promise<Post> {
     date: fields.date ?? '',
     description: fields.description ?? '',
     html: await marked.parse(body, { gfm: true }),
+    label: fields.label ?? 'Notes',
+    series: fields.series ?? '',
+    part: fields.part === undefined ? undefined : Number(fields.part),
   };
 }
 
@@ -44,15 +50,7 @@ export async function getPosts(): Promise<Post[]> {
       .filter((name) => name.endsWith('.md'))
       .map((name) => getPost(name.slice(0, -3))),
   );
-  return posts.sort((a, b) => b.date.localeCompare(a.date));
-}
-
-export function formatDate(date: string) {
-  if (!date) return '';
-  return new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC',
-  });
+  return posts.sort(
+    (a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title),
+  );
 }

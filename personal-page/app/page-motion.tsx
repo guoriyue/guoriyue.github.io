@@ -35,7 +35,7 @@ export default function PageMotion() {
     setup();
     reduced.addEventListener('change', setup);
     const links = Array.from(
-      document.querySelectorAll<HTMLAnchorElement>('.navigation a'),
+      document.querySelectorAll<HTMLAnchorElement>('.navigation a[href^="#"]'),
     );
     const sections = links
       .map((link) => document.querySelector<HTMLElement>(link.hash))

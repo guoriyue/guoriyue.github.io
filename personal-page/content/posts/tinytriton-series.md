@@ -2,6 +2,9 @@
 title: TinyTriton: Build a GPU compiler, one step at a time
 date: 2026-09-26
 description: A fifteen-part series for Python programmers with no compiler background, starting with a small array program and growing toward GPU execution and optimization.
+label: AI Systems
+series: TinyTriton
+part: 0
 ---
 
 How does an array expression become something a GPU can execute? Between writing

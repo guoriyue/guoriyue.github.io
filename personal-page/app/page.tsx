@@ -10,7 +10,8 @@ import Demo from './demo';
 import Sheepdog from './sheepdog';
 import PageMotion from './page-motion';
 import Portrait from './portrait';
-import { formatDate, getPosts } from './posts';
+import { getPosts } from './posts';
+import PostPreview from './blog/post-preview';
 
 const sections = [
   ['about', 'About'],
@@ -68,7 +69,7 @@ export default async function Home() {
       <nav className="navigation" aria-label="On this page">
         <div>
           {sections.map(([id, title]) => (
-            <a key={id} href={`#${id}`}>
+            <a key={id} href={id === 'writing' ? '/blog/' : `#${id}`}>
               {title}
             </a>
           ))}
@@ -473,14 +474,17 @@ export default async function Home() {
         </section>
         <section id="writing" className="content-section writing-section">
           <Heading title="Blog" kind="writing" />
+          <div className="writing-intro">
+            <p>Latest articles on 3D graphics and AI systems.</p>
+            <a href="/blog/">All articles & series →</a>
+          </div>
           <ul className="post-list">
-            {posts.map((post) => (
-              <li key={post.slug} className="post-list-item">
-                <a href={`/blog/${post.slug}/`}>{post.title}</a>
-                <time dateTime={post.date}>{formatDate(post.date)}</time>
-                {post.description ? <p>{post.description}</p> : null}
-              </li>
-            ))}
+            {posts
+              .filter((post) => post.part !== 0)
+              .slice(0, 3)
+              .map((post) => (
+                <PostPreview key={post.slug} post={post} />
+              ))}
           </ul>
         </section>
 

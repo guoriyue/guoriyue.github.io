@@ -2,6 +2,9 @@
 title: Step 1: From source code to instructions
 date: 2026-09-26
 description: Build your first compiler representation in Python. Learn syntax trees, instructions, tiles, and compile-time constants before implementing the exercise.
+label: AI Systems
+series: TinyTriton
+part: 1
 ---
 
 [Series overview](https://guoriyue.github.io/blog/tinytriton-series/) · Lesson 1 of 15

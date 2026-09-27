@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Companion from '../../companion';
-import { formatDate, getPost, getPosts } from '../../posts';
+import { getPost, getPosts } from '../../posts';
+import { formatDate, PostMetadata } from '../post-preview';
+import BlogNavigation from '../navigation';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -34,24 +36,14 @@ export default async function BlogPost({ params }: Params) {
   const post = await getPost(slug);
   return (
     <>
-      <nav className="navigation" aria-label="Main navigation">
-        <div>
-          <a href="/">About</a>
-          <a href="/#work">Projects</a>
-          <a href="/#experience">Experience</a>
-          <a href="/#education">Education</a>
-          <a href="/#personal">Personal</a>
-          <a href="/#writing" aria-current="location">
-            Blog
-          </a>
-        </div>
-      </nav>
+      <BlogNavigation />
       <main className="blog-article" id="main">
         <article>
           <header className="post-header">
-            <a className="back-link" href="/#writing">
+            <a className="back-link" href="/blog/">
               ← Blog
             </a>
+            <PostMetadata post={post} />
             <h1>{post.title}</h1>
             {post.date ? (
               <time dateTime={post.date}>{formatDate(post.date)}</time>
