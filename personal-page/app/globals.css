@@ -1788,26 +1788,6 @@ body[data-herding='true'] .cursor-collie {
   margin: 0 auto;
   padding: 44px 24px 64px;
 }
-.archive-header {
-  padding: 36px 24px;
-  margin: 0 auto 26px;
-  border: 1px solid #c4e2ee;
-  border-radius: 20px;
-  background: linear-gradient(140deg, #e5f3fa, #f3faff);
-  text-align: center;
-}
-.archive-header h1 {
-  margin: 0 0 12px;
-  font-size: clamp(40px, 7vw, 58px);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-}
-.archive-header > p {
-  max-width: 520px;
-  margin: 0 auto;
-  font-size: 18px;
-  color: #506b7b;
-}
 .topic-filters {
   display: flex;
   flex-wrap: wrap;
@@ -1965,13 +1945,6 @@ body[data-herding='true'] .cursor-collie {
   }
   .series-heading h2 {
     font-size: 24px;
-  }
-  .archive-header {
-    padding: 30px 18px;
-    border-radius: 16px;
-  }
-  .archive-header > p {
-    font-size: 16px;
   }
   .series-section {
     padding: 20px 14px 14px;
