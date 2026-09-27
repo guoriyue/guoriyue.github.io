@@ -10,8 +10,6 @@ import Demo from './demo';
 import Sheepdog from './sheepdog';
 import PageMotion from './page-motion';
 import Portrait from './portrait';
-import { getPosts } from './posts';
-import PostPreview from './blog/post-preview';
 
 const sections = [
   ['about', 'About'],
@@ -58,8 +56,7 @@ function Authors({ names }: { names: string }) {
   );
 }
 
-export default async function Home() {
-  const posts = await getPosts();
+export default function Home() {
   const featured = publications[0];
   return (
     <div className="site-shell">
@@ -472,22 +469,6 @@ export default async function Home() {
             <Sheepdog />
           </div>
         </section>
-        <section id="writing" className="content-section writing-section">
-          <Heading title="Blog" kind="writing" />
-          <div className="writing-intro">
-            <p>Latest articles on 3D graphics and AI systems.</p>
-            <a href="/blog/">All articles & series →</a>
-          </div>
-          <ul className="post-list">
-            {posts
-              .filter((post) => post.part !== 0)
-              .slice(0, 3)
-              .map((post) => (
-                <PostPreview key={post.slug} post={post} />
-              ))}
-          </ul>
-        </section>
-
         <footer>
           <span>© {new Date().getFullYear()} Mingfei Guo</span>
           <a href="#about">Back to top ↑</a>

@@ -51,7 +51,7 @@ Add a Markdown file to `content/posts/` with a small front matter block:
     Body in GitHub-flavored Markdown.
 
 The file name becomes the URL (`content/posts/my-post.md` → `/blog/my-post/`).
-The home page previews the latest three articles, excluding series overviews.
+The home page links to the blog archive through its navigation; article previews appear only in the archive.
 The full archive lives at `/blog/`, with topic filters and articles grouped by
 series. Labels come from the posts themselves; no separate category list is needed.
 Use `part: 0` for a series overview, `part: 1` for its first lesson, and so on.

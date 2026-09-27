@@ -1739,24 +1739,7 @@ body[data-herding='true'] .cursor-collie {
   margin-bottom: 16px;
 }
 
-/* Topics and series share the same article previews on home and blog pages. */
-.writing-intro {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-  max-width: 720px;
-  margin: 0 0 20px;
-}
-.writing-intro p {
-  margin: 0;
-  color: #637580;
-}
-.writing-intro > a {
-  font-size: 15px;
-  font-weight: 600;
-  white-space: nowrap;
-}
+/* Blog article metadata and archive layout. */
 .post-list-item h3 {
   margin: 10px 0 0;
 }
@@ -1936,10 +1919,6 @@ body[data-herding='true'] .cursor-collie {
   font-size: 14px;
 }
 @media (max-width: 600px) {
-  .writing-intro {
-    flex-direction: column;
-    gap: 10px;
-  }
   .blog-index {
     padding-top: 32px;
   }

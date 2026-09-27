@@ -16,19 +16,11 @@ test('every published article is reachable from the static blog archive', async 
   }
 });
 
-test('homepage previews at most three articles and leaves overviews in the archive', async () => {
+test('homepage links to the blog without embedding article previews', async () => {
   const html = await exported('index.html');
-  const writing = html.split('<section id="writing"')[1].split('</section>')[0];
-  const previews = [...writing.matchAll(/class="post-list-item"/g)];
-  const posts = await getPosts();
-  assert.equal(
-    previews.length,
-    Math.min(3, posts.filter((post) => post.part !== 0).length),
-  );
-  for (const post of posts.filter((post) => post.part === 0)) {
-    assert.ok(!writing.includes(`href="/blog/${post.slug}/"`));
-  }
-  assert.ok(writing.includes('href="/blog/"'));
+  assert.ok(html.includes('href="/blog/"'));
+  assert.ok(!html.includes('<section id="writing"'));
+  assert.ok(!html.includes('class="post-list-item"'));
 });
 
 test('blog archive and all articles are included in the sitemap', async () => {
