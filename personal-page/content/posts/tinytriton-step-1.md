@@ -369,37 +369,3 @@ After implementing the TODOs, run:
 ```bash
 tinytriton check step01
 ```
-
-To inspect what you produced:
-
-```python
-from problems.step01 import Compiler
-from tinytriton import kernels
-
-compiler = Compiler()
-program = compiler.lower(compiler.parse(kernels.vector_add), block=4)
-print(program.params)
-for instruction in program.body:
-    print(instruction)
-```
-
-Check these properties before comparing with another implementation:
-
-- Runtime parameters are `x`, `y`, `out`, and `n`; the tile width is already fixed.
-- Every operand refers to a parameter or a result defined earlier.
-- The range has four elements. Adding the scalar program offset keeps that shape.
-- Comparing offsets with `n` produces four Booleans.
-- Loads produce floating-point tiles; the final store has no result.
-
-The automated checks cover these representation contracts, expression dependencies,
-fresh compilation state, and misspelled names. They do **not** execute the IR on
-arrays or prove that every possible input is handled. That is the next lesson's
-job.
-
-| If you see… | Check… |
-|---|---|
-| `NotImplementedError` | Whether the named TODO is implemented |
-| Missing `block`, `body`, or `env` | Initialization before visiting statements |
-| `KeyError: BLOCK` | Compile-time name resolution, separate from runtime inputs |
-| A literal where an operand should be | Constants have result `Value` records too |
-| An empty returned body | Whether the helpers append to the program's actual list |
