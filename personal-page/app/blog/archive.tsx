@@ -58,17 +58,30 @@ export default function BlogArchive({ posts }: { posts: PostSummary[] }) {
               aria-labelledby={`${seriesId(name || 'other-writing')}-title`}
             >
               <header className="series-heading">
-                <div>
-                  <p className="eyebrow">{name ? 'Series' : 'Articles'}</p>
-                  <h2 id={`${seriesId(name || 'other-writing')}-title`}>
-                    {name || 'Other writing'}
-                  </h2>
+                <div className="series-context">
+                  {[...new Set(articles.map((post) => post.label))].map(
+                    (label) => (
+                      <a
+                        className="series-topic"
+                        key={label}
+                        href={`#${topicId(label)}`}
+                      >
+                        {label}
+                      </a>
+                    ),
+                  )}
+                  <span>
+                    {articles.length}{' '}
+                    {articles.length === 1 ? 'article' : 'articles'}
+                  </span>
                 </div>
-                <span>{articles.length} published</span>
+                <h2 id={`${seriesId(name || 'other-writing')}-title`}>
+                  {name || 'Other writing'}
+                </h2>
               </header>
               <ul className="post-list">
                 {articles.map((post) => (
-                  <PostPreview key={post.slug} post={post} />
+                  <PostPreview key={post.slug} post={post} grouped />
                 ))}
               </ul>
             </section>

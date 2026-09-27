@@ -38,14 +38,40 @@ export function PostMetadata({ post }: { post: PostSummary }) {
   );
 }
 
-export default function PostPreview({ post }: { post: PostSummary }) {
+export default function PostPreview({
+  post,
+  grouped = false,
+}: {
+  post: PostSummary;
+  grouped?: boolean;
+}) {
   return (
     <li className="post-list-item">
-      <PostMetadata post={post} />
+      {grouped ? (
+        <div className="article-kicker">
+          {post.part !== undefined ? (
+            <span className="part-badge">
+              {post.part === 0 ? 'Overview' : `Step ${post.part}`}
+            </span>
+          ) : null}
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
+        </div>
+      ) : (
+        <PostMetadata post={post} />
+      )}
       <h3>
-        <a href={`/blog/${post.slug}/`}>{post.title}</a>
+        <a href={`/blog/${post.slug}/`}>
+          <span>{post.title}</span>
+          {grouped ? (
+            <span className="article-arrow" aria-hidden="true">
+              ↗
+            </span>
+          ) : null}
+        </a>
       </h3>
-      <time dateTime={post.date}>{formatDate(post.date)}</time>
+      {!grouped ? (
+        <time dateTime={post.date}>{formatDate(post.date)}</time>
+      ) : null}
       {post.description ? <p>{post.description}</p> : null}
     </li>
   );

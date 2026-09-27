@@ -25,12 +25,8 @@ export default async function Blog() {
       <BlogNavigation />
       <main className="blog-index" id="main">
         <header className="archive-header">
-          <p className="eyebrow">Notes from building</p>
           <h1>Blog</h1>
           <p>3D graphics, AI systems, and the code behind them.</p>
-          <p className="archive-intro">
-            Pick a topic, or follow a series from its first article.
-          </p>
         </header>
         <BlogArchive posts={posts} />
         <footer>
