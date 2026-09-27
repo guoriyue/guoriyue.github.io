@@ -403,25 +403,3 @@ job.
 | `KeyError: BLOCK` | Compile-time name resolution, separate from runtime inputs |
 | A literal where an operand should be | Constants have result `Value` records too |
 | An empty returned body | Whether the helpers append to the program's actual list |
-
-**Try a new case:** specialize for `BLOCK=8` while the runtime input length is
-six. Which shapes change? Which parameters remain? Sketch the first program's
-mask, and explain why lowering does not need to know `n` to describe that mask.
-
-<details>
-<summary>Compare after attempting the exercise</summary>
-
-Read [solutions/step01.py](https://github.com/guoriyue/TinyTriton/blob/main/solutions/step01.py), then run:
-
-```bash
-tinytriton check step01 --solution
-```
-
-Compare the meaning of the records and dependencies. Temporary names need not
-match. The reference is one implementation of the contracts introduced above.
-
-</details>
-
-We now have a description of array addition that another program can inspect.
-In Step 2, we will write an interpreter: a program that follows these instructions
-and computes actual values. That lesson will be published separately.
