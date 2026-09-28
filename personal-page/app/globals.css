@@ -274,6 +274,21 @@ figure {
   color: #303f68;
   margin-top: 9px;
 }
+.research-section .small-project {
+  padding: 14px 0;
+}
+.research-section .small-project:first-child {
+  padding-top: 0;
+}
+.research-section .small-project h3 {
+  margin-bottom: 4px;
+}
+.research-section .authors {
+  margin-top: 0;
+}
+.research-section .compact-meta {
+  margin-top: 5px;
+}
 .tiny-triton h3 span {
   font-size: 12px;
   font-weight: 400;

@@ -407,7 +407,6 @@ export default function Home() {
                 <h3>
                   <a href={p.url}>{p.title} ↗</a>
                 </h3>
-                <p>{p.description}</p>
                 <Authors names={p.authors} />
                 <div className="compact-meta">
                   <span>
