@@ -585,7 +585,8 @@ footer {
 .social-links a:hover {
   transform: translateY(-3px);
 }
-.heading-title:hover .section-art {
+/* Hover takes priority over the completed scroll-in greeting. */
+.section-heading .heading-title:hover .section-art {
   animation: icon-hop 0.4s ease;
 }
 @keyframes icon-hop {
