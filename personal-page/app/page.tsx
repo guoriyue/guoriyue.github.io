@@ -399,7 +399,7 @@ export default function Home() {
             ))}
           </div>
         </section>
-        <section id="research" className="content-section research-section">
+        <section id="publications" className="content-section research-section">
           <Heading title="Publications" kind="research" />
           <div className="project-list">
             {publications.map((p) => (
