@@ -236,9 +236,6 @@ export default function Home() {
                 <div className="paper-links">
                   <a href={projects[1].url}>Code ↗</a>
                   <GitHubStars url={projects[1].url} />
-                  <a href="https://github.com/guoriyue/VRL/tree/main/docs/training_examples/sd3_5_ocr_grpo">
-                    Training example ↗
-                  </a>
                 </div>
               </div>
             </article>
@@ -293,10 +290,7 @@ export default function Home() {
                 </h3>
                 <p className="project-keywords">{p.tag}</p>
                 <p>{p.description}</p>
-                <div className="repo-links">
-                  <a className="work-link" href={p.url}>Code ↗</a>
-                  <GitHubStars url={p.url} />
-                </div>
+                <a className="work-link" href={p.url}>Code ↗</a>
               </article>
             ))}
             <article className="small-project tiny-triton">
@@ -311,12 +305,9 @@ export default function Home() {
                 source code and instructions; later lessons introduce GPU
                 execution and optimization. No compiler background assumed.
               </p>
-              <div className="repo-links">
-                <a className="project-link" href="/blog/tinytriton-series/">
-                  Read the series ↗
-                </a>
-                <GitHubStars url="https://github.com/guoriyue/TinyTriton" />
-              </div>
+              <a className="project-link" href="/blog/tinytriton-series/">
+                Read the series ↗
+              </a>
             </article>
             <article className="small-project">
               <h3>
