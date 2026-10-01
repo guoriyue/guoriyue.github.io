@@ -29,6 +29,7 @@
     "react": "19.2.6",
     "react-day-picker": "9.8.1",
     "react-dom": "19.2.6",
+    "react-github-btn": "^1.4.0",
     "react-resizable-panels": "4.5.8",
     "react-server-dom-webpack": "19.2.6",
     "recharts": "3.8.0",

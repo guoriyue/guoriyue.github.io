@@ -10,6 +10,7 @@ import Demo from './demo';
 import Sheepdog from './sheepdog';
 import PageMotion from './page-motion';
 import Portrait from './portrait';
+import GitHubStars from './github-stars';
 
 const sections = [
   ['about', 'About'],
@@ -234,6 +235,7 @@ export default function Home() {
                 </p>
                 <div className="paper-links">
                   <a href={projects[1].url}>Code ↗</a>
+                  <GitHubStars url={projects[1].url} />
                   <a href="https://github.com/guoriyue/VRL/tree/main/docs/training_examples/sd3_5_ocr_grpo">
                     Training example ↗
                   </a>
@@ -278,6 +280,7 @@ export default function Home() {
                 </p>
                 <div className="paper-links">
                   <a href={projects[0].url}>Code ↗</a>
+                  <GitHubStars url={projects[0].url} />
                 </div>
               </div>
             </article>
@@ -290,9 +293,10 @@ export default function Home() {
                 </h3>
                 <p className="project-keywords">{p.tag}</p>
                 <p>{p.description}</p>
-                <a className="work-link" href={p.url}>
-                  Code ↗
-                </a>
+                <div className="repo-links">
+                  <a className="work-link" href={p.url}>Code ↗</a>
+                  <GitHubStars url={p.url} />
+                </div>
               </article>
             ))}
             <article className="small-project tiny-triton">
@@ -307,9 +311,12 @@ export default function Home() {
                 source code and instructions; later lessons introduce GPU
                 execution and optimization. No compiler background assumed.
               </p>
-              <a className="project-link" href="/blog/tinytriton-series/">
-                Read the series ↗
-              </a>
+              <div className="repo-links">
+                <a className="project-link" href="/blog/tinytriton-series/">
+                  Read the series ↗
+                </a>
+                <GitHubStars url="https://github.com/guoriyue/TinyTriton" />
+              </div>
             </article>
             <article className="small-project">
               <h3>
@@ -346,6 +353,7 @@ export default function Home() {
                 <p>{projects[2].description}</p>
                 <div className="paper-links">
                   <a href={projects[2].url}>Code ↗</a>
+                  <GitHubStars url={projects[2].url} />
                 </div>
               </div>
             </article>

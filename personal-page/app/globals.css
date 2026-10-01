@@ -1953,3 +1953,23 @@ body[data-herding='true'] .cursor-collie {
     gap: 10px;
   }
 }
+
+/* Keep the GitHub widget's own button styling isolated from page links. */
+.github-stars {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  min-width: 110px;
+  line-height: 1;
+}
+.repo-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+.paper-links:has(.github-stars) {
+  align-items: center;
+  flex-wrap: wrap;
+}
