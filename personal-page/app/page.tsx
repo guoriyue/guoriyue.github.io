@@ -233,7 +233,7 @@ export default function Home() {
                   counts as validated once a real run shows rising reward and
                   changed weights. The SD3.5 OCR-GRPO run above is one.
                 </p>
-                <div className="paper-links">
+                <div className="paper-links repo-links">
                   <a href={projects[1].url}>Code ↗</a>
                   <GitHubStars url={projects[1].url} />
                 </div>
@@ -275,7 +275,7 @@ export default function Home() {
                   gaussian-splatting-lightning, restructured to strip data
                   preparation down to the minimum.
                 </p>
-                <div className="paper-links">
+                <div className="paper-links repo-links">
                   <a href={projects[0].url}>Code ↗</a>
                   <GitHubStars url={projects[0].url} />
                 </div>
@@ -342,7 +342,7 @@ export default function Home() {
                 </h3>
                 <p className="work-meta">Local inference · C++ · llama.cpp</p>
                 <p>{projects[2].description}</p>
-                <div className="paper-links">
+                <div className="paper-links repo-links">
                   <a href={projects[2].url}>Code ↗</a>
                   <GitHubStars url={projects[2].url} />
                 </div>

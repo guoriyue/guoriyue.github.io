@@ -76,6 +76,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="renderer" content="webkit" />
+        <script
+          id="browser-compat"
+          dangerouslySetInnerHTML={{
+            // The router calls this before React mounts. Keep the fallback
+            // synchronous so older Chromium does not discard the rendered page.
+            __html: `if (!Object.hasOwn) {
+  Object.defineProperty(Object, 'hasOwn', {
+    configurable: true,
+    writable: true,
+    value: function (object, key) {
+      return Object.prototype.hasOwnProperty.call(object, key);
+    }
+  });
+}`,
+          }}
+        />
+      </head>
       <body>
         {children}
         <script

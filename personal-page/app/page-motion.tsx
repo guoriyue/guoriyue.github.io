@@ -50,7 +50,7 @@ export default function PageMotion() {
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 4
       )
-        active = sections.at(-1)?.id;
+        active = sections[sections.length - 1]?.id;
       links.forEach((link) => {
         if (link.hash === `#${active}`)
           link.setAttribute('aria-current', 'location');

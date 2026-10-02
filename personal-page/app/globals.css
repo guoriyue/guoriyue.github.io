@@ -1962,7 +1962,26 @@ body[data-herding='true'] .cursor-collie {
   min-width: 110px;
   line-height: 1;
 }
-.paper-links:has(.github-stars) {
+.paper-links.repo-links {
   align-items: center;
   flex-wrap: wrap;
+}
+
+/* Preserve the same media rows before Chromium supported aspect-ratio. */
+@supports not (aspect-ratio: 7 / 4) {
+  .project-card .work-preview > a,
+  .project-card .demo-container picture {
+    display: block;
+    position: relative;
+    height: 0;
+    padding-top: 57.142857%;
+  }
+  .project-card .work-preview > a > img,
+  .project-card .demo-container picture > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
