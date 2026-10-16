@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-labelledby="title desc"><title id="title">Two interfaces with different inputs</title><desc id="desc">The annotation classifies a parameter and the caller supplies its value</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#637580"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#374d5d}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="600" fill="#f8fafb"/>
+<text x="32" y="44" font-size="28" style="fill:#374d5d" font-weight="700">Two interfaces with different inputs</text>
+<text x="32" y="78" font-size="19" style="fill:#637580">The annotation classifies a parameter and the caller supplies its value</text>
+<rect x="32" y="110" width="420" height="235" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="52" y="146" font-size="24" style="fill:#374d5d" font-weight="700">Compiler interface</text>
+<text x="52" y="188" font-size="20" style="fill:#374d5d" class="code">lower(function, block=4)</text>
+<text x="52" y="224" font-size="20" style="fill:#374d5d" class="code">self.block = 4</text>
+<text x="52" y="260" font-size="20" style="fill:#374d5d" class="code">BLOCK is fixed during compilation</text>
+<rect x="508" y="110" width="420" height="235" rx="10" fill="#fff" stroke="#dce5e9"/>
+<text x="528" y="146" font-size="24" style="fill:#374d5d" font-weight="700">Generated program interface</text>
+<text x="528" y="188" font-size="20" style="fill:#374d5d" class="code">vector_add(x, y, out, n)</text>
+<text x="528" y="224" font-size="20" style="fill:#374d5d" class="code">n is provided during execution</text>
+<text x="528" y="260" font-size="20" style="fill:#374d5d" class="code">BLOCK is not a runtime parameter</text>
+<path d="M460 230L497 230" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="380" width="896" height="110" rx="10" fill="#fff" stroke="#dce5e9"/>
+<text x="52" y="416" font-size="24" style="fill:#374d5d" font-weight="700">Resolving a later use of BLOCK</text>
+<text x="52" y="458" font-size="24" style="fill:#374d5d" class="code">visit(Name(&quot;BLOCK&quot;)) → constexpr → self.block → 4</text>
+<rect x="32" y="527" width="896" height="48" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="50" y="559" font-size="21" style="fill:#277a9a">Skipping runtime registration preserves the value already saved in self.block</text>
+</svg>

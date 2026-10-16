@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="710" viewBox="0 0 960 710" role="img" aria-labelledby="title desc"><title id="title">Three records describe the computation</title><desc id="desc">Value describes a result without containing its runtime data</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#637580"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#374d5d}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="710" fill="#f8fafb"/>
+<text x="32" y="44" font-size="28" style="fill:#374d5d" font-weight="700">Three records describe the computation</text>
+<text x="32" y="78" font-size="19" style="fill:#637580">Value describes a result without containing its runtime data</text>
+<rect x="32" y="110" width="896" height="135" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="52" y="146" font-size="24" style="fill:#374d5d" font-weight="700">Program</text>
+<text x="52" y="188" font-size="23" style="fill:#374d5d" class="code">name = &quot;example&quot;    params = [a, b]    body = [instruction]</text>
+<path d="M480 251L480 269" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="275" width="896" height="135" rx="10" fill="#e8f4ef" stroke="#dce5e9"/>
+<text x="52" y="311" font-size="24" style="fill:#374d5d" font-weight="700">Instr</text>
+<text x="52" y="353" font-size="23" style="fill:#374d5d" class="code">result = result_value    op = &quot;add&quot;    args = (a, b)</text>
+<path d="M480 416L480 434" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="440" width="896" height="135" rx="10" fill="#fcf0e5" stroke="#dce5e9"/>
+<text x="52" y="476" font-size="24" style="fill:#374d5d" font-weight="700">Value</text>
+<text x="52" y="518" font-size="26" style="fill:#374d5d" class="code">name = &quot;%0&quot;    kind = &quot;int&quot;    shape = ()</text>
+<rect x="32" y="637" width="896" height="48" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="50" y="669" font-size="21" style="fill:#277a9a">args reference IR values and attrs store known operation settings</text>
+</svg>

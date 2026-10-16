@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="610" viewBox="0 0 960 610" role="img" aria-labelledby="title desc"><title id="title">From nested syntax to ordered operations</title><desc id="desc">The source expression is answer = a + b * 2</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#637580"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#374d5d}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="610" fill="#f8fafb"/>
+<text x="32" y="44" font-size="28" style="fill:#374d5d" font-weight="700">From nested syntax to ordered operations</text>
+<text x="32" y="78" font-size="19" style="fill:#637580">The source expression is answer = a + b * 2</text>
+<rect x="32" y="110" width="420" height="390" rx="10" fill="#fff" stroke="#dce5e9"/>
+<text x="52" y="146" font-size="24" style="fill:#374d5d" font-weight="700">AST</text>
+<rect x="148" y="176" width="190" height="47" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="160" y="207" font-size="19" style="fill:#374d5d">Assign answer</text>
+<rect x="164" y="258" width="154" height="47" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="176" y="289" font-size="19" style="fill:#374d5d">Add</text>
+<rect x="65" y="350" width="140" height="47" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="77" y="381" font-size="19" style="fill:#374d5d">Name a</text>
+<rect x="263" y="350" width="158" height="47" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="275" y="381" font-size="19" style="fill:#374d5d">Multiply</text>
+<rect x="222" y="431" width="100" height="47" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="234" y="462" font-size="19" style="fill:#374d5d">Name b</text>
+<rect x="335" y="431" width="95" height="47" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="347" y="462" font-size="19" style="fill:#374d5d">Const 2</text>
+<path d="M243 224L243 250" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M210 307L140 341" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M275 307L342 341" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M310 398L273 423" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M368 398L382 423" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="508" y="110" width="420" height="250" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="528" y="146" font-size="24" style="fill:#374d5d" font-weight="700">IR</text>
+<text x="528" y="188" font-size="23" style="fill:#374d5d" class="code">%0 = const(value=2)</text>
+<text x="528" y="224" font-size="23" style="fill:#374d5d" class="code">%1 = mul(b, %0)</text>
+<text x="528" y="260" font-size="23" style="fill:#374d5d" class="code">%2 = add(a, %1)</text>
+<rect x="508" y="385" width="420" height="115" rx="10" fill="#fff" stroke="#dce5e9"/>
+<text x="528" y="421" font-size="24" style="fill:#374d5d" font-weight="700">Name binding</text>
+<text x="528" y="463" font-size="23" style="fill:#374d5d" class="code">env[&quot;answer&quot;] → %2</text>
+<path d="M461 300L497 300" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="537" width="896" height="48" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
+<text x="50" y="569" font-size="21" style="fill:#277a9a">Define a result before recording an operation that uses it</text>
+</svg>

@@ -26,6 +26,13 @@ instructions. GPU thread assignment and code generation come later.
 Basic Python functions, lists, dictionaries, and classes are sufficient for this
 lesson. No GPU or previous compiler knowledge is required.
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/01-two-programs.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/01-two-programs.svg" alt="Figure 1. The compiler constructs a description before the kernel executes" loading="lazy" width="960" height="570" />
+</a>
+<figcaption>Figure 1. The compiler constructs a description before the kernel executes. Open the figure to enlarge it.</figcaption>
+</figure>
+
 ## 1. Describe a calculation before running it
 
 Consider a small expression.
@@ -100,6 +107,13 @@ Lowering is a general translation process. It does not prescribe how every
 language must represent constants or parameters. Those choices belong to the
 language and compiler being implemented.
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/02-ast-to-ir.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/02-ast-to-ir.svg" alt="Figure 2. Nested syntax becomes operations with explicit dependencies" loading="lazy" width="960" height="610" />
+</a>
+<figcaption>Figure 2. Nested syntax becomes operations with explicit dependencies. Open the figure to enlarge it.</figcaption>
+</figure>
+
 ## 3. The small language we will compile
 
 The compiler receives a string containing a function.
@@ -150,6 +164,13 @@ Two program instances cover the input.
 | 0 | `[0,1,2,3]` | `[True,True,True,True]` |
 | 1 | `[4,5,6,7]` | `[True,True,False,False]` |
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/03-tiles-and-mask.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/03-tiles-and-mask.svg" alt="Figure 3. Two program instances cover six elements with a masked final tile" loading="lazy" width="960" height="550" />
+</a>
+<figcaption>Figure 3. Two program instances cover six elements with a masked final tile. Open the figure to enlarge it.</figcaption>
+</figure>
+
 For program 1, multiplying its ID by four gives the scalar four. Adding that
 scalar to `[0,1,2,3]` gives `[4,5,6,7]`. Reusing a scalar at each tile position
 is **broadcasting**.
@@ -158,6 +179,13 @@ The mask prevents reads at offsets six and seven. The two loads produce
 `a=[5,6,0,0]` and `b=[50,60,0,0]`. Their sum is `[55,66,0,0]`, but the store
 writes only positions four and five. The zeros at invalid positions are not
 written to memory.
+
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/04-memory.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/04-memory.svg" alt="Figure 4. Pointer arithmetic computes addresses before memory is read or written" loading="lazy" width="960" height="680" />
+</a>
+<figcaption>Figure 4. Pointer arithmetic computes addresses before memory is read or written. Open the figure to enlarge it.</figcaption>
+</figure>
 
 This trace describes what execution will mean. The first lesson records the
 operations without reading these arrays.
@@ -255,6 +283,13 @@ emit records const(value=4) when an IR operand is needed
 The registration loop therefore handles only one part of parameter processing.
 Saving the compilation choice and resolving later uses happen elsewhere.
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/05-compile-time.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/05-compile-time.svg" alt="Figure 5. BLOCK is saved during compilation and excluded from runtime inputs" loading="lazy" width="960" height="600" />
+</a>
+<figcaption>Figure 5. BLOCK is saved during compilation and excluded from runtime inputs. Open the figure to enlarge it.</figcaption>
+</figure>
+
 ### The resolver has a deliberately limited scope
 
 The supplied helper accepts numeric literals and the name `BLOCK`.
@@ -339,6 +374,13 @@ contain data already known to the compiler. For example, a constant instruction
 has a value attribute, while `arange` has start and end attributes. A store
 changes memory but produces no result Value, so its `result` is `None`.
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/06-records.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/06-records.svg" alt="Figure 6. Program owns instructions that reference Value records" loading="lazy" width="960" height="710" />
+</a>
+<figcaption>Figure 6. Program owns instructions that reference Value records. Open the figure to enlarge it.</figcaption>
+</figure>
+
 The following example constructs one addition without executing it.
 
 ```python
@@ -392,6 +434,13 @@ The conditions already present in `call` are part of the supplied helper.
 They recognize the supported `tl` operations. The conditions in the reference
 `visit` belong to the exercise solution and are not present in the starter.
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/08-three-methods.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/08-three-methods.svg" alt="Figure 8. Function and statement traversal delegate expression translation to visit" loading="lazy" width="960" height="650" />
+</a>
+<figcaption>Figure 8. Function and statement traversal delegate expression translation to visit. Open the figure to enlarge it.</figcaption>
+</figure>
+
 ### Four fields define the compilation state
 
 The compiler has no custom constructor. Each call to `lower` initializes fresh
@@ -442,6 +491,13 @@ env = {"x": the Value for x,
 
 self.block = 4
 ```
+
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/07-params-and-env.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/07-params-and-env.svg" alt="Figure 7. The parameter list and environment reference the same Value" loading="lazy" width="960" height="660" />
+</a>
+<figcaption>Figure 7. The parameter list and environment reference the same Value. Open the figure to enlarge it.</figcaption>
+</figure>
 
 When translating `offsets < n`, `visit` uses `env["n"]` to find the input Value.
 Later assignments add names such as `offsets`, `mask`, and `a` to `env`, but
@@ -512,6 +568,13 @@ visit(a + b * 2)
     emit add          returns %2
 ```
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/09-recursive-visit.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/09-recursive-visit.svg" alt="Figure 9. Recursive translation defines inputs before operations that use them" loading="lazy" width="960" height="590" />
+</a>
+<figcaption>Figure 9. Recursive translation defines inputs before operations that use them. Open the figure to enlarge it.</figcaption>
+</figure>
+
 A visitor call can both append instructions and return a Value. The returned
 Value describes the expression's result. It does not contain a computed number.
 A simple name lookup may return an existing Value without appending anything.
@@ -537,6 +600,13 @@ five instructions and one name binding.
 env["offsets"] = the Value for %4
 ```
 
+<figure class="lesson-figure">
+<a href="/blog/tinytriton-step-1/10-first-line.svg" target="_blank" rel="noopener">
+<img src="/blog/tinytriton-step-1/10-first-line.svg" alt="Figure 10. Five instructions describe the first statement without computing its data" loading="lazy" width="960" height="650" />
+</a>
+<figcaption>Figure 10. Five instructions describe the first statement without computing its data. Open the figure to enlarge it.</figcaption>
+</figure>
+
 `%2` is a scalar, while `%3` and `%4` have shape `(4,)`. No program ID has been
 chosen during lowering, so the compiler does not know the actual contents of
 `%4`. When program 1 executes, these instructions produce `[4,5,6,7]`.
@@ -548,6 +618,11 @@ attribute. Both representations refer to the same known compilation choice.
 <a id="reference-implementation"></a>
 
 ## 9. The complete exercise implementation
+
+<div class="lesson-note">
+<p><strong>Implementation scope</strong></p>
+<p>Replace only lower, statement, and visit inside the existing Compiler class. The reference below includes the full logic of all three methods. The starter does not supply their conditions or branches.</p>
+</div>
 
 The following three methods are taken from the companion repository's
 [reference implementation](https://github.com/guoriyue/TinyTriton/blob/main/solutions/step01.py).
@@ -644,63 +719,3 @@ A store returns `None` through the call helper because it produces no result.
 The three methods operate at different syntactic levels. `lower` handles the
 function, `statement` handles each statement, and `visit` handles the expressions
 inside it. The supplied `call` and `emit` helpers complete the translation.
-
-<a id="inspect-your-result"></a>
-
-## 10. Inspect the generated program
-
-Run the exercise check after replacing the three methods.
-
-```bash
-tinytriton check step01
-```
-
-Then inspect the result from the repository root.
-
-```python
-from problems.step01 import Compiler
-from tinytriton import kernels
-
-compiler = Compiler()
-function = compiler.parse(kernels.vector_add)
-program = compiler.lower(function, block=4)
-
-print("params:", [(v.name, v.kind, v.shape) for v in program.params])
-for instr in program.body:
-    result = instr.result.name if instr.result is not None else None
-    print(result, instr.op, tuple(v.name for v in instr.args), instr.attrs)
-print("env:", {name: value.name for name, value in compiler.env.items()})
-```
-
-The runtime parameter list contains `x`, `y`, `out`, and `n`. The body contains
-15 instructions. Fourteen produce a result Value, and the final store has no
-result. In compact notation, the complete program is as follows.
-
-```text
-vector_add(x: ptr, y: ptr, out: ptr, n: int)
-
-%0  = program_id(axis=0)
-%1  = const(value=4)
-%2  = mul(%0, %1)
-%3  = arange(start=0, end=4)
-%4  = add(%2, %3)
-%5  = lt(%4, n)
-%6  = addptr(x, %4)
-%7  = const(value=0.0)
-%8  = load(%6, %5, %7)
-%9  = addptr(y, %4)
-%10 = const(value=0.0)
-%11 = load(%9, %5, %10)
-%12 = addptr(out, %4)
-%13 = add(%8, %11)
-store(%12, %13, %5)
-```
-
-The final `env` entries associate `offsets` with `%4`, `mask` with `%5`, `a` with
-`%8`, and `b` with `%11`. These associations explain how source names connect to
-instruction results. They contain no runtime arrays.
-
-The addition of the two loaded tiles remains one instruction. This representation
-records a computation on four elements without assigning those elements to
-threads or expanding it into GPU instructions. The next lesson gives these
-records an execution meaning through a CPU interpreter.

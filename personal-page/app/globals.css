@@ -1985,3 +1985,33 @@ body[data-herding='true'] .cursor-collie {
     height: 100%;
   }
 }
+
+/* Lesson figures extend the reading column without changing other posts. */
+.prose .lesson-figure {
+  width: min(960px, calc(100vw - 40px));
+  margin: 32px 0;
+  margin-left: calc((100% - min(960px, 100vw - 40px)) / 2);
+}
+.prose .lesson-figure a {
+  display: block;
+}
+.prose .lesson-figure img {
+  width: 100%;
+  border-radius: 8px;
+}
+.prose .lesson-figure figcaption {
+  max-width: 672px;
+  margin: 10px auto 0;
+  padding: 0 4px;
+  line-height: 1.6;
+}
+.prose .lesson-note {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--primary);
+  border-radius: 0 6px 6px 0;
+  background: var(--cream);
+}
+.prose .lesson-note p:last-child {
+  margin-bottom: 0;
+}
