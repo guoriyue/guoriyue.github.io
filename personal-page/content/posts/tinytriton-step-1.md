@@ -299,7 +299,7 @@ Saving the compilation choice and resolving later uses happen elsewhere.
 <a href="/blog/tinytriton-step-1/05-compile-time.svg" target="_blank" rel="noopener">
 <picture>
 <source data-theme-dark srcset="/blog/tinytriton-step-1/05-compile-time-dark.svg" media="all" />
-<img src="/blog/tinytriton-step-1/05-compile-time.svg" alt="Figure 5. BLOCK is saved during compilation and excluded from runtime inputs" loading="lazy" width="960" height="600" />
+<img src="/blog/tinytriton-step-1/05-compile-time.svg" alt="Figure 5. BLOCK is saved during compilation and excluded from runtime inputs" loading="lazy" width="960" height="640" />
 </picture>
 </a>
 <figcaption>Figure 5. BLOCK is saved during compilation and excluded from runtime inputs. Open the figure to enlarge it.</figcaption>

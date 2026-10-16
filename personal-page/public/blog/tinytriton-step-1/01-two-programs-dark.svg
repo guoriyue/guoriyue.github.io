@@ -1,34 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="570" viewBox="0 0 960 570" role="img" aria-labelledby="title desc"><title id="title">The compiler and the kernel</title><desc id="desc">One program runs while another program is being translated</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#9eb4c7"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#d6e4ef}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="570" fill="#111e2c"/>
-<text x="32" y="44" font-size="28" style="fill:#d6e4ef" font-weight="700">The compiler and the kernel</text>
-<text x="32" y="78" font-size="19" style="fill:#9eb4c7">One program runs while another program is being translated</text>
-<rect x="32" y="110" width="420" height="250" rx="10" fill="#17364b" stroke="#2b4154"/>
-<text x="52" y="146" font-size="24" style="fill:#d6e4ef" font-weight="700">Compiler execution</text>
-<text x="52" y="188" font-size="22" style="fill:#d6e4ef">Parse the source string</text>
-<text x="52" y="224" font-size="22" style="fill:#d6e4ef">Create Value and Instr records</text>
-<text x="52" y="260" font-size="22" style="fill:#d6e4ef">Update the name environment</text>
-<text x="52" y="296" font-size="22" style="fill:#d6e4ef">Return a Program</text>
-<rect x="508" y="110" width="420" height="250" rx="10" fill="#162637" stroke="#2b4154"/>
-<text x="528" y="146" font-size="24" style="fill:#d6e4ef" font-weight="700">Kernel execution</text>
-<text x="528" y="188" font-size="22" style="fill:#d6e4ef">Read the input arrays</text>
-<text x="528" y="224" font-size="22" style="fill:#d6e4ef">Compute elementwise sums</text>
-<text x="528" y="260" font-size="22" style="fill:#d6e4ef">Write the output array</text>
-<text x="528" y="296" font-size="22" style="fill:#d6e4ef">Begins in a later lesson</text>
-<path d="M461 232L497 232" fill="none" stroke="#9eb4c7" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="32" y="390" width="206" height="80" rx="10" fill="#162637" stroke="#2b4154"/>
-<text x="46" y="422" font-size="22" style="fill:#d6e4ef" font-weight="700">SOURCE</text>
-<text x="46" y="453" font-size="19" style="fill:#d6e4ef">Text</text>
-<rect x="262" y="390" width="206" height="80" rx="10" fill="#162637" stroke="#2b4154"/>
-<text x="276" y="422" font-size="22" style="fill:#d6e4ef" font-weight="700">AST</text>
-<text x="276" y="453" font-size="19" style="fill:#d6e4ef">Nested syntax</text>
-<rect x="492" y="390" width="206" height="80" rx="10" fill="#162637" stroke="#2b4154"/>
-<text x="506" y="422" font-size="22" style="fill:#d6e4ef" font-weight="700">IR</text>
-<text x="506" y="453" font-size="19" style="fill:#d6e4ef">Value dependencies</text>
-<rect x="722" y="390" width="206" height="80" rx="10" fill="#162637" stroke="#2b4154"/>
-<text x="736" y="422" font-size="22" style="fill:#d6e4ef" font-weight="700">EXECUTION</text>
-<text x="736" y="453" font-size="19" style="fill:#d6e4ef">Actual data</text>
-<path d="M242 430L256 430" fill="none" stroke="#9eb4c7" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M472 430L486 430" fill="none" stroke="#9eb4c7" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M702 430L716 430" fill="none" stroke="#9eb4c7" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="32" y="497" width="896" height="48" rx="10" fill="#17364b" stroke="#2b4154"/>
-<text x="50" y="529" font-size="21" style="fill:#8bd3ee">Step 1 constructs IR without executing the kernel</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="570" viewBox="0 0 960 570" role="img" aria-labelledby="title desc"><title id="title">The compiler describes work before execution</title><desc id="desc">The compiler runs now and the kernel runs later</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6b9ca"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="570" fill="#111e2c"/>
+<text x="32" y="44" font-size="29" fill="#dbe7f1" font-weight="700">The compiler describes work before execution</text>
+<text x="32" y="78" font-size="20" fill="#a6b9ca">The compiler runs now and the kernel runs later</text>
+<rect x="32" y="110" width="420" height="220" rx="12" fill="#352b54" stroke="#33495e"/>
+<text x="54" y="149" font-size="26" fill="#d8c1ff" font-weight="700">Compiler</text>
+<text x="54" y="193" font-size="24" fill="#dbe7f1">Read source syntax</text>
+<text x="54" y="229" font-size="24" fill="#dbe7f1">Build records and dependencies</text>
+<text x="54" y="265" font-size="24" fill="#dbe7f1">Return a Program</text>
+<rect x="508" y="110" width="420" height="220" rx="12" fill="#153e3b" stroke="#33495e"/>
+<text x="530" y="149" font-size="26" fill="#94e6d4" font-weight="700">Kernel</text>
+<text x="530" y="193" font-size="24" fill="#dbe7f1">Read actual input arrays</text>
+<text x="530" y="229" font-size="24" fill="#dbe7f1">Compute elementwise sums</text>
+<text x="530" y="265" font-size="24" fill="#dbe7f1">Write the output array</text>
+<path d="M462 220L496 220" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="368" width="206" height="99" rx="12" fill="#173c58" stroke="#33495e"/>
+<text x="50" y="405" font-size="25" fill="#9ddcff" font-weight="700">Source</text>
+<text x="50" y="441" font-size="20" fill="#dbe7f1">Text</text>
+<rect x="262" y="368" width="206" height="99" rx="12" fill="#45351c" stroke="#33495e"/>
+<text x="280" y="405" font-size="25" fill="#f8d18a" font-weight="700">AST</text>
+<text x="280" y="441" font-size="20" fill="#dbe7f1">Nested syntax</text>
+<rect x="492" y="368" width="206" height="99" rx="12" fill="#352b54" stroke="#33495e"/>
+<text x="510" y="405" font-size="25" fill="#d8c1ff" font-weight="700">IR</text>
+<text x="510" y="441" font-size="20" fill="#dbe7f1">Named operations</text>
+<rect x="722" y="368" width="206" height="99" rx="12" fill="#153e3b" stroke="#33495e"/>
+<text x="740" y="405" font-size="25" fill="#94e6d4" font-weight="700">Execution</text>
+<text x="740" y="441" font-size="20" fill="#dbe7f1">Actual data</text>
+<path d="M242 417L256 417" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M472 417L486 417" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M702 417L716 417" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="497" width="896" height="48" rx="12" fill="#352b54" stroke="#33495e"/>
+<text x="50" y="529" font-size="21" fill="#d8c1ff">Recording an operation does not execute it</text>
 </svg>

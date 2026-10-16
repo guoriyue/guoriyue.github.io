@@ -1,17 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc"><title id="title">Three methods follow three syntactic levels</title><desc id="desc">The starter provides the helpers but leaves these three implementations empty</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#637580"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#374d5d}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="650" fill="#f8fafb"/>
-<text x="32" y="44" font-size="28" style="fill:#374d5d" font-weight="700">Three methods follow three syntactic levels</text>
-<text x="32" y="78" font-size="19" style="fill:#637580">The starter provides the helpers but leaves these three implementations empty</text>
-<rect x="32" y="110" width="896" height="125" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
-<text x="52" y="146" font-size="24" style="fill:#374d5d" font-weight="700">lower  →  Function</text>
-<text x="52" y="188" font-size="25" style="fill:#374d5d">Initialize state and parameters then process statements</text>
-<rect x="32" y="270" width="896" height="125" rx="10" fill="#e8f4ef" stroke="#dce5e9"/>
-<text x="52" y="306" font-size="24" style="fill:#374d5d" font-weight="700">statement  →  Statement</text>
-<text x="52" y="348" font-size="25" style="fill:#374d5d">Visit the right side then bind its source name</text>
-<rect x="32" y="430" width="896" height="125" rx="10" fill="#fcf0e5" stroke="#dce5e9"/>
-<text x="52" y="466" font-size="24" style="fill:#374d5d" font-weight="700">visit  →  Expression</text>
-<text x="52" y="508" font-size="25" style="fill:#374d5d">Resolve inputs then record the operation and return its Value</text>
-<path d="M480 241L480 262" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M480 401L480 422" fill="none" stroke="#637580" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="32" y="577" width="896" height="48" rx="10" fill="#e3f3f8" stroke="#dce5e9"/>
-<text x="50" y="609" font-size="21" style="fill:#277a9a">parse  /  emit  /  constexpr  /  broadcast  /  call are already implemented</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc"><title id="title">Three methods follow the structure of the source</title><desc id="desc">The exercise supplies helpers and leaves the traversal logic to you</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#60768a"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="650" fill="#f8fafc"/>
+<text x="32" y="44" font-size="29" fill="#263d50" font-weight="700">Three methods follow the structure of the source</text>
+<text x="32" y="78" font-size="20" fill="#60768a">The exercise supplies helpers and leaves the traversal logic to you</text>
+<rect x="32" y="110" width="896" height="125" rx="12" fill="#e2f1ff" stroke="#d8e3ee"/>
+<text x="54" y="149" font-size="26" fill="#215a8b" font-weight="700">lower handles the function</text>
+<text x="54" y="193" font-size="25" fill="#263d50">Initialize compilation state and register runtime inputs</text>
+<rect x="32" y="270" width="896" height="125" rx="12" fill="#eee6fc" stroke="#d8e3ee"/>
+<text x="54" y="309" font-size="26" fill="#65419c" font-weight="700">statement handles a statement</text>
+<text x="54" y="353" font-size="25" fill="#263d50">Translate its expression and remember the assignment name</text>
+<rect x="32" y="430" width="896" height="125" rx="12" fill="#dcf5ed" stroke="#d8e3ee"/>
+<text x="54" y="469" font-size="26" fill="#166e5b" font-weight="700">visit handles an expression</text>
+<text x="54" y="513" font-size="25" fill="#263d50">Resolve its inputs and return a description of its result</text>
+<path d="M480 241L480 262" stroke="#60768a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M480 401L480 422" stroke="#60768a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="577" width="896" height="48" rx="12" fill="#fff0ce" stroke="#d8e3ee"/>
+<text x="50" y="609" font-size="21" fill="#8b5c13">The supplied helpers handle parsing and instruction construction</text>
 </svg>

@@ -1,21 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="title desc"><title id="title">One Value referenced in two containers</title><desc id="desc">Registration describes a runtime input without storing its actual integer</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#9eb4c7"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#d6e4ef}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="660" fill="#111e2c"/>
-<text x="32" y="44" font-size="28" style="fill:#d6e4ef" font-weight="700">One Value referenced in two containers</text>
-<text x="32" y="78" font-size="19" style="fill:#9eb4c7">Registration describes a runtime input without storing its actual integer</text>
-<rect x="242" y="110" width="476" height="120" rx="10" fill="#17364b" stroke="#2b4154"/>
-<text x="262" y="146" font-size="24" style="fill:#d6e4ef" font-weight="700">Create one parameter record</text>
-<text x="262" y="188" font-size="23" style="fill:#d6e4ef" class="code">parameter = Value(&quot;n&quot;, &quot;int&quot;)</text>
-<path d="M360 237L244 295" fill="none" stroke="#9eb4c7" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M600 237L716 295" fill="none" stroke="#9eb4c7" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="32" y="307" width="420" height="190" rx="10" fill="#162637" stroke="#2b4154"/>
-<text x="52" y="343" font-size="24" style="fill:#d6e4ef" font-weight="700">program.params</text>
-<text x="52" y="385" font-size="21" style="fill:#d6e4ef">[x, y, out, parameter]</text>
-<text x="52" y="421" font-size="21" style="fill:#d6e4ef">Execution must supply these inputs</text>
-<rect x="508" y="307" width="420" height="190" rx="10" fill="#162637" stroke="#2b4154"/>
-<text x="528" y="343" font-size="24" style="fill:#d6e4ef" font-weight="700">env</text>
-<text x="528" y="385" font-size="21" style="fill:#d6e4ef">{&quot;n&quot;: parameter, ...}</text>
-<text x="528" y="421" font-size="21" style="fill:#d6e4ef">Translation looks up source names</text>
-<rect x="32" y="530" width="896" height="45" rx="10" fill="#173b37" stroke="#2b4154"/>
-<text x="52" y="560" font-size="25" style="fill:#d6e4ef" class="code">program.params[-1] is env[&quot;n&quot;]    →    True</text>
-<rect x="32" y="587" width="896" height="48" rx="10" fill="#17364b" stroke="#2b4154"/>
-<text x="50" y="619" font-size="21" style="fill:#8bd3ee">Later assignments add names to env without adding runtime parameters</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="title desc"><title id="title">One parameter record serves two purposes</title><desc id="desc">Both containers refer to the same Value object</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6b9ca"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="660" fill="#111e2c"/>
+<text x="32" y="44" font-size="29" fill="#dbe7f1" font-weight="700">One parameter record serves two purposes</text>
+<text x="32" y="78" font-size="20" fill="#a6b9ca">Both containers refer to the same Value object</text>
+<rect x="242" y="110" width="476" height="120" rx="12" fill="#173c58" stroke="#33495e"/>
+<text x="264" y="149" font-size="26" fill="#9ddcff" font-weight="700">The input named n</text>
+<text x="264" y="193" font-size="26" fill="#dbe7f1">One integer Value record</text>
+<path d="M360 237L244 295" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M600 237L716 295" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="307" width="420" height="190" rx="12" fill="#173c58" stroke="#33495e"/>
+<text x="54" y="346" font-size="26" fill="#9ddcff" font-weight="700">program.params</text>
+<text x="54" y="390" font-size="23" fill="#dbe7f1">Defines the execution interface</text>
+<text x="54" y="426" font-size="23" fill="#dbe7f1">Which inputs must be supplied?</text>
+<rect x="508" y="307" width="420" height="190" rx="12" fill="#352b54" stroke="#33495e"/>
+<text x="530" y="346" font-size="26" fill="#d8c1ff" font-weight="700">env</text>
+<text x="530" y="390" font-size="23" fill="#dbe7f1">Supports translation by name</text>
+<text x="530" y="426" font-size="23" fill="#dbe7f1">Which Value does n refer to?</text>
+<rect x="32" y="530" width="896" height="45" rx="12" fill="#153e3b" stroke="#33495e"/>
+<text x="52" y="560" font-size="25" fill="#94e6d4" font-weight="700">One object   •   Two references   •   No actual integer copied</text>
+<rect x="32" y="587" width="896" height="48" rx="12" fill="#352b54" stroke="#33495e"/>
+<text x="50" y="619" font-size="21" fill="#d8c1ff">Later assignments extend env without extending the runtime interface</text>
 </svg>
