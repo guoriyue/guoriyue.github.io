@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="710" viewBox="0 0 960 710" role="img" aria-labelledby="title desc"><title id="title">Three records have three different responsibilities</title><desc id="desc">A Value describes data without storing its actual contents</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6b9ca"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="710" fill="#111e2c"/>
-<text x="32" y="44" font-size="29" fill="#dbe7f1" font-weight="700">Three records have three different responsibilities</text>
-<text x="32" y="78" font-size="20" fill="#a6b9ca">A Value describes data without storing its actual contents</text>
-<rect x="32" y="110" width="896" height="135" rx="12" fill="#173c58" stroke="#33495e"/>
-<text x="54" y="149" font-size="26" fill="#9ddcff" font-weight="700">Program</text>
-<text x="54" y="193" font-size="25" fill="#dbe7f1">The function interface and its instruction list</text>
-<rect x="627" y="128" width="277" height="36" rx="18" fill="#173c58" stroke="#33495e"/>
-<text x="641" y="153" font-size="20" fill="#9ddcff" font-weight="700">Owns the computation</text>
-<rect x="32" y="275" width="896" height="135" rx="12" fill="#352b54" stroke="#33495e"/>
-<text x="54" y="314" font-size="26" fill="#d8c1ff" font-weight="700">Instr</text>
-<text x="54" y="358" font-size="25" fill="#dbe7f1">One operation with inputs and an optional result</text>
-<rect x="627" y="293" width="277" height="36" rx="18" fill="#352b54" stroke="#33495e"/>
-<text x="641" y="318" font-size="20" fill="#d8c1ff" font-weight="700">Records a step</text>
-<rect x="32" y="440" width="896" height="135" rx="12" fill="#153e3b" stroke="#33495e"/>
-<text x="54" y="479" font-size="26" fill="#94e6d4" font-weight="700">Value</text>
-<text x="54" y="523" font-size="25" fill="#dbe7f1">A result name together with its type and shape</text>
-<rect x="627" y="458" width="277" height="36" rx="18" fill="#153e3b" stroke="#33495e"/>
-<text x="641" y="483" font-size="20" fill="#94e6d4" font-weight="700">Describes a value</text>
-<path d="M480 251L480 269" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M480 416L480 434" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="32" y="637" width="896" height="48" rx="12" fill="#482b31" stroke="#33495e"/>
-<text x="50" y="669" font-size="21" fill="#ffb7bd">A store has an effect on memory but does not produce a result Value</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="710" viewBox="0 0 960 710" role="img" aria-labelledby="title desc"><title id="title">Three records have three different responsibilities</title><desc id="desc">A Value describes data without storing its actual contents</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6afb8"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="710" fill="#131b24"/>
+<text x="32" y="44" font-size="29" fill="#dde2e7" font-weight="700">Three records have three different responsibilities</text>
+<text x="32" y="78" font-size="20" fill="#a6afb8">A Value describes data without storing its actual contents</text>
+<rect x="32" y="110" width="896" height="135" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="54" y="149" font-size="26" fill="#b4c8d8" font-weight="700">Program</text>
+<text x="54" y="193" font-size="25" fill="#dde2e7">The function interface and its instruction list</text>
+<rect x="627" y="128" width="277" height="36" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="641" y="153" font-size="20" fill="#b4c8d8" font-weight="700">Owns the computation</text>
+<rect x="32" y="275" width="896" height="135" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="54" y="314" font-size="26" fill="#c4ccd4" font-weight="700">Instr</text>
+<text x="54" y="358" font-size="25" fill="#dde2e7">One operation with inputs and an optional result</text>
+<rect x="627" y="293" width="277" height="36" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="641" y="318" font-size="20" fill="#c4ccd4" font-weight="700">Records a step</text>
+<rect x="32" y="440" width="896" height="135" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="54" y="479" font-size="26" fill="#b4c8d8" font-weight="700">Value</text>
+<text x="54" y="523" font-size="25" fill="#dde2e7">A result name together with its type and shape</text>
+<rect x="627" y="458" width="277" height="36" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="641" y="483" font-size="20" fill="#b4c8d8" font-weight="700">Describes a value</text>
+<path d="M480 251L480 269" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M480 416L480 434" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="637" width="896" height="48" rx="4" fill="#352b2a" stroke="#3a4551"/>
+<text x="50" y="669" font-size="21" fill="#d1a49c">A store has an effect on memory but does not produce a result Value</text>
 </svg>

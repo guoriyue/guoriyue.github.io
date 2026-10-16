@@ -1,26 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590" role="img" aria-labelledby="title desc"><title id="title">Resolve inputs before recording the operation</title><desc id="desc">Follow the dependency order for a + b * 2</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6b9ca"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="590" fill="#111e2c"/>
-<text x="32" y="44" font-size="29" fill="#dbe7f1" font-weight="700">Resolve inputs before recording the operation</text>
-<text x="32" y="78" font-size="20" fill="#a6b9ca">Follow the dependency order for a + b * 2</text>
-<rect x="32" y="110" width="896" height="60" rx="12" fill="#173c58" stroke="#33495e"/>
-<text x="52" y="149" font-size="25" fill="#9ddcff" font-weight="700">1</text>
-<text x="110" y="149" font-size="25" fill="#9ddcff" font-weight="700">Find a</text>
-<text x="483" y="149" font-size="23" fill="#dbe7f1">Existing input Value</text>
-<rect x="32" y="183" width="896" height="60" rx="12" fill="#173c58" stroke="#33495e"/>
-<text x="52" y="222" font-size="25" fill="#9ddcff" font-weight="700">2</text>
-<text x="110" y="222" font-size="25" fill="#9ddcff" font-weight="700">Find b</text>
-<text x="483" y="222" font-size="23" fill="#dbe7f1">Existing input Value</text>
-<rect x="32" y="256" width="896" height="60" rx="12" fill="#45351c" stroke="#33495e"/>
-<text x="52" y="295" font-size="25" fill="#f8d18a" font-weight="700">3</text>
-<text x="110" y="295" font-size="25" fill="#f8d18a" font-weight="700">Describe 2</text>
-<text x="483" y="295" font-size="23" fill="#dbe7f1">New constant Value</text>
-<rect x="32" y="329" width="896" height="60" rx="12" fill="#352b54" stroke="#33495e"/>
-<text x="52" y="368" font-size="25" fill="#d8c1ff" font-weight="700">4</text>
-<text x="110" y="368" font-size="25" fill="#d8c1ff" font-weight="700">Record multiplication</text>
-<text x="483" y="368" font-size="23" fill="#dbe7f1">Use b and the constant</text>
-<rect x="32" y="402" width="896" height="60" rx="12" fill="#153e3b" stroke="#33495e"/>
-<text x="52" y="441" font-size="25" fill="#94e6d4" font-weight="700">5</text>
-<text x="110" y="441" font-size="25" fill="#94e6d4" font-weight="700">Record addition</text>
-<text x="483" y="441" font-size="23" fill="#dbe7f1">Use a and the multiplication result</text>
-<rect x="32" y="517" width="896" height="48" rx="12" fill="#352b54" stroke="#33495e"/>
-<text x="50" y="549" font-size="21" fill="#d8c1ff">The visitor returns a Value while emission records how it is produced</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590" role="img" aria-labelledby="title desc"><title id="title">Resolve inputs before recording the operation</title><desc id="desc">Follow the dependency order for a + b * 2</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6afb8"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="590" fill="#131b24"/>
+<text x="32" y="44" font-size="29" fill="#dde2e7" font-weight="700">Resolve inputs before recording the operation</text>
+<text x="32" y="78" font-size="20" fill="#a6afb8">Follow the dependency order for a + b * 2</text>
+<rect x="32" y="110" width="896" height="60" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="52" y="149" font-size="25" fill="#b4c8d8" font-weight="700">1</text>
+<text x="110" y="149" font-size="25" fill="#b4c8d8" font-weight="700">Find a</text>
+<text x="483" y="149" font-size="23" fill="#dde2e7">Existing input Value</text>
+<rect x="32" y="183" width="896" height="60" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="52" y="222" font-size="25" fill="#b4c8d8" font-weight="700">2</text>
+<text x="110" y="222" font-size="25" fill="#b4c8d8" font-weight="700">Find b</text>
+<text x="483" y="222" font-size="23" fill="#dde2e7">Existing input Value</text>
+<rect x="32" y="256" width="896" height="60" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="52" y="295" font-size="25" fill="#c4ccd4" font-weight="700">3</text>
+<text x="110" y="295" font-size="25" fill="#c4ccd4" font-weight="700">Describe 2</text>
+<text x="483" y="295" font-size="23" fill="#dde2e7">New constant Value</text>
+<rect x="32" y="329" width="896" height="60" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="52" y="368" font-size="25" fill="#c4ccd4" font-weight="700">4</text>
+<text x="110" y="368" font-size="25" fill="#c4ccd4" font-weight="700">Record multiplication</text>
+<text x="483" y="368" font-size="23" fill="#dde2e7">Use b and the constant</text>
+<rect x="32" y="402" width="896" height="60" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="52" y="441" font-size="25" fill="#b4c8d8" font-weight="700">5</text>
+<text x="110" y="441" font-size="25" fill="#b4c8d8" font-weight="700">Record addition</text>
+<text x="483" y="441" font-size="23" fill="#dde2e7">Use a and the multiplication result</text>
+<rect x="32" y="517" width="896" height="48" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="50" y="549" font-size="21" fill="#c4ccd4">The visitor returns a Value while emission records how it is produced</text>
 </svg>

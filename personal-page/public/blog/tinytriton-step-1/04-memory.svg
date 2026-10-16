@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc"><title id="title">Address calculation and memory access</title><desc id="desc">Follow program 1 through addresses and data</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#60768a"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="680" fill="#f8fafc"/>
-<text x="32" y="44" font-size="29" fill="#263d50" font-weight="700">Address calculation and memory access</text>
-<text x="32" y="78" font-size="20" fill="#60768a">Follow program 1 through addresses and data</text>
-<rect x="32" y="110" width="896" height="130" rx="12" fill="#e2f1ff" stroke="#d8e3ee"/>
-<text x="54" y="149" font-size="26" fill="#215a8b" font-weight="700">1  Addresses</text>
-<text x="54" y="193" font-size="27" fill="#263d50">Four candidate pointers at offsets 4, 5, 6, and 7</text>
-<path d="M480 246L480 264" stroke="#60768a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="32" y="270" width="896" height="130" rx="12" fill="#eee6fc" stroke="#d8e3ee"/>
-<text x="54" y="309" font-size="26" fill="#65419c" font-weight="700">2  Loaded data</text>
-<text x="54" y="353" font-size="26" fill="#263d50">x tile   [5, 6, 0, 0]          y tile   [50, 60, 0, 0]</text>
-<path d="M480 406L480 424" stroke="#60768a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="32" y="430" width="896" height="130" rx="12" fill="#dcf5ed" stroke="#d8e3ee"/>
-<text x="54" y="469" font-size="26" fill="#166e5b" font-weight="700">3  Output</text>
-<text x="54" y="513" font-size="26" fill="#263d50">Sum   [55, 66, 0, 0]          Write positions 4 and 5</text>
-<rect x="617" y="118" width="285" height="36" rx="18" fill="#ffe5e5" stroke="#d8e3ee"/>
-<text x="631" y="143" font-size="20" fill="#9d3e47" font-weight="700">Mask excludes 6 and 7</text>
-<rect x="32" y="607" width="896" height="48" rx="12" fill="#fff0ce" stroke="#d8e3ee"/>
-<text x="50" y="639" font-size="21" fill="#8b5c13">The fallback supplies zeros without reading invalid addresses</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc"><title id="title">Address calculation and memory access</title><desc id="desc">Follow program 1 through addresses and data</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#646b73"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="680" fill="#ffffff"/>
+<text x="32" y="44" font-size="29" fill="#252525" font-weight="700">Address calculation and memory access</text>
+<text x="32" y="78" font-size="20" fill="#646b73">Follow program 1 through addresses and data</text>
+<rect x="32" y="110" width="896" height="130" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="54" y="149" font-size="26" fill="#315a7d" font-weight="700">1  Addresses</text>
+<text x="54" y="193" font-size="27" fill="#252525">Four candidate pointers at offsets 4, 5, 6, and 7</text>
+<path d="M480 246L480 264" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="270" width="896" height="130" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="54" y="309" font-size="26" fill="#3e4852" font-weight="700">2  Loaded data</text>
+<text x="54" y="353" font-size="26" fill="#252525">x tile   [5, 6, 0, 0]          y tile   [50, 60, 0, 0]</text>
+<path d="M480 406L480 424" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="430" width="896" height="130" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="54" y="469" font-size="26" fill="#315a7d" font-weight="700">3  Output</text>
+<text x="54" y="513" font-size="26" fill="#252525">Sum   [55, 66, 0, 0]          Write positions 4 and 5</text>
+<rect x="617" y="118" width="285" height="36" rx="4" fill="#f3e9e7" stroke="#c9ced4"/>
+<text x="631" y="143" font-size="20" fill="#8b5147" font-weight="700">Mask excludes 6 and 7</text>
+<rect x="32" y="607" width="896" height="48" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="50" y="639" font-size="21" fill="#3e4852">The fallback supplies zeros without reading invalid addresses</text>
 </svg>

@@ -1,26 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc"><title id="title">Build offsets from two paths</title><desc id="desc">A scalar tile start combines with a tile of local positions</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6b9ca"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="650" fill="#111e2c"/>
-<text x="32" y="44" font-size="29" fill="#dbe7f1" font-weight="700">Build offsets from two paths</text>
-<text x="32" y="78" font-size="20" fill="#a6b9ca">A scalar tile start combines with a tile of local positions</text>
-<rect x="32" y="110" width="270" height="110" rx="12" fill="#173c58" stroke="#33495e"/>
-<text x="54" y="149" font-size="26" fill="#9ddcff" font-weight="700">Program ID</text>
-<text x="54" y="193" font-size="23" fill="#dbe7f1">Runtime scalar</text>
-<rect x="350" y="110" width="260" height="110" rx="12" fill="#45351c" stroke="#33495e"/>
-<text x="372" y="149" font-size="26" fill="#f8d18a" font-weight="700">BLOCK = 4</text>
-<text x="372" y="193" font-size="23" fill="#dbe7f1">Known scalar</text>
-<rect x="660" y="110" width="268" height="110" rx="12" fill="#45351c" stroke="#33495e"/>
-<text x="682" y="149" font-size="26" fill="#f8d18a" font-weight="700">Local positions</text>
-<text x="682" y="193" font-size="24" fill="#dbe7f1">[0, 1, 2, 3]</text>
-<path d="M167 226 L167 264 L300 264 L300 292" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M480 226 L480 264 L355 264 L355 292" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="181" y="303" width="366" height="110" rx="12" fill="#352b54" stroke="#33495e"/>
-<text x="203" y="342" font-size="26" fill="#d8c1ff" font-weight="700">Multiply</text>
-<text x="203" y="386" font-size="24" fill="#dbe7f1">Tile start as one scalar</text>
-<path d="M364 419 L364 454 L480 454 L480 478" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M794 226 L794 454 L544 454 L544 478" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="286" y="489" width="495" height="75" rx="12" fill="#153e3b" stroke="#33495e"/>
-<text x="308" y="528" font-size="26" fill="#94e6d4" font-weight="700">Add with broadcasting</text>
-<text x="52" y="542" font-size="27" fill="#94e6d4" font-weight="700">offsets</text>
-<path d="M280 528L189 528" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="32" y="577" width="896" height="48" rx="12" fill="#153e3b" stroke="#33495e"/>
-<text x="50" y="609" font-size="21" fill="#94e6d4">The compiler knows the width but the program ID determines the values</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc"><title id="title">Build offsets from two paths</title><desc id="desc">A scalar tile start combines with a tile of local positions</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6afb8"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="650" fill="#131b24"/>
+<text x="32" y="44" font-size="29" fill="#dde2e7" font-weight="700">Build offsets from two paths</text>
+<text x="32" y="78" font-size="20" fill="#a6afb8">A scalar tile start combines with a tile of local positions</text>
+<rect x="32" y="110" width="270" height="110" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="54" y="149" font-size="26" fill="#b4c8d8" font-weight="700">Program ID</text>
+<text x="54" y="193" font-size="23" fill="#dde2e7">Runtime scalar</text>
+<rect x="350" y="110" width="260" height="110" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="372" y="149" font-size="26" fill="#c4ccd4" font-weight="700">BLOCK = 4</text>
+<text x="372" y="193" font-size="23" fill="#dde2e7">Known scalar</text>
+<rect x="660" y="110" width="268" height="110" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="682" y="149" font-size="26" fill="#c4ccd4" font-weight="700">Local positions</text>
+<text x="682" y="193" font-size="24" fill="#dde2e7">[0, 1, 2, 3]</text>
+<path d="M167 226 L167 264 L300 264 L300 292" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M480 226 L480 264 L355 264 L355 292" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="181" y="303" width="366" height="110" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="203" y="342" font-size="26" fill="#c4ccd4" font-weight="700">Multiply</text>
+<text x="203" y="386" font-size="24" fill="#dde2e7">Tile start as one scalar</text>
+<path d="M364 419 L364 454 L480 454 L480 478" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M794 226 L794 454 L544 454 L544 478" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="286" y="489" width="495" height="75" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="308" y="528" font-size="26" fill="#b4c8d8" font-weight="700">Add with broadcasting</text>
+<text x="52" y="542" font-size="27" fill="#b4c8d8" font-weight="700">offsets</text>
+<path d="M280 528L189 528" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="577" width="896" height="48" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="50" y="609" font-size="21" fill="#b4c8d8">The compiler knows the width but the program ID determines the values</text>
 </svg>

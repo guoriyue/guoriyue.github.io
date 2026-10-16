@@ -1,22 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title desc"><title id="title">Compilation and execution receive different inputs</title><desc id="desc">The annotation identifies when a parameter must be supplied</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6b9ca"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="640" fill="#111e2c"/>
-<text x="32" y="44" font-size="29" fill="#dbe7f1" font-weight="700">Compilation and execution receive different inputs</text>
-<text x="32" y="78" font-size="20" fill="#a6b9ca">The annotation identifies when a parameter must be supplied</text>
-<rect x="32" y="110" width="420" height="240" rx="12" fill="#45351c" stroke="#33495e"/>
-<text x="54" y="149" font-size="26" fill="#f8d18a" font-weight="700">During compilation</text>
-<text x="54" y="193" font-size="23" fill="#dbe7f1">BLOCK is supplied as 4</text>
-<text x="54" y="229" font-size="23" fill="#dbe7f1">The compiler saves this choice</text>
-<text x="54" y="265" font-size="23" fill="#dbe7f1">The tile width is now fixed</text>
-<rect x="53" y="300" width="275" height="36" rx="18" fill="#45351c" stroke="#33495e"/>
-<text x="67" y="325" font-size="21" fill="#f8d18a" font-weight="700">Stored in self.block</text>
-<rect x="508" y="110" width="420" height="240" rx="12" fill="#173c58" stroke="#33495e"/>
-<text x="530" y="149" font-size="26" fill="#9ddcff" font-weight="700">During execution</text>
-<text x="530" y="193" font-size="23" fill="#dbe7f1">Provide x, y, out, and n</text>
-<text x="530" y="229" font-size="23" fill="#dbe7f1">Read the actual array contents</text>
-<text x="530" y="265" font-size="23" fill="#dbe7f1">Use the already fixed width</text>
-<path d="M462 231L496 231" stroke="#a6b9ca" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="32" y="390" width="896" height="130" rx="12" fill="#352b54" stroke="#33495e"/>
-<text x="54" y="429" font-size="26" fill="#d8c1ff" font-weight="700">When translation later encounters BLOCK</text>
-<text x="54" y="473" font-size="24" fill="#dbe7f1">Look up the saved width → resolve 4 → record the needed constant</text>
-<rect x="32" y="567" width="896" height="48" rx="12" fill="#45351c" stroke="#33495e"/>
-<text x="50" y="599" font-size="21" fill="#f8d18a">Skipping runtime registration does not discard the compilation choice</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title desc"><title id="title">Compilation and execution receive different inputs</title><desc id="desc">The annotation identifies when a parameter must be supplied</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6afb8"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="640" fill="#131b24"/>
+<text x="32" y="44" font-size="29" fill="#dde2e7" font-weight="700">Compilation and execution receive different inputs</text>
+<text x="32" y="78" font-size="20" fill="#a6afb8">The annotation identifies when a parameter must be supplied</text>
+<rect x="32" y="110" width="420" height="240" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="54" y="149" font-size="26" fill="#c4ccd4" font-weight="700">During compilation</text>
+<text x="54" y="193" font-size="23" fill="#dde2e7">BLOCK is supplied as 4</text>
+<text x="54" y="229" font-size="23" fill="#dde2e7">The compiler saves this choice</text>
+<text x="54" y="265" font-size="23" fill="#dde2e7">The tile width is now fixed</text>
+<rect x="53" y="300" width="275" height="36" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="67" y="325" font-size="21" fill="#c4ccd4" font-weight="700">Stored in self.block</text>
+<rect x="508" y="110" width="420" height="240" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="530" y="149" font-size="26" fill="#b4c8d8" font-weight="700">During execution</text>
+<text x="530" y="193" font-size="23" fill="#dde2e7">Provide x, y, out, and n</text>
+<text x="530" y="229" font-size="23" fill="#dde2e7">Read the actual array contents</text>
+<text x="530" y="265" font-size="23" fill="#dde2e7">Use the already fixed width</text>
+<path d="M462 231L496 231" stroke="#a6afb8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="390" width="896" height="130" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="54" y="429" font-size="26" fill="#c4ccd4" font-weight="700">When translation later encounters BLOCK</text>
+<text x="54" y="473" font-size="24" fill="#dde2e7">Look up the saved width → resolve 4 → record the needed constant</text>
+<rect x="32" y="567" width="896" height="48" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="50" y="599" font-size="21" fill="#c4ccd4">Skipping runtime registration does not discard the compilation choice</text>
 </svg>
