@@ -1,7 +1,7 @@
 ---
-title: Step 1: From source code to instructions
+title: Step 1. From source code to instructions
 date: 2026-09-26
-description: Build your first compiler representation in Python. Learn syntax trees, instructions, tiles, and compile-time constants before implementing the exercise.
+description: Translate a small array program into instructions. Explain compile time parameters, name lookup, recursive traversal, and the complete exercise implementation.
 label: AI Systems
 series: TinyTriton
 part: 1
@@ -9,28 +9,33 @@ part: 1
 
 [Series overview](https://guoriyue.github.io/blog/tinytriton-series/) · Lesson 1 of 15
 
-A compiler turns one description of a computation into another. Before it can
-choose GPU instructions or make a program faster, it needs to understand what
-operations the source asks for and how those operations depend on each other.
+A compiler represents a computation before executing it. The representation
+records which operations are required, which values they use, and which results
+they produce. This lesson constructs that representation for a small array
+addition program.
 
-In this lesson, we will turn a small array-addition program into a list of
-instructions. You need basic Python: functions, lists, dictionaries, and classes.
-You do not need a GPU, LLVM, Triton, or previous compiler knowledge.
+There are two programs to distinguish. The compiler is a Python program that
+runs while translating the source. The kernel is the program being translated.
+Creating Python objects and updating dictionaries executes the compiler, but
+neither action performs the kernel's array addition.
 
-By the end, you should be able to explain the difference between parsing and
-lowering, describe a value without knowing its contents, and connect an expression
-to the instructions needed to compute it.
+The result of this lesson is a `Program` containing runtime parameters and an
+ordered list of instructions. The following lesson will interpret those
+instructions. GPU thread assignment and code generation come later.
+
+Basic Python functions, lists, dictionaries, and classes are sufficient for this
+lesson. No GPU or previous compiler knowledge is required.
 
 ## 1. Describe a calculation before running it
 
-Consider this expression:
+Consider a small expression.
 
 ```python
 answer = (a + b) * 2
 ```
 
-Executing it requires numbers for `a` and `b`. Describing it does not. We can write
-down the work in order:
+Executing it requires numbers for `a` and `b`. Describing its operations does
+not. We can record the addition, constant, and multiplication in order.
 
 ```text
 %0 = add(a, b)
@@ -38,37 +43,29 @@ down the work in order:
 %2 = mul(%0, %1)
 ```
 
-Each line is an **instruction**: a record of one operation. `add` is the operation
-name; `a` and `b` are its **operands**, meaning inputs. `%0` names the result. The
-percent sign is just part of a label here, not Python's remainder operator.
-`const` introduces a known number so other instructions can refer to it.
+Each line is an **instruction**, a record of one operation. `add` is the operation
+name. Its operands `a` and `b` are the inputs, and `%0` names the result. The
+percent sign is part of a label, rather than Python's remainder operator.
+`const` introduces a known number that another instruction can reference.
 
-This list is an **intermediate representation**, or **IR**. It sits between the
-source language and the code we will eventually execute. Creating the list does
-not perform addition or multiplication. It preserves the recipe.
+This list is an **intermediate representation**, or **IR**. Creating the list
+does not perform addition or multiplication. It records how to compute the
+result when the inputs become available.
 
-The source name `answer` refers to `%2`. A dictionary can remember that association.
-Assignment itself does not require another arithmetic operation.
+The source name `answer` refers to `%2`. A dictionary can store that association.
+Assignment itself requires no additional arithmetic instruction.
 
-**Pause and predict:** for `answer = a + b * 2`, what must be represented before
-the final addition? Why is that a different dependency structure?
-
-<details>
-<summary>Check your reasoning</summary>
-
-The multiplication uses `b` and the constant `2`; the addition then uses `a` and
-the multiplication's result. Parentheses changed which operation depends on which.
-Neither translation needs actual numbers for `a` or `b`.
-
-</details>
+For `answer = a + b * 2`, the dependencies change. The multiplication must be
+represented before the addition because its result is an input to that addition.
+The instruction order follows dependencies rather than the order in which
+operators appear in the source text.
 
 ## 2. Let Python read the syntax
 
-We could write a parser to recognize names, parentheses, and operators. Python
-already provides one in its standard-library `ast` module. **AST** stands for
-**abstract syntax tree**: a tree that records the structure of source code.
+Python's `ast` module parses source text into an **abstract syntax tree**, or
+**AST**. The tree records the nested structure of expressions and statements.
 
-This experiment runs in an ordinary Python session:
+The following experiment runs in an ordinary Python session.
 
 ```python
 import ast
@@ -80,7 +77,8 @@ print(type(assignment.value.op).__name__)
 print(type(assignment.value.right.op).__name__)
 ```
 
-It prints:
+The output identifies an assignment whose right side is an addition containing
+a multiplication.
 
 ```text
 Assign
@@ -89,20 +87,22 @@ Add
 Mult
 ```
 
-`Assign` describes an assignment. Its `.value` is the expression on the right.
-`BinOp` means an operation with two inputs; `.left`, `.right`, and `.op` describe
-those inputs and the operator. Here the right input of the addition is itself a
-multiplication.
+`Assign.value` contains the expression on the right of the assignment.
+`BinOp.left`, `BinOp.right`, and `BinOp.op` describe two inputs and their operator.
+The right input to the addition is itself a `BinOp` for multiplication.
 
-The tree groups syntax; our instruction list names intermediate results and makes
-execution dependencies explicit. Translating the tree into that list is called
-**lowering**. We will walk from the leaves outward: first names and literals,
-then operations that use them. Visiting smaller expressions in the same way is
-**recursion**.
+Translating this tree into our instruction list is called **lowering**. Our
+traversal starts at the leaves, resolves names and literals, and then records
+operations that use those values. Applying the same procedure to nested
+expressions is recursion.
+
+Lowering is a general translation process. It does not prescribe how every
+language must represent constants or parameters. Those choices belong to the
+language and compiler being implemented.
 
 ## 3. The small language we will compile
 
-Our input is a string containing a function:
+The compiler receives a string containing a function.
 
 ```python
 source = """
@@ -115,76 +115,177 @@ def vector_add(x: ptr, y: ptr, out: ptr, n: int, BLOCK: tl.constexpr):
 """
 ```
 
-This is a teaching language using Python syntax. `ast.parse(source)` reads the
-string without executing it or evaluating its annotations. You do not need to
-import `tl` or define `ptr` to parse it. Our compiler gives those spellings meaning.
+This teaching language uses Python syntax. `ast.parse(source)` reads the string
+without executing the function or evaluating its annotations. Parsing requires
+neither an imported `tl` module nor a Python definition of `ptr`. Our compiler
+assigns meaning to those spellings.
 
-The calculation is array addition: `out[i] = x[i] + y[i]`. Instead of describing
-one element at a time, the function describes a **tile**: a small group of elements
-processed together. `BLOCK` is the tile width. A **program instance** handles one
-tile; its program ID identifies that tile. We have not assigned work to hardware
-threads yet. A tile position is sometimes called a **lane**; it is not necessarily
-one GPU thread.
+The kernel computes `out[i] = x[i] + y[i]`. It describes a **tile**, a small group
+of elements processed together. `BLOCK` determines the tile width. A program
+instance handles one tile, and its program ID identifies that tile. A position
+within a tile is sometimes called a lane. Neither a tile position nor a program
+instance should be identified with a single GPU thread at this stage.
 
 | Source operation | Meaning in this lesson |
 |---|---|
-| `tl.program_id(0)` | Which program instance is this, along the one dimension we use? |
-| `tl.arange(0, BLOCK)` | Integer positions from zero up to, but excluding, `BLOCK` |
-| `x + offsets` | Addresses of elements at those offsets from the start of `x` |
-| `offsets < n` | A Boolean value for each position: is it inside the input? |
-| `tl.load(..., mask=mask, other=0.0)` | Read valid positions; use zero for invalid ones |
+| `tl.program_id(0)` | The program ID along the dimension used by this kernel |
+| `tl.arange(0, BLOCK)` | Integer positions from zero up to but excluding `BLOCK` |
+| `x + offsets` | Candidate element addresses relative to the start of `x` |
+| `offsets < n` | A Boolean indicating whether each position is within the input |
+| `tl.load(..., mask=mask, other=0.0)` | Read valid positions and use zero elsewhere |
 | `tl.store(..., mask=mask)` | Write only valid positions |
 
-A **pointer** is a reference to a location in memory. `ptr` says the parameter
-points to 32-bit floating-point elements. Pointer addition counts **elements**:
-`x + 2` means the address two elements after `x`, not adding two to the stored
-numbers. A load turns an address into a value; a store writes a value to an address.
+A pointer identifies a location in memory. Here `ptr` describes a pointer to
+FP32 elements. Adding two to a pointer advances by two elements. It does not add
+two to the numbers stored in the array. Address calculation, reading memory, and
+writing memory are separate operations.
 
-Take `BLOCK=4` and `n=6`. Program instance 0 describes offsets `[0, 1, 2, 3]`.
-Instance 1 describes `[4, 5, 6, 7]`, with mask `[True, True, False, False]`.
-Only its first two positions may access the arrays. A mask is how the last tile
-handles an input length that is not a multiple of the tile width.
+### Trace the final tile
 
-Multiplying the scalar program ID by four gives one number. Adding that number
-to `[0, 1, 2, 3]` reuses it at every position. This is **broadcasting**.
+Suppose `x=[1,2,3,4,5,6]`, `y=[10,20,30,40,50,60]`, `n=6`, and `BLOCK=4`.
+Two program instances cover the input.
 
-At this stage, we record these operations. Their execution comes in the next lesson.
+| Program ID | Candidate offsets | Mask |
+|---|---|---|
+| 0 | `[0,1,2,3]` | `[True,True,True,True]` |
+| 1 | `[4,5,6,7]` | `[True,True,False,False]` |
+
+For program 1, multiplying its ID by four gives the scalar four. Adding that
+scalar to `[0,1,2,3]` gives `[4,5,6,7]`. Reusing a scalar at each tile position
+is **broadcasting**.
+
+The mask prevents reads at offsets six and seven. The two loads produce
+`a=[5,6,0,0]` and `b=[50,60,0,0]`. Their sum is `[55,66,0,0]`, but the store
+writes only positions four and five. The zeros at invalid positions are not
+written to memory.
+
+This trace describes what execution will mean. The first lesson records the
+operations without reading these arrays.
 
 <a id="compile-time-inputs"></a>
 
 ## 4. Why `BLOCK: tl.constexpr` is different
 
-There are two moments when information can become available:
+A value can become available during compilation or during execution. Our
+language distinguishes these cases explicitly.
 
-| Information | When our compiler receives it |
+| Information | When it becomes available |
 |---|---|
-| Tile width `BLOCK` | While compiling |
-| Array addresses and input length `n` | When the compiled program runs |
-| Array contents | When the running program reads memory |
+| Tile width `BLOCK` | During compilation |
+| Array addresses and input length `n` | At execution |
+| Array contents | When execution reads memory |
 
-A **compile-time constant** is known while compiling. A **runtime input** is
-supplied for execution. `constexpr` abbreviates “constant expression.” In this
-language, `tl.constexpr` marks a parameter whose value the compiler must already
-know. It is a marker, not the value itself, and not a Python keyword.
+A **compile time constant** is known during compilation. A **runtime input** is
+provided when the generated program executes. `constexpr` abbreviates constant
+expression. In this language, the annotation `tl.constexpr` marks a parameter
+whose value must be provided during compilation.
 
-The compiler's caller supplies the actual number:
+### The annotation identifies the category
+
+For each parameter, `lower` obtains its name and annotation from the AST.
 
 ```python
-# API example: this works after you implement lower.
+parameter_name = arg.arg
+annotation = ast.unparse(arg.annotation)
+```
+
+For `n`, these strings are `"n"` and `"int"`. For `BLOCK`, they are `"BLOCK"`
+and `"tl.constexpr"`. The annotation is the evidence used to classify the
+parameter. The compiler does not infer this category from the name `BLOCK` or
+from how the parameter is used.
+
+The marker has meaning because our compiler recognizes it. It is not a Python
+keyword, and the parser does not assign a value to it.
+
+### The caller supplies the value
+
+After `lower` has been implemented, the caller can request a specialization.
+
+```python
+compiler = Compiler()
 function = compiler.parse(source)
 program = compiler.lower(function, block=4)
 ```
 
-This creates a program specialized for width four. It still needs `x`, `y`, `out`,
-and `n` at runtime, but not another `BLOCK` argument. Changing the array contents
-does not require lowering again; changing the tile width does.
+`lower` saves this choice in `self.block`. The generated program needs `x`, `y`,
+`out`, and `n` at execution. It does not need another argument for `BLOCK`
+because the width has already been fixed to four.
 
-These are language rules we are choosing, not conventions you are expected to
-infer from a reference solution.
+The distinction is between two interfaces. The compiler interface accepts
+`function` and `block`. The generated program interface accepts the runtime
+parameters. These interfaces serve different purposes.
+
+Changing array contents does not require another specialization. Changing the
+tile width does, because the shapes recorded in the IR depend on that width.
+
+### Skipping means excluding a runtime parameter
+
+The parameter registration loop contains the following condition.
+
+```python
+if annotation != "tl.constexpr":
+    parameter = Value(parameter_name, annotation)
+    self.env[parameter_name] = parameter
+    self.program.params.append(parameter)
+```
+
+When the loop reaches `n`, the condition is true and the compiler registers a
+runtime input. When it reaches `BLOCK`, the condition is false and this block
+of code does not execute.
+
+Skipping `BLOCK` here means excluding it from `program.params` and `env` during
+runtime parameter registration. It does not mean discarding its value. The
+value has already been saved in `self.block` and remains available to the
+supplied `constexpr` helper.
+
+```text
+lower(function, block=4)
+    ↓
+self.block = 4
+    ↓
+BLOCK is excluded from runtime parameter registration
+    ↓
+visit encounters the source name BLOCK
+    ↓
+constexpr returns self.block
+    ↓
+emit records const(value=4) when an IR operand is needed
+```
+
+The registration loop therefore handles only one part of parameter processing.
+Saving the compilation choice and resolving later uses happen elsewhere.
+
+### The resolver has a deliberately limited scope
+
+The supplied helper accepts numeric literals and the name `BLOCK`.
+
+```python
+def constexpr(self, node):
+    if isinstance(node, ast.Constant):
+        return node.value
+    if isinstance(node, ast.Name):
+        if node.id == "BLOCK":
+            return self.block
+        raise KeyError(node.id)
+    raise NotImplementedError(ast.dump(node))
+```
+
+Classification uses the annotation, but resolution in this lesson recognizes
+only the name `BLOCK`. Supporting another name would require extending the
+resolver and the compiler interface. Renaming a parameter alone is insufficient.
+A misspelling such as `BLOKC` raises an error rather than receiving the same value.
+
+The helper is not a general evaluator of constant expressions. For example,
+it cannot directly resolve `BLOCK * 2` as an argument to `arange`. The ordinary
+expression visitor can represent multiplication, but this helper accepts only
+the two syntax forms shown above.
+
+These conventions are supplied by the exercise. They are not universal
+properties of lowering or rules the learner must derive independently.
 
 ## 5. Inspect the function before writing the compiler
 
-Using `source` from above, run:
+Using the earlier source string, inspect the function and its parameters.
 
 ```python
 function = ast.parse(source).body[0]
@@ -193,7 +294,7 @@ for parameter in function.args.args:
     print(parameter.arg, ast.unparse(parameter.annotation))
 ```
 
-Expected output:
+The output shows exactly which annotation the registration loop will inspect.
 
 ```text
 FunctionDef vector_add
@@ -204,45 +305,41 @@ n int
 BLOCK tl.constexpr
 ```
 
-Keep this small reference beside the exercise:
-
 | Python AST field | What it contains |
 |---|---|
-| `function.name` | The function name as a string |
+| `function.name` | The function name |
 | `function.args` | An object grouping parameter lists |
-| `function.args.args` | The list of ordinary parameters used here |
-| `parameter.arg` | A parameter's name, such as `"BLOCK"` |
-| `parameter.annotation` | Syntax describing its annotation |
-| `ast.unparse(parameter.annotation)` | The annotation rendered as source text |
+| `function.args.args` | The parameter list used by this kernel |
+| `parameter.arg` | A parameter name |
+| `parameter.annotation` | The annotation as syntax |
 | `function.body` | Statements in source order |
 
-The repeated `.args.args` comes from two nested objects. It is an interface to
-look up, not a compiler concept to memorize. All parameters in our sample are
-annotated; this exercise does not implement general Python parameter handling.
+The repeated `.args.args` comes from two nested objects. These field names are
+part of Python's AST interface. All parameters in the sample have annotations,
+so the exercise does not need general handling of missing annotations.
 
 ## 6. Three records for the output
 
-The starter already defines three Python dataclasses. A **dataclass** is a class
-for storing named fields; Python generates its constructor and printable
-representation. You do not need to invent these records yourself.
+The starter defines three dataclasses. A dataclass stores named fields and
+provides a generated constructor and printable representation.
 
-| Record | What it describes | Fields |
+| Record | Purpose | Fields |
 |---|---|---|
-| `Value` | An input or an operation's result | `name`, `kind`, `shape` |
-| `Instr` | One instruction; `Instr` abbreviates **instruction** | `result`, `op`, `args`, `attrs` |
-| `Program` | The translated function | `name`, `params`, `body` |
+| `Value` | Describe an input or intermediate result | `name`, `kind`, `shape` |
+| `Instr` | Record an operation and its dependencies | `result`, `op`, `args`, `attrs` |
+| `Program` | Own the translated interface and instructions | `name`, `params`, `body` |
 
-`Value("x", "ptr")` describes a pointer parameter. It does not contain an array.
-`Value("sample", "float", (4,))` describes four floating-point values without
-knowing their contents. The shape `()` means a scalar; `(4,)` means one dimension
-of length four. The comma makes it a Python tuple.
+`Value("x", "ptr")` describes a pointer input without containing an array.
+`Value("%4", "int", (4,))` describes a tile of four integers without containing
+those integers. The shape `()` means a scalar. The shape `(4,)` means a single
+dimension of length four.
 
-An instruction's `args` are `Value` records, referring to parameters or earlier
-results. Its `attrs` are attributes: ordinary Python data already known, such as
-`{"value": 2}` or `{"start": 0, "end": 4}`. A store changes memory but produces
-no result, so its `result` is `None`.
+An instruction's `args` refer to input values or earlier results. Its `attrs`
+contain data already known to the compiler. For example, a constant instruction
+has a value attribute, while `arange` has start and end attributes. A store
+changes memory but produces no result Value, so its `result` is `None`.
 
-Run this from the repository root, even before filling in the TODOs:
+The following example constructs one addition without executing it.
 
 ```python
 from problems.step01 import Value, Instr, Program
@@ -255,16 +352,15 @@ program = Program("example", [left, right], [instruction])
 print(program)
 ```
 
-You have constructed a program containing one addition. No numbers were added.
-The class name `Instr` and a variable name such as `instr` both refer to this
-notion of a recorded instruction; neither is a special Python keyword.
+`Instr` abbreviates instruction. It is a class defined by the project, not a
+Python keyword.
 
 <a id="exercise-interface"></a>
 
 ## 7. The exercise interface
 
-Clone the [companion repository](https://github.com/guoriyue/TinyTriton), which
-currently contains only Step 1. With Python 3.10 or newer, run:
+Clone the [companion repository](https://github.com/guoriyue/TinyTriton) and set
+up the CPU exercise dependencies with Python 3.10 or newer.
 
 ```bash
 git clone https://github.com/guoriyue/TinyTriton.git
@@ -275,100 +371,336 @@ python -m pip install -e '.[dev]'
 tinytriton check step01
 ```
 
-On Windows, use `.venv\Scripts\activate` to activate the environment.
-The unfinished starter raises `NotImplementedError`. That means you have reached
-the exercise. No GPU setup is involved.
+On Windows, activate the environment with `.venv\Scripts\activate`.
+The unfinished exercise raises `NotImplementedError`. That is the expected
+starting point.
 
-Open [problems/step01.py](https://github.com/guoriyue/TinyTriton/blob/main/problems/step01.py). You implement three methods:
+### What is supplied and what must be written
 
-| Method | Responsibility |
+Open [the starter file](https://github.com/guoriyue/TinyTriton/blob/main/problems/step01.py).
+The three exercise methods contain signatures, documentation, TODO comments,
+and a `NotImplementedError`. Their executable logic is absent. Even the node
+classification conditions in `visit` must be written by the learner.
+
+| Component | Status in the starter |
 |---|---|
-| `lower(function, block)` | Create fresh compilation state, describe runtime parameters, translate the body, return a `Program` |
-| `statement(node)` | Handle assignment or a standalone call; remember assignment names |
-| `visit(node)` | Translate an expression and return its `Value`; a store has no result |
+| `Value`, `Instr`, `Program`, and `binary` | Supplied |
+| `parse`, `emit`, `constexpr`, `broadcast`, and `call` | Implemented |
+| `lower`, `statement`, and `visit` | Implementation required |
 
-The compiler has no custom constructor. `lower` initializes these four fields
-for each compilation. They are an explicit contract with the supplied helpers:
+The conditions already present in `call` are part of the supplied helper.
+They recognize the supported `tl` operations. The conditions in the reference
+`visit` belong to the exercise solution and are not present in the starter.
 
-| Field | Meaning |
+### Four fields define the compilation state
+
+The compiler has no custom constructor. Each call to `lower` initializes fresh
+state that the supplied helpers will use.
+
+| Field | Purpose |
 |---|---|
-| `self.block` | The integer provided by the caller; used to resolve `BLOCK` |
-| `self.program` | A new `Program` owning runtime parameters and instructions |
-| `self.body` | The same list as `self.program.body`; helpers append instructions here |
-| `self.env` | A fresh dictionary mapping source names to `Value` records |
+| `self.block` | Save the width provided to the compiler |
+| `self.program` | Own runtime parameters and emitted instructions |
+| `self.body` | Refer to the current instruction list |
+| `self.env` | Map source names to Value records |
 
-`env` abbreviates **environment**, here a name lookup table. It contains descriptions,
-not runtime array contents. Runtime parameters appear in both the parameter list
-and this lookup table. `BLOCK` is resolved through `self.block` instead.
+`self.body = self.program.body` makes both fields refer to one list. Appending
+through `self.body` therefore updates the program being constructed. Copying
+the list would break this relationship.
 
-`self.body = self.program.body` shares one list. Copying the list would mean the
-helpers append somewhere different from the program you return. The name lookup
-and instruction list must also be fresh for every compilation.
+### Why a parameter appears in both params and env
 
-The starter supplies these helpers:
+The two containers answer different questions. `program.params` describes the
+inputs that execution must supply. `env` supports name lookup while translating
+the source.
+
+For the parameter `n`, registration creates one Value and stores a reference to
+it in both containers.
+
+```python
+parameter = Value("n", "int")
+self.program.params.append(parameter)
+self.env["n"] = parameter
+
+assert self.program.params[-1] is self.env["n"]
+```
+
+This example assumes the state fields have been initialized. The assertion
+shows that both entries refer to the same object. No integer data is copied,
+and the compiler still does not know the runtime value of `n`.
+
+After registering all runtime parameters, the state has the following form.
+
+```text
+program.params = [Value("x", "ptr"), Value("y", "ptr"),
+                  Value("out", "ptr"), Value("n", "int")]
+
+env = {"x": the Value for x,
+       "y": the Value for y,
+       "out": the Value for out,
+       "n": the Value for n}
+
+self.block = 4
+```
+
+When translating `offsets < n`, `visit` uses `env["n"]` to find the input Value.
+Later assignments add names such as `offsets`, `mask`, and `a` to `env`, but
+those names do not become runtime parameters. They refer to intermediate results
+computed by the program itself.
+
+### Contracts of the supplied helpers
 
 | Helper | Contract |
 |---|---|
-| `parse(text)` | Source string → function AST |
-| `emit(op, args, kind, shape, **attrs)` | Append an instruction and return its result `Value` |
-| `constexpr(node)` | Literal or `BLOCK` syntax → known Python number |
-| `broadcast(*values)` | Determine a scalar or tile result shape |
-| `call(name, args, keywords)` | Translate one supported `tl` call from its AST arguments |
+| `parse(text)` | Return a function AST from a source string |
+| `emit(op, args, kind, shape, **attrs)` | Append an instruction and return its result Value |
+| `constexpr(node)` | Resolve a literal or the supported name `BLOCK` |
+| `broadcast(*values)` | Determine the shape of an elementwise result |
+| `call(name, args, keywords)` | Translate a supported `tl` call from AST arguments |
 
-For `call`, pass syntax nodes, not already translated values. Its arguments are
-the operation name, a list of positional AST arguments, and a dictionary mapping
-keyword names to AST expressions. The helper translates those expressions itself.
-`**attrs` collects named arguments into a dictionary; `*values` accepts a varying
-number of arguments.
+`emit` creates a Value, appends its defining instruction, and returns that Value.
+It does not execute the recorded operation. `broadcast` computes a shape rather
+than copying actual data.
 
-The shared `body` field and separate traversal/helper methods leave room for
-later lessons to extend the compiler without rewriting everything. The `binary`
-dictionary in the starter is just the supported mapping from Python operator
-classes to instruction names, not a general registry you need to expand now.
+`call` receives syntax nodes rather than translated Values. It decides which
+arguments need recursive translation and which require a known compilation
+value. For example, `load` visits its pointer expression, while `arange` resolves
+its endpoints through `constexpr`.
 
-## 8. Build from leaves to expressions
+Separate methods provide extension points for later lessons. The `binary`
+dictionary maps the supported AST operator classes to instruction names.
+Neither the dictionary nor the helpers need redesigning for this exercise.
 
-Start with names and constants. A name refers to a parameter, a previously bound
-result, or the compile-time `BLOCK`. A literal introduces a constant instruction.
-An unknown name should remain an error: a typo must not silently become `BLOCK`.
+## 8. Translate expressions and bind names
 
-Then handle arithmetic and comparison. Translate both inputs before recording
-the operation that uses them. Numeric addition and pointer-plus-offset have
-different meanings, so the IR calls the latter `addptr`. Floating-point arithmetic
-produces a float; `<` produces a Boolean; scalar/tile shapes follow broadcasting.
-The supported pointer form is pointer plus integer offset.
+The visitor has five cases because the kernel uses five expression forms.
+Its length reflects the number of supported forms rather than one long
+sequence of operations.
 
-These are the AST fields you will need:
+| Expression form | Example | Required action |
+|---|---|---|
+| `Name` | `n`, `offsets`, `BLOCK` | Find an existing Value or resolve the compilation constant |
+| `Constant` | `0.0` | Emit a constant instruction |
+| `BinOp` | `a + b` | Visit both inputs and emit the operation |
+| `Compare` | `offsets < n` | Visit both inputs and emit a Boolean comparison |
+| `Call` | `tl.load(...)` | Delegate to the supplied call helper |
 
-| Node | Fields |
-|---|---|
-| `Name` | `id`: the source spelling |
-| `Constant` | `value`: the literal number |
-| `BinOp` | `left`, `right`, `op` |
-| `Compare` | `left`, `comparators[0]`, `ops[0]` for our single comparison |
-| `Call` | `func`, `args`, `keywords`; for `tl.load`, `func.attr` is `"load"` |
-| `Assign` | `targets[0].id`: destination name; `value`: right-hand expression |
-| `Expr` | `value`: a standalone expression, such as the store call |
+### Follow a name through the visitor
 
-Each call keyword has `.arg` for its name and `.value` for its expression.
-`isinstance(node, ast.Name)` identifies a node class. `type(node.op)` identifies
-an operator class such as `ast.Add`.
+For `n`, the visitor finds an entry in `env` and returns the registered input
+Value. For `offsets`, it returns the Value bound by an earlier assignment.
+For `BLOCK`, no entry exists in `env`, so it calls `constexpr` and emits a
+constant with the returned number.
 
-After translating an assignment's right side, bind its result to the source
-name. A standalone store has no name to bind. Finally, connect these pieces in
-`lower`: register runtime inputs and visit the function's statements in order.
+The fallback is intentionally narrow. An unknown name is passed to the resolver,
+which rejects names other than `BLOCK`. The fallback does not make every unknown
+variable a compilation constant.
 
-The supported subset is deliberately small: the sample's annotated parameters,
-numeric literals, names, simple assignments, `+`, `*`, a single `<`, and its four
-`tl` operations. It does not compile arbitrary Python or validate every malformed
-program. In particular, loads have explicit `mask` and `other`; stores have `mask`.
+### Follow an arithmetic expression recursively
+
+For `a + b * 2`, the visitor first obtains the Value for `a`. It then visits the
+nested multiplication, obtains `b`, emits the constant two, and emits the
+multiplication. Only then can it emit the outer addition.
+
+```text
+visit(a + b * 2)
+    visit(a)          returns the existing Value for a
+    visit(b * 2)
+        visit(b)      returns the existing Value for b
+        visit(2)      emits const and returns %0
+        emit mul      returns %1
+    emit add          returns %2
+```
+
+A visitor call can both append instructions and return a Value. The returned
+Value describes the expression's result. It does not contain a computed number.
+A simple name lookup may return an existing Value without appending anything.
+
+Numeric addition and pointer addition have different meanings. The latter is
+recorded as `addptr`. The supported pointer form has a pointer on the left and
+an integer offset on the right. A comparison produces Boolean elements, and
+broadcasting determines whether the result is a scalar or a tile.
+
+### Assignment connects source names to results
+
+After translating an assignment's right side, `statement` stores the result in
+`env` under the target name. Translating the first kernel statement produces
+five instructions and one name binding.
+
+```text
+%0 = program_id(axis=0)
+%1 = const(value=4)
+%2 = mul(%0, %1)
+%3 = arange(start=0, end=4)
+%4 = add(%2, %3)
+
+env["offsets"] = the Value for %4
+```
+
+`%2` is a scalar, while `%3` and `%4` have shape `(4,)`. No program ID has been
+chosen during lowering, so the compiler does not know the actual contents of
+`%4`. When program 1 executes, these instructions produce `[4,5,6,7]`.
+
+The number four appears in two roles. Multiplication uses it as an IR operand
+introduced by `const`. The range operation stores it directly as its end
+attribute. Both representations refer to the same known compilation choice.
+
+<a id="reference-implementation"></a>
+
+## 9. The complete exercise implementation
+
+The following three methods are taken from the companion repository's
+[reference implementation](https://github.com/guoriyue/TinyTriton/blob/main/solutions/step01.py).
+Replace the corresponding methods inside `Compiler` in `problems/step01.py`.
+The four spaces before each method definition are the indentation required
+inside the class. Keep the supplied records and helper methods in place.
+
+This implementation supports the documented kernel subset. It is not a general
+Python compiler. Loads require explicit `mask` and `other` arguments, and stores
+require `mask`. The comparison case handles a single less than comparison.
+
+### Initialize state and register runtime inputs
+
+`lower` saves the width, creates the output program, and registers parameters
+whose annotation is not `tl.constexpr`. It then processes statements in source
+order and returns the program.
+
+```python
+    def lower(self, function, block):
+        """Translate an ast.FunctionDef into a Program of IR instructions.
+
+        Source annotations classify parameters; block supplies the actual
+        compile-time value(s). Neither parsing nor lowering runs the kernel.
+        """
+        self.block = block
+        self.program = Program(function.name, [])
+        self.body = self.program.body  # where instructions go
+        self.env = {}  # Python name -> the Value holding it
+        # function.args wraps the list of ast.arg records in .args.
+        for arg in function.args.args:
+            parameter_name = arg.arg
+            annotation = ast.unparse(arg.annotation)
+            # Only runtime inputs become parameters of the generated program.
+            if annotation != "tl.constexpr":
+                parameter = Value(parameter_name, annotation)
+                self.env[parameter_name] = parameter
+                self.program.params.append(parameter)
+        for node in function.body:
+            self.statement(node)
+        return self.program
+```
+
+### Translate statements
+
+An assignment translates its right side before binding the result to its target
+name. A standalone expression is visited without introducing a name. In the
+supplied kernel, the standalone expression is the store call.
+
+```python
+    def statement(self, node):
+        if isinstance(node, ast.Assign):
+            # Translate the right-hand expression before binding its name.
+            value = self.visit(node.value)
+            target_name = node.targets[0].id
+            self.env[target_name] = value
+        else:
+            self.visit(node.value)  # a bare tl.store(...)
+```
+
+### Translate expressions
+
+`visit` distinguishes names, literals, arithmetic, comparison, and calls. Each
+operation is emitted only after the Values for its inputs have been obtained.
+A store returns `None` through the call helper because it produces no result.
+
+```python
+    def visit(self, node):
+        if isinstance(node, ast.Name):
+            # Parameters and earlier assignments refer to existing IR Values.
+            if node.id in self.env:
+                return self.env[node.id]
+            # constexpr resolves supported compile-time names, or raises.
+            constant = self.constexpr(node)
+            return self.emit("const", value=constant)
+        if isinstance(node, ast.Constant):
+            kind = "float" if isinstance(node.value, float) else "int"
+            return self.emit("const", kind=kind, value=node.value)
+        if isinstance(node, ast.BinOp):
+            a, b = self.visit(node.left), self.visit(node.right)
+            shape = self.broadcast(a, b)
+            if a.kind == "ptr":
+                return self.emit("addptr", (a, b), "ptr", shape)
+            kind = "float" if "float" in (a.kind, b.kind) else "int"
+            return self.emit(self.binary[type(node.op)], (a, b), kind, shape)
+        if isinstance(node, ast.Compare):  # the kernels only use <
+            a, b = self.visit(node.left), self.visit(node.comparators[0])
+            return self.emit("lt", (a, b), "bool", self.broadcast(a, b))
+        if isinstance(node, ast.Call):
+            keywords = {k.arg: k.value for k in node.keywords}
+            return self.call(node.func.attr, node.args, keywords)
+        raise NotImplementedError(ast.dump(node))
+```
+
+The three methods operate at different syntactic levels. `lower` handles the
+function, `statement` handles each statement, and `visit` handles the expressions
+inside it. The supplied `call` and `emit` helpers complete the translation.
 
 <a id="inspect-your-result"></a>
 
-## 9. Inspect your result
+## 10. Inspect the generated program
 
-After implementing the TODOs, run:
+Run the exercise check after replacing the three methods.
 
 ```bash
 tinytriton check step01
 ```
+
+Then inspect the result from the repository root.
+
+```python
+from problems.step01 import Compiler
+from tinytriton import kernels
+
+compiler = Compiler()
+function = compiler.parse(kernels.vector_add)
+program = compiler.lower(function, block=4)
+
+print("params:", [(v.name, v.kind, v.shape) for v in program.params])
+for instr in program.body:
+    result = instr.result.name if instr.result is not None else None
+    print(result, instr.op, tuple(v.name for v in instr.args), instr.attrs)
+print("env:", {name: value.name for name, value in compiler.env.items()})
+```
+
+The runtime parameter list contains `x`, `y`, `out`, and `n`. The body contains
+15 instructions. Fourteen produce a result Value, and the final store has no
+result. In compact notation, the complete program is as follows.
+
+```text
+vector_add(x: ptr, y: ptr, out: ptr, n: int)
+
+%0  = program_id(axis=0)
+%1  = const(value=4)
+%2  = mul(%0, %1)
+%3  = arange(start=0, end=4)
+%4  = add(%2, %3)
+%5  = lt(%4, n)
+%6  = addptr(x, %4)
+%7  = const(value=0.0)
+%8  = load(%6, %5, %7)
+%9  = addptr(y, %4)
+%10 = const(value=0.0)
+%11 = load(%9, %5, %10)
+%12 = addptr(out, %4)
+%13 = add(%8, %11)
+store(%12, %13, %5)
+```
+
+The final `env` entries associate `offsets` with `%4`, `mask` with `%5`, `a` with
+`%8`, and `b` with `%11`. These associations explain how source names connect to
+instruction results. They contain no runtime arrays.
+
+The addition of the two loaded tiles remains one instruction. This representation
+records a computation on four elements without assigning those elements to
+threads or expanding it into GPU instructions. The next lesson gives these
+records an execution meaning through a CPU interpreter.
