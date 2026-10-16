@@ -134,7 +134,7 @@ figure {
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  background-image: url('/section-art-jirai.png');
+  background-image: url('/section-art-jirai.svg');
   background-size: 300% 200%;
   background-repeat: no-repeat;
   image-rendering: pixelated;
@@ -1409,7 +1409,7 @@ body,
 
 .section-art,
 .writing-section .section-art {
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 
 /* Mizuiro, light gray, and white. */
@@ -1735,7 +1735,7 @@ body[data-herding='true'] .cursor-collie {
 }
 
 .art-contributions {
-  background-image: url('/open-source-heart-branches.png');
+  background-image: url('/open-source-heart-branches.svg');
   background-size: 100% 100%;
   background-position: center;
 }

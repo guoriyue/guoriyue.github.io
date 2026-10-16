@@ -144,10 +144,6 @@
 [data-theme='dark'] .about-section .portrait {
   border-color: var(--background);
 }
-[data-theme='dark'] .section-art {
-  mix-blend-mode: screen;
-  filter: invert(1) hue-rotate(180deg);
-}
 [data-theme='dark'] .series-section {
   background: #142735;
   border-color: #2c4c60;
