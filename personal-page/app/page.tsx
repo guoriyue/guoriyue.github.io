@@ -11,6 +11,7 @@ import Sheepdog from './sheepdog';
 import PageMotion from './page-motion';
 import Portrait from './portrait';
 import GitHubStars from './github-stars';
+import ThemeToggle from './theme-toggle';
 
 const sections = [
   ['about', 'About'],
@@ -71,6 +72,7 @@ export default function Home() {
               {title}
             </a>
           ))}
+          <ThemeToggle />
         </div>
       </nav>
       <main id="main">

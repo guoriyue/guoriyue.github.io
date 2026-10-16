@@ -1,3 +1,5 @@
+import ThemeToggle from '../theme-toggle';
+
 export default function BlogNavigation() {
   return (
     <>
@@ -14,6 +16,7 @@ export default function BlogNavigation() {
           <a href="/blog/" aria-current="page">
             Blog
           </a>
+          <ThemeToggle />
         </div>
       </nav>
     </>

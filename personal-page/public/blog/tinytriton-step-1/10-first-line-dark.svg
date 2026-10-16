@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc"><title id="title">Translate the first statement</title><desc id="desc">offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#9eb4c7"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#d6e4ef}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="650" fill="#111e2c"/>
+<text x="32" y="44" font-size="28" style="fill:#d6e4ef" font-weight="700">Translate the first statement</text>
+<text x="32" y="78" font-size="19" style="fill:#9eb4c7">offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)</text>
+<text x="52" y="132" font-size="22" style="fill:#d6e4ef" font-weight="700">Result</text>
+<text x="190" y="132" font-size="22" style="fill:#d6e4ef" font-weight="700">Operation</text>
+<text x="795" y="132" font-size="22" style="fill:#d6e4ef" font-weight="700">Shape</text>
+<rect x="32" y="152" width="896" height="54" rx="10" fill="#162637" stroke="#2b4154"/>
+<text x="52" y="188" font-size="25" style="fill:#8bd3ee" class="code">%0</text>
+<text x="190" y="188" font-size="25" style="fill:#d6e4ef" class="code">program_id(axis=0)</text>
+<text x="795" y="188" font-size="25" style="fill:#d6e4ef" class="code">()</text>
+<rect x="32" y="217" width="896" height="54" rx="10" fill="#162637" stroke="#2b4154"/>
+<text x="52" y="253" font-size="25" style="fill:#8bd3ee" class="code">%1</text>
+<text x="190" y="253" font-size="25" style="fill:#d6e4ef" class="code">const(value=4)</text>
+<text x="795" y="253" font-size="25" style="fill:#d6e4ef" class="code">()</text>
+<rect x="32" y="282" width="896" height="54" rx="10" fill="#162637" stroke="#2b4154"/>
+<text x="52" y="318" font-size="25" style="fill:#8bd3ee" class="code">%2</text>
+<text x="190" y="318" font-size="25" style="fill:#d6e4ef" class="code">mul(%0, %1)</text>
+<text x="795" y="318" font-size="25" style="fill:#d6e4ef" class="code">()</text>
+<rect x="32" y="347" width="896" height="54" rx="10" fill="#162637" stroke="#2b4154"/>
+<text x="52" y="383" font-size="25" style="fill:#8bd3ee" class="code">%3</text>
+<text x="190" y="383" font-size="25" style="fill:#d6e4ef" class="code">arange(start=0, end=4)</text>
+<text x="795" y="383" font-size="25" style="fill:#d6e4ef" class="code">(4,)</text>
+<rect x="32" y="412" width="896" height="54" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="52" y="448" font-size="25" style="fill:#8bd3ee" class="code">%4</text>
+<text x="190" y="448" font-size="25" style="fill:#d6e4ef" class="code">add(%2, %3)</text>
+<text x="795" y="448" font-size="25" style="fill:#d6e4ef" class="code">(4,)</text>
+<rect x="32" y="504" width="896" height="48" rx="10" fill="#173b37" stroke="#2b4154"/>
+<text x="52" y="537" font-size="25" style="fill:#d6e4ef" class="code">env[&quot;offsets&quot;] = Value(&quot;%4&quot;, &quot;int&quot;, (4,))</text>
+<rect x="32" y="577" width="896" height="48" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="50" y="609" font-size="21" style="fill:#8bd3ee">The result shape is known while its elements depend on the runtime program ID</text>
+</svg>

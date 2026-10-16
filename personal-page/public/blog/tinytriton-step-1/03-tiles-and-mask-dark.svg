@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="550" viewBox="0 0 960 550" role="img" aria-labelledby="title desc"><title id="title">Two tiles cover six input elements</title><desc id="desc">BLOCK = 4 and n = 6</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#9eb4c7"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#d6e4ef}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="550" fill="#111e2c"/>
+<text x="32" y="44" font-size="28" style="fill:#d6e4ef" font-weight="700">Two tiles cover six input elements</text>
+<text x="32" y="78" font-size="19" style="fill:#9eb4c7">BLOCK = 4 and n = 6</text>
+<rect x="32" y="110" width="896" height="70" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="53" y="153" font-size="25" style="fill:#d6e4ef" class="code">offsets = program_id × BLOCK + arange(0, BLOCK)</text>
+<text x="48" y="245" font-size="25" style="fill:#d6e4ef" font-weight="700">Program 0</text>
+<text x="48" y="280" font-size="18" style="fill:#d6e4ef" class="code">0 × 4 + [0,1,2,3]</text>
+<rect x="335" y="215" width="135" height="94" rx="10" fill="#173b37" stroke="#2b4154"/>
+<text x="387" y="251" font-size="28" style="fill:#d6e4ef" font-weight="700">0</text>
+<text x="357" y="285" font-size="23" style="fill:#8bd3ee">True</text>
+<rect x="485" y="215" width="135" height="94" rx="10" fill="#173b37" stroke="#2b4154"/>
+<text x="537" y="251" font-size="28" style="fill:#d6e4ef" font-weight="700">1</text>
+<text x="507" y="285" font-size="23" style="fill:#8bd3ee">True</text>
+<rect x="635" y="215" width="135" height="94" rx="10" fill="#173b37" stroke="#2b4154"/>
+<text x="687" y="251" font-size="28" style="fill:#d6e4ef" font-weight="700">2</text>
+<text x="657" y="285" font-size="23" style="fill:#8bd3ee">True</text>
+<rect x="785" y="215" width="135" height="94" rx="10" fill="#173b37" stroke="#2b4154"/>
+<text x="837" y="251" font-size="28" style="fill:#d6e4ef" font-weight="700">3</text>
+<text x="807" y="285" font-size="23" style="fill:#8bd3ee">True</text>
+<text x="48" y="380" font-size="25" style="fill:#d6e4ef" font-weight="700">Program 1</text>
+<text x="48" y="415" font-size="18" style="fill:#d6e4ef" class="code">1 × 4 + [0,1,2,3]</text>
+<rect x="335" y="350" width="135" height="94" rx="10" fill="#173b37" stroke="#2b4154"/>
+<text x="387" y="386" font-size="28" style="fill:#d6e4ef" font-weight="700">4</text>
+<text x="357" y="420" font-size="23" style="fill:#8bd3ee">True</text>
+<rect x="485" y="350" width="135" height="94" rx="10" fill="#173b37" stroke="#2b4154"/>
+<text x="537" y="386" font-size="28" style="fill:#d6e4ef" font-weight="700">5</text>
+<text x="507" y="420" font-size="23" style="fill:#8bd3ee">True</text>
+<rect x="635" y="350" width="135" height="94" rx="10" fill="#3d3023" stroke="#2b4154"/>
+<text x="687" y="386" font-size="28" style="fill:#d6e4ef" font-weight="700">6</text>
+<text x="657" y="420" font-size="23" style="fill:#edba7b">False</text>
+<rect x="785" y="350" width="135" height="94" rx="10" fill="#3d3023" stroke="#2b4154"/>
+<text x="837" y="386" font-size="28" style="fill:#d6e4ef" font-weight="700">7</text>
+<text x="807" y="420" font-size="23" style="fill:#edba7b">False</text>
+<rect x="32" y="477" width="896" height="48" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="50" y="509" font-size="21" style="fill:#8bd3ee">The width defines candidate positions and the mask selects valid positions</text>
+</svg>

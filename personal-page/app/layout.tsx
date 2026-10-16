@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './theme.css';
+import { initializeTheme } from './theme';
 
 const person = {
   '@context': 'https://schema.org',
@@ -75,9 +77,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
         <meta name="renderer" content="webkit" />
+        <meta name="color-scheme" content="dark light" />
+        <script
+          id="site-theme"
+          dangerouslySetInnerHTML={{ __html: `(${initializeTheme.toString()})();` }}
+        />
         <script
           id="browser-compat"
           dangerouslySetInnerHTML={{

@@ -28,7 +28,10 @@ lesson. No GPU or previous compiler knowledge is required.
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/01-two-programs.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/01-two-programs-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/01-two-programs.svg" alt="Figure 1. The compiler constructs a description before the kernel executes" loading="lazy" width="960" height="570" />
+</picture>
 </a>
 <figcaption>Figure 1. The compiler constructs a description before the kernel executes. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -109,7 +112,10 @@ language and compiler being implemented.
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/02-ast-to-ir.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/02-ast-to-ir-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/02-ast-to-ir.svg" alt="Figure 2. Nested syntax becomes operations with explicit dependencies" loading="lazy" width="960" height="610" />
+</picture>
 </a>
 <figcaption>Figure 2. Nested syntax becomes operations with explicit dependencies. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -166,7 +172,10 @@ Two program instances cover the input.
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/03-tiles-and-mask.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/03-tiles-and-mask-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/03-tiles-and-mask.svg" alt="Figure 3. Two program instances cover six elements with a masked final tile" loading="lazy" width="960" height="550" />
+</picture>
 </a>
 <figcaption>Figure 3. Two program instances cover six elements with a masked final tile. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -182,7 +191,10 @@ written to memory.
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/04-memory.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/04-memory-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/04-memory.svg" alt="Figure 4. Pointer arithmetic computes addresses before memory is read or written" loading="lazy" width="960" height="680" />
+</picture>
 </a>
 <figcaption>Figure 4. Pointer arithmetic computes addresses before memory is read or written. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -285,7 +297,10 @@ Saving the compilation choice and resolving later uses happen elsewhere.
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/05-compile-time.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/05-compile-time-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/05-compile-time.svg" alt="Figure 5. BLOCK is saved during compilation and excluded from runtime inputs" loading="lazy" width="960" height="600" />
+</picture>
 </a>
 <figcaption>Figure 5. BLOCK is saved during compilation and excluded from runtime inputs. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -376,7 +391,10 @@ changes memory but produces no result Value, so its `result` is `None`.
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/06-records.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/06-records-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/06-records.svg" alt="Figure 6. Program owns instructions that reference Value records" loading="lazy" width="960" height="710" />
+</picture>
 </a>
 <figcaption>Figure 6. Program owns instructions that reference Value records. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -436,7 +454,10 @@ They recognize the supported `tl` operations. The conditions in the reference
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/08-three-methods.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/08-three-methods-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/08-three-methods.svg" alt="Figure 8. Function and statement traversal delegate expression translation to visit" loading="lazy" width="960" height="650" />
+</picture>
 </a>
 <figcaption>Figure 8. Function and statement traversal delegate expression translation to visit. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -494,7 +515,10 @@ self.block = 4
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/07-params-and-env.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/07-params-and-env-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/07-params-and-env.svg" alt="Figure 7. The parameter list and environment reference the same Value" loading="lazy" width="960" height="660" />
+</picture>
 </a>
 <figcaption>Figure 7. The parameter list and environment reference the same Value. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -570,7 +594,10 @@ visit(a + b * 2)
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/09-recursive-visit.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/09-recursive-visit-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/09-recursive-visit.svg" alt="Figure 9. Recursive translation defines inputs before operations that use them" loading="lazy" width="960" height="590" />
+</picture>
 </a>
 <figcaption>Figure 9. Recursive translation defines inputs before operations that use them. Open the figure to enlarge it.</figcaption>
 </figure>
@@ -602,7 +629,10 @@ env["offsets"] = the Value for %4
 
 <figure class="lesson-figure">
 <a href="/blog/tinytriton-step-1/10-first-line.svg" target="_blank" rel="noopener">
+<picture>
+<source data-theme-dark srcset="/blog/tinytriton-step-1/10-first-line-dark.svg" media="all" />
 <img src="/blog/tinytriton-step-1/10-first-line.svg" alt="Figure 10. Five instructions describe the first statement without computing its data" loading="lazy" width="960" height="650" />
+</picture>
 </a>
 <figcaption>Figure 10. Five instructions describe the first statement without computing its data. Open the figure to enlarge it.</figcaption>
 </figure>

@@ -1,0 +1,196 @@
+/* The theme palette is isolated from the existing light presentation. */
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --background: #101923;
+  --foreground: #d5e2ed;
+  --primary: #8bd3ee;
+  --border: #2b4154;
+  --cream: #172532;
+  --paper: #101923;
+  --muted: #9eb1c2;
+}
+
+.navigation .theme-toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 12px;
+  margin-left: auto;
+  border: 1px solid #b4d6e4;
+  border-radius: 8px;
+  background: transparent;
+  color: #365f73;
+  font: 600 13px/1.5 var(--font-sans);
+  cursor: pointer;
+}
+.theme-toggle svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.theme-toggle .theme-moon,
+.theme-toggle .theme-label-dark {
+  display: none;
+}
+[data-theme='light'] .theme-toggle .theme-sun,
+[data-theme='light'] .theme-toggle .theme-label-light {
+  display: none;
+}
+[data-theme='light'] .theme-toggle .theme-moon,
+[data-theme='light'] .theme-toggle .theme-label-dark {
+  display: inline;
+}
+.navigation .theme-toggle:hover {
+  background: #c3e5f1;
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+[data-theme='dark'] body,
+[data-theme='dark'] .site-shell,
+[data-theme='dark'] .about-section,
+[data-theme='dark'] .work-section,
+[data-theme='dark'] .projects-section,
+[data-theme='dark'] .research-section,
+[data-theme='dark'] .education-section,
+[data-theme='dark'] .personal-section {
+  background: var(--background);
+}
+[data-theme='dark'] .open-source-section,
+[data-theme='dark'] .experience-section,
+[data-theme='dark'] .writing-section {
+  background: #131f2a;
+}
+[data-theme='dark'] .navigation {
+  background: #172e40;
+  border-bottom-color: var(--border);
+}
+[data-theme='dark'] .navigation a,
+[data-theme='dark'] .navigation .theme-toggle {
+  color: #b9e2f3;
+}
+[data-theme='dark'] .navigation .theme-toggle {
+  border-color: #3b5d73;
+}
+[data-theme='dark'] .navigation a:hover,
+[data-theme='dark'] .navigation a[aria-current],
+[data-theme='dark'] .navigation .theme-toggle:hover {
+  color: #e2f5fc;
+  background: #24475d;
+}
+[data-theme='dark'] a:hover {
+  color: #c3ebfa;
+}
+[data-theme='dark'] .section-heading h2,
+[data-theme='dark'] .writing-section .section-heading h2,
+[data-theme='dark'] .experience-entry .experience-role,
+[data-theme='dark'] .education-entry .degree {
+  color: var(--foreground);
+}
+[data-theme='dark'] .work-meta,
+[data-theme='dark'] .authors,
+[data-theme='dark'] .work-preview figcaption,
+[data-theme='dark'] .small-project p,
+[data-theme='dark'] .experience-entry p,
+[data-theme='dark'] .education-entry p,
+[data-theme='dark'] .experience-top span,
+[data-theme='dark'] .compact-meta,
+[data-theme='dark'] .tiny-triton h3 span,
+[data-theme='dark'] .projects-intro,
+[data-theme='dark'] .post-list-item p,
+[data-theme='dark'] .post-list-item time,
+[data-theme='dark'] .post-header time,
+[data-theme='dark'] .post-metadata,
+[data-theme='dark'] .archive-count,
+[data-theme='dark'] .series-context,
+[data-theme='dark'] .prose blockquote,
+[data-theme='dark'] .prose figure figcaption,
+[data-theme='dark'] footer {
+  color: var(--muted);
+}
+[data-theme='dark'] .small-project .project-keywords,
+[data-theme='dark'] .authors strong {
+  color: #b5cddd;
+}
+[data-theme='dark'] .heading-title,
+[data-theme='dark'] .project-card,
+[data-theme='dark'] .secondary-projects,
+[data-theme='dark'] .small-project,
+[data-theme='dark'] .work-preview img,
+[data-theme='dark'] .demo {
+  border-color: var(--border);
+}
+[data-theme='dark'] .work-preview img,
+[data-theme='dark'] .demo,
+[data-theme='dark'] .demo-toggle {
+  background: var(--cream);
+}
+[data-theme='dark'] .demo-toggle {
+  color: var(--foreground);
+  border-color: #526e83;
+}
+[data-theme='dark'] .about-section .portrait {
+  border-color: var(--background);
+}
+[data-theme='dark'] .section-art {
+  mix-blend-mode: screen;
+  filter: invert(1) hue-rotate(180deg);
+}
+[data-theme='dark'] .series-section {
+  background: #142735;
+  border-color: #2c4c60;
+  box-shadow: none;
+}
+[data-theme='dark'] .blog-index .post-list-item,
+[data-theme='dark'] .topic-filters a {
+  background: var(--cream);
+  border-color: #354f62;
+}
+[data-theme='dark'] .topic-filters a:hover,
+[data-theme='dark'] .part-badge {
+  color: #b9e2f3;
+  background: #24475d;
+}
+[data-theme='dark'] .topic-filters a[aria-current='true'] {
+  color: #101923;
+  background: var(--primary);
+}
+[data-theme='dark'] .topic-filters span {
+  color: #b9e2f3;
+  background: #24475d;
+}
+[data-theme='dark'] .article-arrow {
+  color: var(--primary);
+}
+[data-theme='dark'] ::selection {
+  color: #e5f6fc;
+  background: #315c75;
+}
+
+@media (max-width: 800px) {
+  .navigation .theme-toggle {
+    gap: 6px;
+    padding: 7px 9px;
+  }
+  [data-theme] .theme-toggle .theme-label-light,
+  [data-theme] .theme-toggle .theme-label-dark {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .navigation .theme-toggle {
+    margin-left: 4px;
+  }
+}

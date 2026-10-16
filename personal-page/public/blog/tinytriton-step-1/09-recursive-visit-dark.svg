@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590" role="img" aria-labelledby="title desc"><title id="title">Resolve inputs before recording the operation</title><desc id="desc">Trace visit(a + b * 2)</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#9eb4c7"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#d6e4ef}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="590" fill="#111e2c"/>
+<text x="32" y="44" font-size="28" style="fill:#d6e4ef" font-weight="700">Resolve inputs before recording the operation</text>
+<text x="32" y="78" font-size="19" style="fill:#9eb4c7">Trace visit(a + b * 2)</text>
+<rect x="32" y="110" width="896" height="60" rx="10" fill="#162637" stroke="#2b4154"/>
+<text x="52" y="149" font-size="24" style="fill:#8bd3ee" font-weight="700">1</text>
+<text x="110" y="149" font-size="24" style="fill:#d6e4ef" class="code">visit(a)</text>
+<text x="480" y="149" font-size="24" style="fill:#d6e4ef">Return an existing Value</text>
+<rect x="32" y="183" width="896" height="60" rx="10" fill="#162637" stroke="#2b4154"/>
+<text x="52" y="222" font-size="24" style="fill:#8bd3ee" font-weight="700">2</text>
+<text x="110" y="222" font-size="24" style="fill:#d6e4ef" class="code">visit(b)</text>
+<text x="480" y="222" font-size="24" style="fill:#d6e4ef">Return an existing Value</text>
+<rect x="32" y="256" width="896" height="60" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="52" y="295" font-size="24" style="fill:#8bd3ee" font-weight="700">3</text>
+<text x="110" y="295" font-size="24" style="fill:#d6e4ef" class="code">visit(2)</text>
+<text x="480" y="295" font-size="24" style="fill:#d6e4ef">Emit const and return %0</text>
+<rect x="32" y="329" width="896" height="60" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="52" y="368" font-size="24" style="fill:#8bd3ee" font-weight="700">4</text>
+<text x="110" y="368" font-size="24" style="fill:#d6e4ef" class="code">emit mul(b, %0)</text>
+<text x="480" y="368" font-size="24" style="fill:#d6e4ef">Return the new Value %1</text>
+<rect x="32" y="402" width="896" height="60" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="52" y="441" font-size="24" style="fill:#8bd3ee" font-weight="700">5</text>
+<text x="110" y="441" font-size="24" style="fill:#d6e4ef" class="code">emit add(a, %1)</text>
+<text x="480" y="441" font-size="24" style="fill:#d6e4ef">Return the new Value %2</text>
+<rect x="32" y="517" width="896" height="48" rx="10" fill="#17364b" stroke="#2b4154"/>
+<text x="50" y="549" font-size="21" style="fill:#8bd3ee">emit appends an instruction and returns its Value without doing arithmetic</text>
+</svg>
