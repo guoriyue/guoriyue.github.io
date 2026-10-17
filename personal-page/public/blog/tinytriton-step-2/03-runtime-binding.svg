@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc"><title id="title">Bind parameter descriptions to one invocation</title><desc id="desc">Actual arrays stay in arguments and pointers describe their locations</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#646b73"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="650" fill="#ffffff"/>
+<text x="32" y="44" font-size="29" fill="#252525" font-weight="700">Bind parameter descriptions to one invocation</text>
+<text x="32" y="78" font-size="20" fill="#646b73">Actual arrays stay in arguments and pointers describe their locations</text>
+<rect x="32" y="110" width="420" height="270" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="54" y="149" font-size="26" fill="#3e4852" font-weight="700">arguments</text>
+<text x="54" y="193" font-size="23" fill="#252525">x → [0, 1, 2, 3, 4, 5]</text>
+<text x="54" y="229" font-size="23" fill="#252525">y → [10, 10, 10, 10, 10, 10]</text>
+<text x="54" y="265" font-size="23" fill="#252525">out → eight writable positions</text>
+<text x="54" y="301" font-size="23" fill="#252525">n → 6</text>
+<rect x="508" y="110" width="420" height="270" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="530" y="149" font-size="26" fill="#315a7d" font-weight="700">values</text>
+<text x="530" y="193" font-size="23" fill="#252525">x → (array x, index 0)</text>
+<text x="530" y="229" font-size="23" fill="#252525">y → (array y, index 0)</text>
+<text x="530" y="265" font-size="23" fill="#252525">out → (array out, index 0)</text>
+<text x="530" y="301" font-size="23" fill="#252525">n → 6</text>
+<path d="M462 240L496 240" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="420" width="896" height="120" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="54" y="459" font-size="26" fill="#3e4852" font-weight="700">BLOCK is already recorded in the IR</text>
+<text x="54" y="503" font-size="24" fill="#252525">The const instruction returns 4 without a runtime BLOCK parameter</text>
+<rect x="32" y="577" width="896" height="48" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="50" y="609" font-size="21" fill="#315a7d">Binding supplies the runtime meaning of each declared input</text>
+</svg>

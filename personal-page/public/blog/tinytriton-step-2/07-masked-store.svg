@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="title desc"><title id="title">A masked store leaves inactive memory unchanged</title><desc id="desc">Program 1 has result [14, 15, 0, 0] and valid offsets 4 and 5</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#646b73"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="620" fill="#ffffff"/>
+<text x="32" y="44" font-size="29" fill="#252525" font-weight="700">A masked store leaves inactive memory unchanged</text>
+<text x="32" y="78" font-size="20" fill="#646b73">Program 1 has result [14, 15, 0, 0] and valid offsets 4 and 5</text>
+<text x="40" y="125" font-size="25" fill="#252525" font-weight="700">Before store</text>
+<rect x="32" y="152" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="51" y="188" font-size="17" fill="#646b73">out[0]</text>
+<text x="55" y="219" font-size="27" fill="#3e4852" font-weight="700">10</text>
+<rect x="145" y="152" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="164" y="188" font-size="17" fill="#646b73">out[1]</text>
+<text x="168" y="219" font-size="27" fill="#3e4852" font-weight="700">11</text>
+<rect x="258" y="152" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="277" y="188" font-size="17" fill="#646b73">out[2]</text>
+<text x="281" y="219" font-size="27" fill="#3e4852" font-weight="700">12</text>
+<rect x="371" y="152" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="390" y="188" font-size="17" fill="#646b73">out[3]</text>
+<text x="394" y="219" font-size="27" fill="#3e4852" font-weight="700">13</text>
+<rect x="484" y="152" width="105" height="83" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="503" y="188" font-size="17" fill="#646b73">out[4]</text>
+<text x="507" y="219" font-size="27" fill="#315a7d" font-weight="700">-99</text>
+<rect x="597" y="152" width="105" height="83" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="616" y="188" font-size="17" fill="#646b73">out[5]</text>
+<text x="620" y="219" font-size="27" fill="#315a7d" font-weight="700">-99</text>
+<rect x="710" y="152" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="729" y="188" font-size="17" fill="#646b73">out[6]</text>
+<text x="733" y="219" font-size="27" fill="#3e4852" font-weight="700">-99</text>
+<rect x="823" y="152" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="842" y="188" font-size="17" fill="#646b73">out[7]</text>
+<text x="846" y="219" font-size="27" fill="#3e4852" font-weight="700">-99</text>
+<text x="40" y="315" font-size="25" fill="#252525" font-weight="700">After store</text>
+<rect x="32" y="342" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="51" y="378" font-size="17" fill="#646b73">out[0]</text>
+<text x="55" y="409" font-size="27" fill="#3e4852" font-weight="700">10</text>
+<rect x="145" y="342" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="164" y="378" font-size="17" fill="#646b73">out[1]</text>
+<text x="168" y="409" font-size="27" fill="#3e4852" font-weight="700">11</text>
+<rect x="258" y="342" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="277" y="378" font-size="17" fill="#646b73">out[2]</text>
+<text x="281" y="409" font-size="27" fill="#3e4852" font-weight="700">12</text>
+<rect x="371" y="342" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="390" y="378" font-size="17" fill="#646b73">out[3]</text>
+<text x="394" y="409" font-size="27" fill="#3e4852" font-weight="700">13</text>
+<rect x="484" y="342" width="105" height="83" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="503" y="378" font-size="17" fill="#646b73">out[4]</text>
+<text x="507" y="409" font-size="27" fill="#315a7d" font-weight="700">14</text>
+<rect x="597" y="342" width="105" height="83" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="616" y="378" font-size="17" fill="#646b73">out[5]</text>
+<text x="620" y="409" font-size="27" fill="#315a7d" font-weight="700">15</text>
+<rect x="710" y="342" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="729" y="378" font-size="17" fill="#646b73">out[6]</text>
+<text x="733" y="409" font-size="27" fill="#3e4852" font-weight="700">-99</text>
+<rect x="823" y="342" width="105" height="83" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="842" y="378" font-size="17" fill="#646b73">out[7]</text>
+<text x="846" y="409" font-size="27" fill="#3e4852" font-weight="700">-99</text>
+<rect x="32" y="547" width="896" height="48" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="50" y="579" font-size="21" fill="#315a7d">The two trailing zeros in the result tile are not written to out</text>
+</svg>

@@ -749,3 +749,5 @@ A store returns `None` through the call helper because it produces no result.
 The three methods operate at different syntactic levels. `lower` handles the
 function, `statement` handles each statement, and `visit` handles the expressions
 inside it. The supplied `call` and `emit` helpers complete the translation.
+
+Continue with [Step 2. Execute the instructions on the CPU](/blog/tinytriton-step-2/).

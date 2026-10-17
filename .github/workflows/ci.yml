@@ -45,6 +45,8 @@ jobs:
           test -s dist/client/blog/3dgs-warp-from-scratch/index.html
           test -s dist/client/blog/tinytriton-series/index.html
           test -s dist/client/blog/tinytriton-step-1/index.html
+          test -s dist/client/blog/tinytriton-step-2/index.html
+          test -s dist/client/blog/tinytriton-step-2/06-safe-masked-load-dark.svg
           test -s dist/client/collie-actions.png
           test -s dist/client/section-art-jirai.png
           test -s dist/client/favicon-border-collie.svg

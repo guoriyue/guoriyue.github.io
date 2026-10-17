@@ -53,14 +53,14 @@ It gives us a way to check the computation before introducing GPU execution.
 
 ## The planned series
 
-Only the overview and Step 1 are published now. The remaining entries are a
-roadmap, not links to completed articles. Each lesson will get its own explanation,
-exercise, and reference implementation as it is released.
+The overview and the first two lessons are published. Later entries describe
+the planned sequence. Each lesson includes an explanation, an exercise, and a
+reference implementation.
 
 | Step | Question we will answer | What we will build |
 |---|---|---|
 | [1. Source to instructions](/blog/tinytriton-step-1/) | How can we describe a calculation without executing it? | A syntax-tree traversal and tile-level IR |
-| 2. Interpret the instructions | How do those records become actual array values? | A CPU interpreter with masked memory access |
+| [2. Interpret the instructions](/blog/tinytriton-step-2/) | How do those records become actual array values? | A CPU interpreter with masked memory access |
 | 3. Assign work to threads | Which thread handles which element? | A second representation describing thread ownership |
 | 4. Reach the GPU | How can our compiler use LLVM? | LLVM generation, PTX compilation, and a kernel launch |
 | 5. Shared memory | How do threads combine values? | Reductions using shared storage and synchronization |
@@ -99,6 +99,7 @@ the way, we will explain syntax trees, instructions, pointers, and why
 `BLOCK: tl.constexpr` is different from an ordinary runtime parameter.
 
 The [companion repository](https://github.com/guoriyue/TinyTriton) contains the
-Step 1 tutorial, exercise, reference implementation, and checks. Steps 2–15 will
-be added one at a time as their articles are published. Clone the repository to
-start; each new lesson will build on the previous release.
+first two tutorials, exercises, reference implementations, and checks.
+[Step 2. Execute the instructions on the CPU](/blog/tinytriton-step-2/) builds on
+the first lesson with runtime values, simulated pointers, and masked memory
+access. Later lessons will be added alongside their articles.

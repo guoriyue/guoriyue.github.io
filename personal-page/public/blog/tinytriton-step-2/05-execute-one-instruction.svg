@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc"><title id="title">Look up operands before evaluating an operation</title><desc id="desc">Example instruction  %2 = mul(%0, %1)</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#646b73"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="650" fill="#ffffff"/>
+<text x="32" y="44" font-size="29" fill="#252525" font-weight="700">Look up operands before evaluating an operation</text>
+<text x="32" y="78" font-size="20" fill="#646b73">Example instruction  %2 = mul(%0, %1)</text>
+<rect x="32" y="110" width="896" height="120" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="54" y="149" font-size="26" fill="#3e4852" font-weight="700">1  Read the input descriptions</text>
+<text x="54" y="193" font-size="25" fill="#252525">The instruction refers to Values named %0 and %1</text>
+<rect x="32" y="260" width="896" height="120" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="54" y="299" font-size="26" fill="#315a7d" font-weight="700">2  Look up actual operands</text>
+<text x="54" y="343" font-size="25" fill="#252525">values maps those names to the numbers 1 and 4</text>
+<rect x="32" y="410" width="896" height="120" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="54" y="449" font-size="26" fill="#3e4852" font-weight="700">3  Evaluate and save the result</text>
+<text x="54" y="493" font-size="25" fill="#252525">Multiply 1 by 4 then bind the result to %2</text>
+<path d="M480 237L480 252" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M480 387L480 402" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="577" width="896" height="48" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="50" y="609" font-size="21" fill="#315a7d">A store updates memory and does not add a new result to values</text>
+</svg>

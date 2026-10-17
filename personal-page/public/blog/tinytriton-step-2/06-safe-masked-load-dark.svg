@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc"><title id="title">The mask must affect indexing before the read</title><desc id="desc">Example with x = [100, 200, 300, 400, 500, 600] and fallback 7</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#a6afb8"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="680" fill="#131b24"/>
+<text x="32" y="44" font-size="29" fill="#dde2e7" font-weight="700">The mask must affect indexing before the read</text>
+<text x="32" y="78" font-size="20" fill="#a6afb8">Example with x = [100, 200, 300, 400, 500, 600] and fallback 7</text>
+<text x="50" y="133" font-size="20" fill="#dde2e7" font-weight="700">Original index</text>
+<text x="245" y="133" font-size="20" fill="#dde2e7" font-weight="700">Mask</text>
+<text x="390" y="133" font-size="20" fill="#dde2e7" font-weight="700">Safe index</text>
+<text x="550" y="133" font-size="20" fill="#dde2e7" font-weight="700">Gathered value</text>
+<text x="760" y="133" font-size="20" fill="#dde2e7" font-weight="700">Load result</text>
+<rect x="32" y="155" width="896" height="63" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="60" y="196" font-size="26" fill="#b4c8d8" font-weight="700">4</text>
+<text x="255" y="196" font-size="26" fill="#b4c8d8" font-weight="700">True</text>
+<text x="400" y="196" font-size="26" fill="#b4c8d8" font-weight="700">4</text>
+<text x="560" y="196" font-size="26" fill="#b4c8d8" font-weight="700">500</text>
+<text x="770" y="196" font-size="26" fill="#b4c8d8" font-weight="700">500</text>
+<rect x="32" y="232" width="896" height="63" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="60" y="273" font-size="26" fill="#b4c8d8" font-weight="700">5</text>
+<text x="255" y="273" font-size="26" fill="#b4c8d8" font-weight="700">True</text>
+<text x="400" y="273" font-size="26" fill="#b4c8d8" font-weight="700">5</text>
+<text x="560" y="273" font-size="26" fill="#b4c8d8" font-weight="700">600</text>
+<text x="770" y="273" font-size="26" fill="#b4c8d8" font-weight="700">600</text>
+<rect x="32" y="309" width="896" height="63" rx="4" fill="#352b2a" stroke="#3a4551"/>
+<text x="60" y="350" font-size="26" fill="#d1a49c" font-weight="700">6</text>
+<text x="255" y="350" font-size="26" fill="#d1a49c" font-weight="700">False</text>
+<text x="400" y="350" font-size="26" fill="#d1a49c" font-weight="700">0</text>
+<text x="560" y="350" font-size="26" fill="#d1a49c" font-weight="700">100</text>
+<text x="770" y="350" font-size="26" fill="#d1a49c" font-weight="700">7</text>
+<rect x="32" y="386" width="896" height="63" rx="4" fill="#352b2a" stroke="#3a4551"/>
+<text x="60" y="427" font-size="26" fill="#d1a49c" font-weight="700">7</text>
+<text x="255" y="427" font-size="26" fill="#d1a49c" font-weight="700">False</text>
+<text x="400" y="427" font-size="26" fill="#d1a49c" font-weight="700">0</text>
+<text x="560" y="427" font-size="26" fill="#d1a49c" font-weight="700">100</text>
+<text x="770" y="427" font-size="26" fill="#d1a49c" font-weight="700">7</text>
+<rect x="32" y="495" width="896" height="90" rx="4" fill="#202932" stroke="#3a4551"/>
+<text x="54" y="534" font-size="26" fill="#c4ccd4" font-weight="700">Two selections</text>
+<text x="54" y="578" font-size="24" fill="#dde2e7">First choose safe indices then choose returned values</text>
+<rect x="32" y="607" width="896" height="48" rx="4" fill="#23313f" stroke="#3a4551"/>
+<text x="50" y="639" font-size="21" fill="#b4c8d8">Invalid target addresses are never read but index 0 is read as a substitute</text>
+</svg>

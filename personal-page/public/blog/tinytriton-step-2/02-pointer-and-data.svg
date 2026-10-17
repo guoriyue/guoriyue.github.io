@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="610" viewBox="0 0 960 610" role="img" aria-labelledby="title desc"><title id="title">Moving a pointer differs from adding to data</title><desc id="desc">The array x contains [10, 20, 30]</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#646b73"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="610" fill="#ffffff"/>
+<text x="32" y="44" font-size="29" fill="#252525" font-weight="700">Moving a pointer differs from adding to data</text>
+<text x="32" y="78" font-size="20" fill="#646b73">The array x contains [10, 20, 30]</text>
+<rect x="32" y="110" width="420" height="260" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="54" y="149" font-size="26" fill="#3e4852" font-weight="700">Numeric addition</text>
+<text x="54" y="193" font-size="24" fill="#252525">Add 1 to every array element</text>
+<text x="54" y="229" font-size="24" fill="#252525">Result  [11, 21, 31]</text>
+<text x="54" y="265" font-size="24" fill="#252525">The expression creates new data</text>
+<rect x="508" y="110" width="420" height="260" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="530" y="149" font-size="26" fill="#315a7d" font-weight="700">Pointer addition</text>
+<text x="530" y="193" font-size="24" fill="#252525">Keep the identity of array x</text>
+<text x="530" y="229" font-size="24" fill="#252525">Move from position 0 to 1</text>
+<text x="530" y="265" font-size="24" fill="#252525">A later load reads 20</text>
+<rect x="32" y="410" width="896" height="100" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="54" y="449" font-size="26" fill="#3e4852" font-weight="700">The interpreter stores a pointer as a pair</text>
+<text x="54" y="493" font-size="25" fill="#252525">Array name together with an element index</text>
+<rect x="32" y="537" width="896" height="48" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="50" y="569" font-size="21" fill="#315a7d">A pointer describes where to read rather than the number stored there</text>
+</svg>

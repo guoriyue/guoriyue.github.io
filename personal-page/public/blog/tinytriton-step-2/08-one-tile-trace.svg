@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="740" viewBox="0 0 960 740" role="img" aria-labelledby="title desc"><title id="title">Follow the final tile from ID to output</title><desc id="desc">n = 6 and BLOCK = 4</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#646b73"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}.code{font-family:Consolas,"DejaVu Sans Mono",monospace}</style><rect width="960" height="740" fill="#ffffff"/>
+<text x="32" y="44" font-size="29" fill="#252525" font-weight="700">Follow the final tile from ID to output</text>
+<text x="32" y="78" font-size="20" fill="#646b73">n = 6 and BLOCK = 4</text>
+<rect x="32" y="110" width="896" height="64" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="52" y="151" font-size="24" fill="#252525" font-weight="700">Program ID</text>
+<text x="340" y="151" font-size="25" fill="#252525">1</text>
+<path d="M480 179L480 190" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="196" width="896" height="64" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="52" y="237" font-size="24" fill="#252525" font-weight="700">Offsets</text>
+<text x="340" y="237" font-size="25" fill="#252525">[4, 5, 6, 7]</text>
+<path d="M480 265L480 276" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="282" width="896" height="64" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="52" y="323" font-size="24" fill="#252525" font-weight="700">Mask</text>
+<text x="340" y="323" font-size="25" fill="#252525">[True, True, False, False]</text>
+<path d="M480 351L480 362" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="368" width="896" height="64" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="52" y="409" font-size="24" fill="#252525" font-weight="700">Loaded x and y</text>
+<text x="340" y="409" font-size="25" fill="#252525">[4, 5, 0, 0] and [10, 10, 0, 0]</text>
+<path d="M480 437L480 448" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="454" width="896" height="64" rx="4" fill="#f1f2f3" stroke="#c9ced4"/>
+<text x="52" y="495" font-size="24" fill="#252525" font-weight="700">Elementwise sum</text>
+<text x="340" y="495" font-size="25" fill="#252525">[14, 15, 0, 0]</text>
+<path d="M480 523L480 534" stroke="#646b73" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="32" y="540" width="896" height="64" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="52" y="581" font-size="24" fill="#252525" font-weight="700">Written positions</text>
+<text x="340" y="581" font-size="25" fill="#252525">out[4] = 14 and out[5] = 15</text>
+<rect x="32" y="667" width="896" height="48" rx="4" fill="#e8eef4" stroke="#c9ced4"/>
+<text x="50" y="699" font-size="21" fill="#315a7d">The completed output is [10, 11, 12, 13, 14, 15, -99, -99]</text>
+</svg>
