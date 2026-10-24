@@ -165,13 +165,13 @@ export const contributions = [
     description:
       'Merged fixes across the compiler: TritonGPU layout selection and loop flattening, frontend condition normalization, JIT cache-key correctness under nonlocal shadowing, and NVIDIA / AMD backend work — hoisting the L2 cache-policy register out of the vectorization loop, unique registers for in-thread layout conversions, and sm120 TMA GEMM test coverage.',
     url: 'https://github.com/triton-lang/triton/pulls?q=is%3Apr+author%3Aguoriyue+is%3Amerged',
-    example: 'https://github.com/triton-lang/triton/pull/10839',
+    linkLabel: 'Merged PRs',
   },
   {
     name: 'vLLM',
     description:
       'Turned on the registry-driven initialization, multimodal-processing, and tensor-schema tests for NVIDIA Cosmos3 once its checkpoint went public, and registered Cosmos3-Super after verifying it maps to the same modules (64 layers vs 36).',
     url: 'https://github.com/vllm-project/vllm/pull/48211',
-    example: 'https://github.com/vllm-project/vllm/pull/48211',
+    linkLabel: 'Pull request',
   },
 ];

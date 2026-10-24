@@ -122,9 +122,7 @@ export default function Home() {
                 </figcaption>
               </figure>
               <div className="work-copy">
-                <h3>
-                  <a href={nurecUrl}>NVIDIA Omniverse NuRec</a>
-                </h3>
+                <h3>NVIDIA Omniverse NuRec</h3>
                 <p className="work-meta">
                   NVIDIA · Neural reconstruction · 2026
                 </p>
@@ -144,9 +142,9 @@ export default function Home() {
                 </p>
                 <Authors names="Apurv Naman, Mingfei Guo, Dominik Froehlich, Wonsik Han" />
                 <div className="paper-links">
-                  <a href={nurecUrl}>Technical blog ↗</a>
+                  <a href={nurecUrl}>Technical blog</a>
                   <a href="https://www.youtube.com/watch?v=tP_nNXsDE80">
-                    Livestream replay ↗
+                    Livestream replay
                   </a>
                 </div>
               </div>
@@ -165,9 +163,7 @@ export default function Home() {
                 </figcaption>
               </figure>
               <div className="work-copy">
-                <h3>
-                  <a href={featured.project}>Asset Harvester</a>
-                </h3>
+                <h3>Asset Harvester</h3>
                 <p className="work-meta">NVIDIA · Coauthor · 2026</p>
                 <p>
                   Neural reconstruction turns a driving log into a scene, but
@@ -180,12 +176,12 @@ export default function Home() {
                 <p>
                   The system-level work is what makes it hold up on real data —
                   large-scale curation of object-centric training tuples,
-                  geometry-aware preprocessing across sensors, augmentation,
-                  and self-distillation.
+                  geometry-aware preprocessing across sensors, augmentation, and
+                  self-distillation.
                 </p>
                 <div className="paper-links">
-                  <a href={featured.project}>Project & results ↗</a>
-                  <a href={featured.url}>Paper ↗</a>
+                  <a href={featured.project}>Project & results</a>
+                  <a href={featured.url}>Paper</a>
                 </div>
               </div>
             </article>
@@ -204,15 +200,10 @@ export default function Home() {
                     loading="lazy"
                   />
                 </a>
-                <figcaption>
-                  SD3.5 · Before / after OCR GRPO ·{' '}
-                  <a href="/projects/vrl-sd35-text.jpg">Full comparison ↗</a>
-                </figcaption>
+                <figcaption>SD3.5 · Before / after OCR GRPO</figcaption>
               </figure>
               <div className="work-copy">
-                <h3>
-                  <a href={projects[1].url}>{projects[1].name}</a>
-                </h3>
+                <h3>{projects[1].name}</h3>
                 <p className="work-meta">
                   Training infrastructure · RL post-training
                 </p>
@@ -236,7 +227,7 @@ export default function Home() {
                   changed weights. The SD3.5 OCR-GRPO run above is one.
                 </p>
                 <div className="paper-links repo-links">
-                  <a href={projects[1].url}>Code ↗</a>
+                  <a href={projects[1].url}>Code</a>
                   <GitHubStars url={projects[1].url} />
                 </div>
               </div>
@@ -255,11 +246,7 @@ export default function Home() {
                 </figcaption>
               </figure>
               <div className="work-copy">
-                <h3>
-                  <a href={projects[0].url}>
-                    3D Gaussian Splatting, from scratch
-                  </a>
-                </h3>
+                <h3>3D Gaussian Splatting, from scratch</h3>
                 <p className="work-meta">
                   GPU programming · Differentiable rendering
                 </p>
@@ -278,7 +265,7 @@ export default function Home() {
                   preparation down to the minimum.
                 </p>
                 <div className="paper-links repo-links">
-                  <a href={projects[0].url}>Code ↗</a>
+                  <a href={projects[0].url}>Code</a>
                   <GitHubStars url={projects[0].url} />
                 </div>
               </div>
@@ -287,12 +274,12 @@ export default function Home() {
           <div className="project-grid compact-project-grid">
             {[projects[4], projects[5]].map((p) => (
               <article className="small-project" key={p.url}>
-                <h3>
-                  <a href={p.url}>{p.name} ↗</a>
-                </h3>
+                <h3>{p.name}</h3>
                 <p className="project-keywords">{p.tag}</p>
                 <p>{p.description}</p>
-                <a className="work-link" href={p.url}>Code ↗</a>
+                <a className="work-link" href={p.url}>
+                  Code
+                </a>
               </article>
             ))}
             <article className="small-project tiny-triton">
@@ -308,19 +295,17 @@ export default function Home() {
                 execution and optimization. No compiler background assumed.
               </p>
               <a className="project-link" href="/blog/tinytriton-series/">
-                Read the series ↗
+                Read the series
               </a>
             </article>
             <article className="small-project">
-              <h3>
-                <a href={projects[3].url}>{projects[3].name} ↗</a>
-              </h3>
+              <h3>{projects[3].name}</h3>
               <p className="project-keywords">
                 BROWSER AUTOMATION · WORKFLOW RECORDING
               </p>
               <p>{projects[3].description}</p>
               <a className="work-link" href={projects[3].url}>
-                Code ↗
+                Code
               </a>
             </article>
           </div>
@@ -339,13 +324,11 @@ export default function Home() {
                 </figcaption>
               </figure>
               <div className="work-copy">
-                <h3>
-                  <a href={projects[2].url}>{projects[2].name}</a>
-                </h3>
+                <h3>{projects[2].name}</h3>
                 <p className="work-meta">Local inference · C++ · llama.cpp</p>
                 <p>{projects[2].description}</p>
                 <div className="paper-links repo-links">
-                  <a href={projects[2].url}>Code ↗</a>
+                  <a href={projects[2].url}>Code</a>
                   <GitHubStars url={projects[2].url} />
                 </div>
               </div>
@@ -362,9 +345,7 @@ export default function Home() {
                 <figcaption>Mac app and folder icon themes</figcaption>
               </figure>
               <div className="work-copy">
-                <h3>
-                  <a href="https://nyaicon.com/">NyaIcon</a>
-                </h3>
+                <h3>NyaIcon</h3>
                 <p className="work-meta">macOS app</p>
                 <p>
                   A macOS Tahoe app I’m building to re-theme app and folder
@@ -375,7 +356,7 @@ export default function Home() {
                   no account.
                 </p>
                 <div className="paper-links">
-                  <a href="https://nyaicon.com/">Website ↗</a>
+                  <a href="https://nyaicon.com/">Website</a>
                 </div>
               </div>
             </article>
@@ -389,12 +370,10 @@ export default function Home() {
           <div className="project-list">
             {contributions.map((c) => (
               <article className="small-project" key={c.name}>
-                <h3>
-                  <a href={c.url}>{c.name} ↗</a>
-                </h3>
+                <h3>{c.name}</h3>
                 <p>{c.description}</p>
-                <a className="work-link" href={c.example}>
-                  Contribution ↗
+                <a className="work-link" href={c.url}>
+                  {c.linkLabel}
                 </a>
               </article>
             ))}
@@ -405,15 +384,13 @@ export default function Home() {
           <div className="project-list">
             {publications.map((p) => (
               <article className="small-project" key={p.title}>
-                <h3>
-                  <a href={p.url}>{p.title} ↗</a>
-                </h3>
+                <h3>{p.title}</h3>
                 <Authors names={p.authors} />
                 <div className="compact-meta">
                   <span>
                     {p.venue} · {p.year}
                   </span>
-                  <a href={p.url}>Paper ↗</a>
+                  <a href={p.url}>Paper</a>
                 </div>
               </article>
             ))}
@@ -451,7 +428,7 @@ export default function Home() {
                 <p className="education-focus">{e.focus}</p>
                 <p>{e.detail}</p>
                 <a className="text-link" href={e.url}>
-                  {e.linkLabel} ↗
+                  {e.linkLabel}
                 </a>
               </article>
             ))}
