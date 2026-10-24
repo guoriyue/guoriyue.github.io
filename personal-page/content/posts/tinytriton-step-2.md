@@ -2,7 +2,6 @@
 title: Step 2. Execute the instructions on the CPU
 date: 2026-10-16
 description: Build a NumPy interpreter for tile IR. Connect descriptions to runtime values and explain pointer arithmetic, parameter binding, masked loads, and stores.
-label: AI Systems
 series: TinyTriton
 part: 2
 ---

@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
-import Companion from '../companion';
-import { getPosts } from '../posts';
-import BlogArchive from './archive';
-import BlogNavigation from './navigation';
+import { formatDate, getPosts } from '../posts';
 
 export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Blog · Mingfei Guo',
-  description:
-    'Notes and tutorials on 3D graphics and AI systems. Browse articles by topic and follow each series in order.',
+  description: 'Notes and tutorials on 3D graphics and AI systems.',
   alternates: { canonical: '/blog/' },
   openGraph: {
     title: 'Blog · Mingfei Guo',
@@ -19,17 +15,21 @@ export const metadata: Metadata = {
 };
 
 export default async function Blog() {
-  const posts = (await getPosts()).map(({ html: _html, ...post }) => post);
   return (
-    <>
-      <BlogNavigation />
-      <main className="blog-index" id="main">
-        <BlogArchive posts={posts} />
-        <footer>
-          <a href="/">← About me</a>
-        </footer>
-      </main>
-      <Companion />
-    </>
+    <ul className="post-list">
+      {(await getPosts()).map((post) => (
+        <li key={post.slug}>
+          <span className="post-meta">
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            {post.series ? ` • ${post.series}` : null}
+          </span>
+          <h3>
+            <a className="post-link" href={`/blog/${post.slug}/`}>
+              {post.title}
+            </a>
+          </h3>
+        </li>
+      ))}
+    </ul>
   );
 }

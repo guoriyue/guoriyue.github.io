@@ -11,8 +11,18 @@ test('every published article is reachable from the static blog archive', async 
   for (const post of posts) {
     assert.ok(html.includes(`href="/blog/${post.slug}/"`), post.slug);
     const article = await exported(`blog/${post.slug}/index.html`);
-    assert.ok(article.includes('class="topic-badge"'));
     assert.ok(article.includes('href="/blog/"'));
+  }
+});
+
+test('every table-of-contents entry jumps to a heading in its article', async () => {
+  for (const post of await getPosts()) {
+    const article = await exported(`blog/${post.slug}/index.html`);
+    const toc = /<ul class="markdown-toc">([\s\S]*?)<\/ul>\n/.exec(article);
+    assert.ok(toc, post.slug);
+    for (const [, id] of toc[1].matchAll(/href="#([^"]+)"/g)) {
+      assert.ok(article.includes(` id="${id}"`), `${post.slug}#${id}`);
+    }
   }
 });
 

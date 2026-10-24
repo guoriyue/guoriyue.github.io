@@ -2,7 +2,6 @@
 title: Step 1. From source code to instructions
 date: 2026-09-26
 description: Translate a small array program into instructions. Explain compile time parameters, name lookup, recursive traversal, and the complete exercise implementation.
-label: AI Systems
 series: TinyTriton
 part: 1
 ---

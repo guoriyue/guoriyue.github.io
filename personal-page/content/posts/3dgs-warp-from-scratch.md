@@ -2,7 +2,6 @@
 title: 3D Gaussian Splatting from scratch with NVIDIA Warp
 date: 2026-09-26
 description: Follow a Gaussian from a 3D ellipsoid to a pixel, then trace image gradients back through a renderer written with NVIDIA Warp.
-label: 3D
 series: 3D Gaussian Splatting
 ---
 

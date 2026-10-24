@@ -1,8 +1,5 @@
 import type { Metadata } from 'next';
-import Companion from '../../companion';
-import { getPost, getPosts } from '../../posts';
-import { formatDate, PostMetadata } from '../post-preview';
-import BlogNavigation from '../navigation';
+import { formatDate, getPost, getPosts } from '../../posts';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -35,27 +32,18 @@ export default async function BlogPost({ params }: Params) {
   const { slug } = await params;
   const post = await getPost(slug);
   return (
-    <>
-      <BlogNavigation />
-      <main className="blog-article" id="main">
-        <article>
-          <header className="post-header">
-            <a className="back-link" href="/blog/">
-              ← Blog
-            </a>
-            <PostMetadata post={post} />
-            <h1>{post.title}</h1>
-            {post.date ? (
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
-            ) : null}
-          </header>
-          <div
-            className="prose"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
-        </article>
-      </main>
-      <Companion />
-    </>
+    <article className="post">
+      <header className="post-header">
+        <h1 className="post-title">{post.title}</h1>
+        <p className="post-meta">
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
+          {post.series ? ` • ${post.series}` : null}
+        </p>
+      </header>
+      <div
+        className="post-content"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
+    </article>
   );
 }

@@ -109,14 +109,6 @@
 [data-theme='dark'] .compact-meta,
 [data-theme='dark'] .tiny-triton h3 span,
 [data-theme='dark'] .projects-intro,
-[data-theme='dark'] .post-list-item p,
-[data-theme='dark'] .post-list-item time,
-[data-theme='dark'] .post-header time,
-[data-theme='dark'] .post-metadata,
-[data-theme='dark'] .archive-count,
-[data-theme='dark'] .series-context,
-[data-theme='dark'] .prose blockquote,
-[data-theme='dark'] .prose figure figcaption,
 [data-theme='dark'] footer {
   color: var(--muted);
 }
@@ -143,32 +135,6 @@
 }
 [data-theme='dark'] .about-section .portrait {
   border-color: var(--background);
-}
-[data-theme='dark'] .series-section {
-  background: #142735;
-  border-color: #2c4c60;
-  box-shadow: none;
-}
-[data-theme='dark'] .blog-index .post-list-item,
-[data-theme='dark'] .topic-filters a {
-  background: var(--cream);
-  border-color: #354f62;
-}
-[data-theme='dark'] .topic-filters a:hover,
-[data-theme='dark'] .part-badge {
-  color: #b9e2f3;
-  background: #24475d;
-}
-[data-theme='dark'] .topic-filters a[aria-current='true'] {
-  color: #101923;
-  background: var(--primary);
-}
-[data-theme='dark'] .topic-filters span {
-  color: #b9e2f3;
-  background: #24475d;
-}
-[data-theme='dark'] .article-arrow {
-  color: var(--primary);
 }
 [data-theme='dark'] ::selection {
   color: #e5f6fc;
