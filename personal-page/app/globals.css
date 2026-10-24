@@ -170,12 +170,6 @@ figure {
 .work-preview img {
   border: 1px solid #303f68;
 }
-.work-preview figcaption {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #303f68;
-  margin-top: 8px;
-}
 .work-copy h3 {
   margin: 0 0 8px;
   color: #303f68;
@@ -1165,7 +1159,6 @@ body,
 }
 .work-meta,
 .authors,
-.work-preview figcaption,
 .small-project p,
 .experience-entry p,
 .education-entry p,

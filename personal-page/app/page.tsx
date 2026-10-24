@@ -117,9 +117,6 @@ export default function Home() {
                   height={450}
                   label="NuRec carline adaptation: the original and shifted camera rigs"
                 />
-                <figcaption>
-                  The same recorded drive, from two camera rigs.
-                </figcaption>
               </figure>
               <div className="work-copy">
                 <h3>NVIDIA Omniverse NuRec</h3>
@@ -158,9 +155,6 @@ export default function Home() {
                   height={406}
                   label="Asset Harvester: extracting 3D assets from driving logs for simulation"
                 />
-                <figcaption>
-                  Driving observations → 3D assets → simulation.
-                </figcaption>
               </figure>
               <div className="work-copy">
                 <h3>Asset Harvester</h3>
@@ -200,7 +194,6 @@ export default function Home() {
                     loading="lazy"
                   />
                 </a>
-                <figcaption>SD3.5 · Before / after OCR GRPO</figcaption>
               </figure>
               <div className="work-copy">
                 <h3 className="repo-title">
@@ -240,9 +233,6 @@ export default function Home() {
                   height={640}
                   label="3D Gaussian Splatting training on the Lego scene"
                 />
-                <figcaption>
-                  Training and rendering · Shared CPU / GPU kernels
-                </figcaption>
               </figure>
               <div className="work-copy">
                 <h3 className="repo-title">
@@ -315,9 +305,6 @@ export default function Home() {
                   height={649}
                   label="LangCommand turning natural language into shell commands in a terminal"
                 />
-                <figcaption>
-                  Natural language → shell commands · Local inference
-                </figcaption>
               </figure>
               <div className="work-copy">
                 <h3 className="repo-title">
@@ -337,7 +324,6 @@ export default function Home() {
                   width={800}
                   height={450}
                 />
-                <figcaption>Mac app and folder icon themes</figcaption>
               </figure>
               <div className="work-copy">
                 <h3>
