@@ -203,7 +203,10 @@ export default function Home() {
                 <figcaption>SD3.5 · Before / after OCR GRPO</figcaption>
               </figure>
               <div className="work-copy">
-                <h3>{projects[1].name}</h3>
+                <h3 className="repo-title">
+                  <a href={projects[1].url}>{projects[1].name}</a>
+                  <GitHubStars url={projects[1].url} />
+                </h3>
                 <p className="work-meta">
                   Training infrastructure · RL post-training
                 </p>
@@ -226,10 +229,6 @@ export default function Home() {
                   counts as validated once a real run shows rising reward and
                   changed weights. The SD3.5 OCR-GRPO run above is one.
                 </p>
-                <div className="paper-links repo-links">
-                  <a href={projects[1].url}>Code</a>
-                  <GitHubStars url={projects[1].url} />
-                </div>
               </div>
             </article>
             <article className="project-card">
@@ -246,7 +245,12 @@ export default function Home() {
                 </figcaption>
               </figure>
               <div className="work-copy">
-                <h3>3D Gaussian Splatting, from scratch</h3>
+                <h3 className="repo-title">
+                  <a href={projects[0].url}>
+                    3D Gaussian Splatting, from scratch
+                  </a>
+                  <GitHubStars url={projects[0].url} />
+                </h3>
                 <p className="work-meta">
                   GPU programming · Differentiable rendering
                 </p>
@@ -264,27 +268,23 @@ export default function Home() {
                   gaussian-splatting-lightning, restructured to strip data
                   preparation down to the minimum.
                 </p>
-                <div className="paper-links repo-links">
-                  <a href={projects[0].url}>Code</a>
-                  <GitHubStars url={projects[0].url} />
-                </div>
               </div>
             </article>
           </div>
           <div className="project-grid compact-project-grid">
             {[projects[4], projects[5]].map((p) => (
               <article className="small-project" key={p.url}>
-                <h3>{p.name}</h3>
+                <h3>
+                  <a href={p.url}>{p.name}</a>
+                </h3>
                 <p className="project-keywords">{p.tag}</p>
                 <p>{p.description}</p>
-                <a className="work-link" href={p.url}>
-                  Code
-                </a>
               </article>
             ))}
             <article className="small-project tiny-triton">
               <h3>
-                TinyTriton <span>Step 1 published</span>
+                <a href="/blog/tinytriton-series/">TinyTriton</a>{' '}
+                <span>Step 1 published</span>
               </h3>
               <p className="project-keywords">
                 GPU COMPILERS · CUDA · LLVM / PTX
@@ -294,19 +294,15 @@ export default function Home() {
                 source code and instructions; later lessons introduce GPU
                 execution and optimization. No compiler background assumed.
               </p>
-              <a className="project-link" href="/blog/tinytriton-series/">
-                Read the series
-              </a>
             </article>
             <article className="small-project">
-              <h3>{projects[3].name}</h3>
+              <h3>
+                <a href={projects[3].url}>{projects[3].name}</a>
+              </h3>
               <p className="project-keywords">
                 BROWSER AUTOMATION · WORKFLOW RECORDING
               </p>
               <p>{projects[3].description}</p>
-              <a className="work-link" href={projects[3].url}>
-                Code
-              </a>
             </article>
           </div>
           <div className="project-grid secondary-projects">
@@ -324,13 +320,12 @@ export default function Home() {
                 </figcaption>
               </figure>
               <div className="work-copy">
-                <h3>{projects[2].name}</h3>
+                <h3 className="repo-title">
+                  <a href={projects[2].url}>{projects[2].name}</a>
+                  <GitHubStars url={projects[2].url} />
+                </h3>
                 <p className="work-meta">Local inference · C++ · llama.cpp</p>
                 <p>{projects[2].description}</p>
-                <div className="paper-links repo-links">
-                  <a href={projects[2].url}>Code</a>
-                  <GitHubStars url={projects[2].url} />
-                </div>
               </div>
             </article>
             <article className="project-card" id="nyaicon">
@@ -345,7 +340,9 @@ export default function Home() {
                 <figcaption>Mac app and folder icon themes</figcaption>
               </figure>
               <div className="work-copy">
-                <h3>NyaIcon</h3>
+                <h3>
+                  <a href="https://nyaicon.com/">NyaIcon</a>
+                </h3>
                 <p className="work-meta">macOS app</p>
                 <p>
                   A macOS Tahoe app I’m building to re-theme app and folder
@@ -355,9 +352,6 @@ export default function Home() {
                   it never disables SIP or modifies sealed system bundles. Free,
                   no account.
                 </p>
-                <div className="paper-links">
-                  <a href="https://nyaicon.com/">Website</a>
-                </div>
               </div>
             </article>
           </div>
@@ -370,11 +364,10 @@ export default function Home() {
           <div className="project-list">
             {contributions.map((c) => (
               <article className="small-project" key={c.name}>
-                <h3>{c.name}</h3>
+                <h3>
+                  <a href={c.url}>{c.name}</a>
+                </h3>
                 <p>{c.description}</p>
-                <a className="work-link" href={c.url}>
-                  {c.linkLabel}
-                </a>
               </article>
             ))}
           </div>
@@ -384,14 +377,13 @@ export default function Home() {
           <div className="project-list">
             {publications.map((p) => (
               <article className="small-project" key={p.title}>
-                <h3>{p.title}</h3>
+                <h3>
+                  <a href={p.url}>{p.title}</a>
+                </h3>
                 <Authors names={p.authors} />
-                <div className="compact-meta">
-                  <span>
-                    {p.venue} · {p.year}
-                  </span>
-                  <a href={p.url}>Paper</a>
-                </div>
+                <p className="compact-meta">
+                  {p.venue} · {p.year}
+                </p>
               </article>
             ))}
           </div>

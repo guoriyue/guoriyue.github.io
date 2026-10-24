@@ -238,16 +238,10 @@ figure {
   margin-top: 8px;
   max-width: 1000px;
 }
-.work-link,
 .compact-meta {
+  margin: 5px 0 0;
   font-size: 14px;
-}
-.compact-meta {
-  display: flex;
-  gap: 18px;
-  align-items: center;
   color: #303f68;
-  margin-top: 9px;
 }
 .research-section .small-project {
   padding: 14px 0;
@@ -260,9 +254,6 @@ figure {
 }
 .research-section .authors {
   margin-top: 0;
-}
-.research-section .compact-meta {
-  margin-top: 5px;
 }
 .tiny-triton h3 span {
   font-size: 14px;
@@ -615,15 +606,13 @@ footer {
     transform: none;
   }
 }
-.paper-links a,
-.work-link {
+.paper-links a {
   display: inline-block;
   transition:
     translate 0.2s ease,
     color 0.2s ease;
 }
-.paper-links a:hover,
-.work-link:hover {
+.paper-links a:hover {
   translate: 2px -1px;
 }
 
@@ -633,12 +622,10 @@ footer {
   .section-heading.revealed .section-art {
     animation: none !important;
   }
-  .paper-links a,
-  .work-link {
+  .paper-links a {
     transition: none;
   }
-  .paper-links a:hover,
-  .work-link:hover {
+  .paper-links a:hover {
     translate: none;
   }
 }
@@ -1451,9 +1438,15 @@ body[data-herding='true'] .cursor-collie {
   min-width: 110px;
   line-height: 1;
 }
-.paper-links.repo-links {
-  align-items: center;
+/* A linked title, with the repository's star badge to its right. */
+h3 a:hover {
+  text-decoration: underline;
+}
+.repo-title {
+  display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
 }
 
 /* Preserve the same media rows before Chromium supported aspect-ratio. */
