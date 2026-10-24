@@ -30,13 +30,21 @@ export default function Demo({
           decoding="async"
         />
       </picture>
+      {/* Covers the animation so a click anywhere toggles it, as on YouTube. */}
       <button
         type="button"
         className="demo-toggle"
+        data-paused={paused}
         onClick={() => setPaused(!paused)}
         aria-label={`${paused ? 'Play' : 'Pause'} animation: ${label}`}
       >
-        {paused ? 'Play' : 'Pause'}
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          {paused ? (
+            <path d="M8 5.5v13l10.5-6.5z" />
+          ) : (
+            <path d="M7 5h3.5v14H7zm6.5 0H17v14h-3.5z" />
+          )}
+        </svg>
       </button>
     </span>
   );

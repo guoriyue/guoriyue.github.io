@@ -125,13 +125,8 @@
   border-color: var(--border);
 }
 [data-theme='dark'] .work-preview img,
-[data-theme='dark'] .demo,
-[data-theme='dark'] .demo-toggle {
+[data-theme='dark'] .demo {
   background: var(--cream);
-}
-[data-theme='dark'] .demo-toggle {
-  color: var(--foreground);
-  border-color: #526e83;
 }
 [data-theme='dark'] .about-section .portrait {
   border-color: var(--background);

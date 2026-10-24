@@ -716,13 +716,17 @@ footer {
   }
 }
 
-/* Two projects per row, with readable media above each description. */
+/* One project per row: media on the left, the description on the right. */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 38px 36px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 38px;
 }
 .project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 36px;
+  align-items: start;
   min-width: 0;
   padding-bottom: 30px;
   border-bottom: 1px solid #303f68;
@@ -731,7 +735,7 @@ footer {
     translate 0.6s ease;
 }
 .project-card .work-preview {
-  margin-bottom: 20px;
+  margin: 0;
 }
 .project-card .work-preview img,
 .project-card .demo {
@@ -753,25 +757,22 @@ footer {
   margin: 0 0 10px;
 }
 .compact-project-grid {
-  gap: 0 36px;
+  gap: 0;
   margin-top: 14px;
 }
 .compact-project-grid .small-project {
   padding: 22px 0;
 }
-.compact-project-grid .small-project:nth-last-child(-n + 2) {
+.compact-project-grid .small-project:last-child {
   border-bottom: 0;
 }
 @media (max-width: 700px) {
   .project-grid {
-    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
-  .compact-project-grid {
-    gap: 0;
-  }
-  .compact-project-grid .small-project:nth-last-child(2) {
-    border-bottom: 1px solid #303f68;
+  .project-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -789,28 +790,35 @@ footer {
 }
 .demo-toggle {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-  border: 1px solid #303f68;
-  border-radius: 7px;
-  padding: 4px 10px;
-  background: #dce5ed;
-  color: #303f68;
-  font: 500 12px/1.5 var(--font-sans);
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
   cursor: pointer;
+}
+.demo-toggle svg {
+  width: 64px;
+  height: 64px;
+  padding: 16px;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.6);
+  fill: #fff;
   opacity: 0;
   transition: opacity 0.2s;
 }
-.demo-container:hover .demo-toggle,
-.demo-container:focus-within .demo-toggle {
+.demo-toggle[data-paused='true'] svg,
+.demo-toggle:hover svg,
+.demo-toggle:focus-visible svg {
   opacity: 1;
 }
 .demo-toggle:focus-visible {
-  outline: 2px solid #303f68;
-  outline-offset: 3px;
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
 }
 @media (hover: none) {
-  .demo-toggle {
+  .demo-toggle svg {
     opacity: 1;
   }
 }
@@ -824,9 +832,6 @@ footer {
   text-align: center;
   color: #303f68;
   margin: -12px 0 34px;
-}
-.projects-section .project-grid {
-  column-gap: 48px;
 }
 .projects-section .work-copy strong {
   color: #303f68;
@@ -1078,12 +1083,6 @@ body,
 .work-preview:hover {
   filter: none;
 }
-.demo-toggle {
-  border-radius: 0;
-  border: 1px solid var(--primary);
-  box-shadow: 2px 2px 0 var(--primary);
-  background: var(--background);
-}
 .project-card,
 .small-project,
 .experience-entry,
@@ -1200,12 +1199,6 @@ footer {
 .demo {
   border-color: #dce5e9;
   background: #f3f6f7;
-}
-.demo-toggle {
-  color: #365f73;
-  border-color: #c8dce5;
-  box-shadow: none;
-  background: #ffffff;
 }
 .project-card,
 .small-project,
