@@ -4,7 +4,7 @@
   --foreground: #303f68;
   --primary: #303f68;
   --border: #303f68;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -18,8 +18,8 @@ body {
   background: #dce5ed;
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 a {
@@ -47,14 +47,14 @@ p {
 h1,
 h2,
 h3 {
-  line-height: 1.3;
+  line-height: 1.5;
 }
 h1,
 h2 {
-  font-weight: 700;
+  font-weight: 400;
 }
 h3 {
-  font-weight: 600;
+  font-weight: 400;
 }
 h3 a {
   color: inherit;
@@ -80,14 +80,11 @@ figure {
   background: #dce5ed;
 }
 .name-row h1 {
-  font-size: 46px;
   margin: 0 0 6px;
   color: #303f68;
-  letter-spacing: 0;
+  letter-spacing: -1px;
 }
 .about-copy > p {
-  font-size: 18px;
-  line-height: 1.8;
   max-width: 790px;
 }
 .portrait {
@@ -103,10 +100,6 @@ figure {
   gap: 26px;
   flex-wrap: wrap;
   margin-top: 22px;
-}
-.social-links a {
-  font-size: 16px;
-  font-weight: 600;
 }
 .content-section {
   max-width: 1180px;
@@ -125,7 +118,6 @@ figure {
   gap: 12px;
 }
 .section-heading h2 {
-  font-size: 30px;
   color: #303f68;
   margin: 0;
 }
@@ -182,13 +174,12 @@ figure {
   border: 1px solid #303f68;
 }
 .work-preview figcaption {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   color: #303f68;
   margin-top: 8px;
 }
 .work-copy h3 {
-  font-size: 25px;
   margin: 0 0 8px;
   color: #303f68;
 }
@@ -197,13 +188,8 @@ figure {
   color: #303f68;
   margin: 0 0 14px;
 }
-.work-copy > p:not(.work-meta):not(.authors) {
-  font-size: 17px;
-  line-height: 1.7;
-}
 .authors {
-  font-size: 12px;
-  line-height: 1.7;
+  font-size: 14px;
   color: #303f68;
   margin: 12px 0;
 }
@@ -215,8 +201,6 @@ figure {
   flex-wrap: wrap;
   gap: 10px 22px;
   margin-top: 17px;
-  font-size: 15px;
-  font-weight: 600;
 }
 .gaussian-preview .demo {
   max-height: 290px;
@@ -245,27 +229,21 @@ figure {
 }
 .small-project h3 {
   font-size: 20px;
-  line-height: 1.45;
   margin-bottom: 7px;
 }
 .small-project p {
-  font-size: 16px;
-  line-height: 1.65;
   color: #303f68;
   margin: 0 0 5px;
   max-width: 970px;
 }
 .small-project .authors {
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 8px;
   max-width: 1000px;
 }
 .work-link,
 .compact-meta {
   font-size: 14px;
-}
-.work-link {
-  font-weight: 600;
 }
 .compact-meta {
   display: flex;
@@ -290,7 +268,7 @@ figure {
   margin-top: 5px;
 }
 .tiny-triton h3 span {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: #303f68;
   margin-left: 8px;
@@ -340,28 +318,25 @@ figure {
   margin: 0;
 }
 .experience-top span {
-  font-size: 13px;
+  font-size: 14px;
   color: #303f68;
 }
 .experience-entry p,
 .education-entry p {
-  font-size: 15px;
   color: #303f68;
   margin: 8px 0 0;
-  line-height: 1.7;
 }
 .experience-entry .experience-role,
 .education-entry .degree {
   color: #303f68;
 }
 .education-entry .education-focus {
-  font-size: 13px;
+  font-size: 14px;
 }
 .text-link {
   font-size: 14px;
   display: inline-block;
   margin-top: 10px;
-  font-weight: 600;
 }
 footer {
   max-width: 1120px;
@@ -371,7 +346,7 @@ footer {
   justify-content: space-between;
   gap: 16px;
   padding: 24px 0 30px;
-  font-size: 13px;
+  font-size: 15px;
   color: #303f68;
 }
 .skip-link {
@@ -433,26 +408,14 @@ footer {
     width: 180px;
     height: 180px;
   }
-  .name-row h1 {
-    font-size: 39px;
-  }
   .work-row {
     gap: 24px;
     grid-template-columns: 1fr 1.1fr;
-  }
-  .work-copy h3 {
-    font-size: 23px;
-  }
-  .work-copy > p:not(.work-meta):not(.authors) {
-    font-size: 16px;
   }
   .background-grid {
     gap: 0;
   }
 
-  .background-grid .section-heading h2 {
-    font-size: 25px;
-  }
   footer {
     margin: 0 28px;
   }
@@ -478,17 +441,10 @@ footer {
   }
   .name-row h1 {
     text-align: center;
-    font-size: 36px;
-  }
-  .about-copy > p {
-    font-size: 17px;
   }
   .social-links {
     justify-content: center;
     gap: 24px;
-  }
-  .social-links a {
-    font-size: 15px;
   }
   .content-section {
     padding: 31px 22px;
@@ -496,26 +452,11 @@ footer {
   .section-heading {
     margin-bottom: 27px;
   }
-  .section-heading h2 {
-    font-size: 27px;
-  }
   .work-row {
     grid-template-columns: 1fr;
     gap: 19px;
     padding-bottom: 28px;
     margin-bottom: 28px;
-  }
-  .work-copy h3 {
-    font-size: 24px;
-  }
-  .work-copy > p:not(.work-meta):not(.authors) {
-    font-size: 17px;
-  }
-  .work-meta {
-    font-size: 13px;
-  }
-  .work-preview figcaption {
-    font-size: 12px;
   }
   .work-preview img {
     max-height: 320px;
@@ -527,12 +468,6 @@ footer {
   .paper-links {
     margin-top: 12px;
   }
-  .small-project h3 {
-    font-size: 20px;
-  }
-  .small-project p {
-    font-size: 16px;
-  }
   .background-grid {
     grid-template-columns: 1fr;
     gap: 0;
@@ -541,16 +476,8 @@ footer {
   .background-grid .content-section {
     padding: 30px 0 5px;
   }
-  .background-grid .section-heading h2 {
-    font-size: 27px;
-  }
-  .experience-entry p,
-  .education-entry p {
-    font-size: 16px;
-  }
   footer {
     margin: 20px 22px 0;
-    font-size: 12px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -821,7 +748,6 @@ footer {
 }
 .project-card .work-copy h3 {
   font-size: 24px;
-  line-height: 1.3;
 }
 .project-card .work-copy > p:not(.work-meta) {
   margin: 0 0 10px;
@@ -897,7 +823,6 @@ footer {
 .projects-intro {
   text-align: center;
   color: #303f68;
-  font-size: 17px;
   margin: -12px 0 34px;
 }
 .projects-section .project-grid {
@@ -912,19 +837,13 @@ footer {
   margin-bottom: 32px;
 }
 .small-project .project-keywords {
-  font-size: 12px;
-  letter-spacing: 0.035em;
+  font-size: 14px;
   color: #303f68;
   margin: 0 0 10px;
 }
 .secondary-projects {
   padding-top: 28px;
   border-top: 1px solid #303f68;
-}
-@media (max-width: 700px) {
-  .projects-intro {
-    font-size: 16px;
-  }
 }
 
 /* Solid strawberry and cream, with full-width section boundaries. */
@@ -940,7 +859,7 @@ footer {
 }
 .about-section .name-row h1 {
   color: var(--cream);
-  font-size: 52px;
+  font-size: 42px;
 }
 .about-section a {
   color: var(--cream);
@@ -986,8 +905,7 @@ footer {
 }
 .section-heading h2,
 .background-grid .section-heading h2 {
-  font-size: 42px;
-  letter-spacing: -1px;
+  font-size: 32px;
   color: var(--primary);
 }
 .heading-title {
@@ -1030,7 +948,7 @@ footer {
     padding: 38px 22px 44px;
   }
   .about-section .name-row h1 {
-    font-size: 39px;
+    font-size: 36px;
   }
   .content-section,
   .content-section:not(.writing-section),
@@ -1042,11 +960,6 @@ footer {
     flex-direction: column;
     gap: 14px;
     margin-bottom: 28px;
-  }
-  .section-heading h2,
-  .background-grid .section-heading h2 {
-    font-size: 34px;
-    letter-spacing: -0.5px;
   }
   .section-art {
     width: 36px;
@@ -1193,7 +1106,7 @@ body,
   }
   .section-heading h2,
   .background-grid .section-heading h2 {
-    font-size: clamp(29px, 7vw, 34px);
+    font-size: 28px;
   }
   .heading-title {
     gap: 12px;
@@ -1331,8 +1244,6 @@ a:hover {
 }
 .personal-copy {
   width: 100%;
-  font-size: 18px;
-  line-height: 1.8;
 }
 .personal-copy p + p {
   margin-top: 16px;
