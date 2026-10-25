@@ -51,7 +51,7 @@
   display: inline;
 }
 .navigation .theme-toggle:hover {
-  background: #c3e5f1;
+  color: var(--primary);
 }
 .theme-toggle:focus-visible {
   outline: 2px solid var(--primary);
@@ -88,7 +88,6 @@
 [data-theme='dark'] .navigation a[aria-current],
 [data-theme='dark'] .navigation .theme-toggle:hover {
   color: #e2f5fc;
-  background: #24475d;
 }
 [data-theme='dark'] a:hover {
   color: #c3ebfa;
@@ -115,10 +114,6 @@
 [data-theme='dark'] .authors strong {
   color: #b5cddd;
 }
-[data-theme='dark'] .heading-title,
-[data-theme='dark'] .project-card,
-[data-theme='dark'] .secondary-projects,
-[data-theme='dark'] .small-project,
 [data-theme='dark'] .work-preview img,
 [data-theme='dark'] .demo {
   border-color: var(--border);

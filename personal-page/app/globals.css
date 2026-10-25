@@ -209,14 +209,10 @@ figure {
 }
 .small-project {
   padding: 20px 0;
-  border-bottom: 1px solid #303f68;
   position: relative;
 }
 .small-project:first-child {
   padding-top: 0;
-}
-.small-project:last-child {
-  border-bottom: 0;
 }
 .small-project h3 {
   font-size: 20px;
@@ -281,11 +277,9 @@ figure {
 .education-entry {
   padding: 0 0 23px;
   margin-bottom: 23px;
-  border-bottom: 1px solid var(--border);
 }
 .experience-entry:last-child,
 .education-entry:last-child {
-  border: 0;
   margin: 0;
 }
 .experience-top {
@@ -323,7 +317,6 @@ figure {
 footer {
   max-width: 1120px;
   margin: auto;
-  border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -555,10 +548,6 @@ footer {
   border-bottom: 0;
   padding-bottom: 0;
 }
-#projects,
-#publications {
-  border-top: 1px solid #303f68;
-}
 
 .work-row.revealed .work-preview {
   animation: preview-arrive 0.65s cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
@@ -661,12 +650,10 @@ footer {
 }
 .navigation a:hover {
   color: #303f68;
-  background: #dce5ed;
   text-decoration: none;
 }
 .navigation a[aria-current] {
   color: #303f68;
-  background: #dce5ed;
 }
 .navigation a:focus-visible {
   outline-offset: 1px;
@@ -707,7 +694,6 @@ footer {
   align-items: start;
   min-width: 0;
   padding-bottom: 30px;
-  border-bottom: 1px solid #303f68;
   transition:
     opacity 0.6s ease,
     translate 0.6s ease;
@@ -740,9 +726,6 @@ footer {
 }
 .compact-project-grid .small-project {
   padding: 22px 0;
-}
-.compact-project-grid .small-project:last-child {
-  border-bottom: 0;
 }
 @media (max-width: 700px) {
   .project-grid {
@@ -826,7 +809,6 @@ footer {
 }
 .secondary-projects {
   padding-top: 28px;
-  border-top: 1px solid #303f68;
 }
 
 /* Solid strawberry and cream, with full-width section boundaries. */
@@ -856,7 +838,6 @@ footer {
 }
 .navigation a[aria-current] {
   color: #dce5ed;
-  background: var(--primary);
 }
 .content-section,
 .content-section:not(.writing-section),
@@ -875,10 +856,6 @@ footer {
 .research-section,
 .education-section {
   background: var(--paper);
-}
-#projects,
-#publications {
-  border-top: 0;
 }
 .section-heading {
   justify-content: space-between;
@@ -999,9 +976,6 @@ body,
 .writing-section .section-heading h2 {
   color: var(--foreground);
 }
-.about-section {
-  border-bottom: 2px solid var(--primary);
-}
 .about-section .portrait {
   border: 2px solid var(--primary);
   border-radius: 0;
@@ -1034,7 +1008,6 @@ body,
 }
 .navigation a:hover,
 .navigation a[aria-current] {
-  background: var(--background);
   color: var(--primary);
 }
 .navigation a:focus-visible {
@@ -1048,7 +1021,6 @@ body,
 .heading-title {
   width: 100%;
   padding-bottom: 16px;
-  border-bottom: 2px solid var(--primary);
 }
 .section-art {
   mix-blend-mode: normal;
@@ -1060,13 +1032,6 @@ body,
 }
 .work-preview:hover {
   filter: none;
-}
-.project-card,
-.small-project,
-.experience-entry,
-.education-entry,
-.secondary-projects {
-  border-color: color-mix(in srgb, var(--primary) 30%, var(--background));
 }
 @media (max-width: 700px) {
   .navigation {
@@ -1119,7 +1084,6 @@ body,
 }
 .about-section {
   background: #ffffff;
-  border-bottom: 1px solid var(--border);
 }
 .navigation {
   background: #e4f3f8;
@@ -1130,8 +1094,7 @@ body,
 }
 .navigation a:hover,
 .navigation a[aria-current] {
-  color: #254f64;
-  background: #c3e5f1;
+  color: var(--primary);
 }
 .navigation a:focus-visible {
   outline-color: var(--primary);
@@ -1165,9 +1128,6 @@ body,
 footer {
   color: #637580;
 }
-.heading-title {
-  border-bottom: 1px solid #d3e3ea;
-}
 .section-heading h2,
 .writing-section .section-heading h2 {
   color: #365f73;
@@ -1176,13 +1136,6 @@ footer {
 .demo {
   border-color: #dce5e9;
   background: #f3f6f7;
-}
-.project-card,
-.small-project,
-.experience-entry,
-.education-entry,
-.secondary-projects {
-  border-color: var(--border);
 }
 .small-project .project-keywords,
 .authors strong {
