@@ -44,7 +44,7 @@ Add a Markdown file to `content/posts/` with a small front matter block:
     date: 2026-09-19
     description: One line shown in the blog list.
     label: AI Systems
-    series: TinyTriton
+    series: 3D Gaussian Splatting
     part: 1
     ---
 

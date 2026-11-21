@@ -245,12 +245,6 @@ figure {
 .research-section .authors {
   margin-top: 0;
 }
-.tiny-triton h3 span {
-  font-size: 14px;
-  font-weight: 400;
-  color: #303f68;
-  margin-left: 8px;
-}
 .writing-section {
   max-width: none;
   background: #dce5ed;

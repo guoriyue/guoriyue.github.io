@@ -105,7 +105,6 @@
 [data-theme='dark'] .education-entry p,
 [data-theme='dark'] .experience-top span,
 [data-theme='dark'] .compact-meta,
-[data-theme='dark'] .tiny-triton h3 span,
 [data-theme='dark'] .projects-intro,
 [data-theme='dark'] footer {
   color: var(--muted);

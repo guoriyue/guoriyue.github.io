@@ -271,20 +271,6 @@ export default function Home() {
                 <p>{p.description}</p>
               </article>
             ))}
-            <article className="small-project tiny-triton">
-              <h3>
-                <a href="/blog/tinytriton-series/">TinyTriton</a>{' '}
-                <span>Step 1 published</span>
-              </h3>
-              <p className="project-keywords">
-                GPU COMPILERS · CUDA · LLVM / PTX
-              </p>
-              <p>
-                Build a GPU compiler in Python, one lesson at a time. Start with
-                source code and instructions; later lessons introduce GPU
-                execution and optimization. No compiler background assumed.
-              </p>
-            </article>
             <article className="small-project">
               <h3>
                 <a href={projects[3].url}>{projects[3].name}</a>

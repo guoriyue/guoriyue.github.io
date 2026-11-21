@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import test from 'node:test';
 
-const html = readFileSync('dist/client/blog/tinytriton-step-1/index.html', 'utf8');
+const html = readFileSync('dist/client/blog/3dgs-warp-from-scratch/index.html', 'utf8');
 const bootstrap = html.match(/<script id="site-theme">([\s\S]*?)<\/script>/)?.[1];
 
 function browser({ saved = null, blocked = false } = {}) {
@@ -37,7 +37,6 @@ test('exported pages apply the theme before the body and include a native toggle
   assert.ok(html.indexOf('id="site-theme"') < html.indexOf('<body'));
   assert.ok(html.includes('data-theme-toggle'));
   assert.ok(html.includes('data-theme-dark'));
-  assert.ok(html.includes('05-compile-time-dark.svg'));
 });
 
 test('a new visit defaults to dark and a saved light choice is restored', () => {
